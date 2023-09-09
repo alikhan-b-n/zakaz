@@ -22,7 +22,7 @@ export const SignInPage = () => {
         return response.json()
     }
 
-    const {mutate, isLoading, isError, error} = useMutation(signIn, {
+    const {mutate, isLoading, isError, error, isSuccess} = useMutation(signIn, {
         onSuccess: (successData) => {
             console.log(successData)
         }
@@ -44,6 +44,10 @@ export const SignInPage = () => {
 
     if(isError){
         return <p>{error.message}</p>
+    }
+
+    if(isSuccess){
+        
     }
 
     return (

@@ -6,16 +6,16 @@ export function HeaderComponent() {
                 alt="logo"
                 className="sm:w-[75px] sm:inline xsm:w-[60px] 3xl:hidden pl-[5%]"
             />
-            <div className="ml-auto flex justify-between 3xl:w-[30%] lg:w-[40%] sm:w-[50%] xsm:w-[15%]">
+            <div className="ml-auto flex justify-between 3xl:w-[30%] sm:w-[50%] xsm:w-[15%]">
                 <div className="flex gap-x-3 pt-2">
                     <svg className="3xl:w-[18px] 3xl:h-[18px] xl:w-[16px] xl:h-[16px] lg:w-[13px] lg:h-[13px] xsm:w-[10px] xsm:h-[10px] mt-[5px]" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                         <path d="M16.2037 12.2682L13.6637 11.9782C13.365 11.9431 13.0623 11.9761 12.7782 12.0749C12.4942 12.1736 12.2362 12.3354 12.0237 12.5482L10.1837 14.3882C7.34486 12.9444 5.03745 10.637 3.59367 7.79816L5.44367 5.94816C5.87367 5.51816 6.08367 4.91816 6.01367 4.30816L5.72367 1.78816C5.66698 1.30034 5.43287 0.850395 5.06591 0.524007C4.69895 0.197618 4.22478 0.0175757 3.73367 0.0181594H2.00367C0.873674 0.0181594 -0.0663265 0.958159 0.00367348 2.08816C0.533673 10.6282 7.36367 17.4482 15.8937 17.9782C17.0237 18.0482 17.9637 17.1082 17.9637 15.9782V14.2482C17.9737 13.2382 17.2137 12.3882 16.2037 12.2682Z" fill="#666666"/>
                     </svg>
-                    <p className="inline 3xl:text-[20px] xl:text-[16px] lg:text-[13px] xsm:hidden text-[#666]">+7 700 394 39 39</p>
+                    <p className="inline 3xl:text-[20px] xl:text-[16px] lg:text-[13px] md:hidden text-[#666]">+7 700 394 39 39</p>
                 </div>
 
                 <div className="flex pt-2">
-                    <p className="3xl:inline text-black font-bold font-montserrat pr-[12px] 3xl:text-[20px] xl:text-[16px] lg:text-[13px] xsm:hidden">Войти</p>
+                    <p className="3xl:inline text-black font-bold font-montserrat pr-[12px] 3xl:text-[20px] xl:text-[16px] lg:text-[13px] md:hidden">Войти</p>
                     <svg className="3xl:w-[20px] 3xl:h-[18px] xl:w-[16px] xl:h-[14.4px] lg:w-[13px] lg:h-[11.7px] mt-[5px]"
                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" fill="none">
                         <path

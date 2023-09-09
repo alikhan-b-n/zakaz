@@ -1,11 +1,11 @@
-export function FooterComponents() {
+export function FooterComponent() {
     return (
         <div
             className="bg-white mt-auto border-1 border-[#E2E9EF] bg-[#FFF] sm:w-100 sm:h-[120px] justify-between 2xl:p-[50px] lg:p-[20px] justify-between flex">
             <img src={process.env.PUBLIC_URL + `../Assets/logo.jpg`} alt="logo"
                  className="3xl:w-[230px] 3xl:block md:w-[160px] p-[30px] sm:hidden"/>
 
-            <div className="3xl:block sm:hidden">
+            <div className="3xl:block sm:hidden sm:w-[100%]">
                 <div className="3xl:mb-[46px] md:mb-[30px] flex">
                     <svg className="3xl:w-[24px] 3xl:p-0 md:pb-2 md:w-[18px]" xmlns="http://www.w3.org/2000/svg"
                          width="24" height="24" viewBox="0 0 24 24" fill="none">
