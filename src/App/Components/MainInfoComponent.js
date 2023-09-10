@@ -55,8 +55,8 @@ export function MainInfoComponent() {
                         </div>
                         <div className="flex 3xl:justify-around xl:justify-center 3xl:pl-10 lg:pl-0 lg:mt-3">
                             <div
-                                className="3xl:text-[75px] 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[30px]">
-                                <h2 className="3xl:800px leading-tight sm:text-[20px]">ОНЛАЙН ПОДГОТОВКА</h2>
+                                className="3xl:text-[75px] 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[30px] ">
+                                <h2 className="sm:text-[20px]">ОНЛАЙН ПОДГОТОВКА</h2>
                                 <div className="flex">
                                     <div className="bg-no-repeat ml-[-10px] mt-[-10px]
                                     3xl:w-[120px] 2xl:w-[80px] xl:w-[80px] lg:w-[60px] md:w-[50px] bg-contain"
@@ -68,7 +68,7 @@ export function MainInfoComponent() {
                                 </div>
                                 <div className="lg:flex">
                                     <div>
-                                        <div className="text-sm 3xl:max-w-[531px] lg:max-w-[320px]
+                                        <div className="text-sm 3xl:max-w-[600px] lg:max-w-[320px]
                                      3xl:text-[24px] 2xl:text-[20px] xl:text-[18px] lg:text-[16px] md:text-xs md:font-normal">
                                             Мы гарантируем качественные занятия, опытных преподавателей и индивидуальный
                                             подход к
@@ -76,8 +76,8 @@ export function MainInfoComponent() {
                                         </div>
                                         <div className="flex justify-center">
                                             <button type="submit" className="
-                                                3xl:text-[40px] 3xl:w-[400px] 3xl:h-[60px]
-                                                2xl:text-[35px] 2xl:w-[370px] 2xl:h-[55px]
+                                                3xl:text-[35px] 3xl:w-[370px] 3xl:h-[55px]
+                                                2xl:text-[33px] 2xl:w-[370px] 2xl:h-[55px]
                                                 xl:text-[30px] xl:w-[340px] xl:h-[50px]
                                                 lg:text-[23px] lg:w-[250px] lg:h-[40px]
                                                 mt-[33px] w-48 text-base 3xl:mb-6
@@ -90,7 +90,7 @@ export function MainInfoComponent() {
                                         style={divStyleGraduate}></div>
                                 </div>
                             </div>
-                            <div className="flex 3xl:w-[550px] 2xl:w-[500px] xl:w-[400px]
+                            <div className="flex 3xl:w-[580px] 2xl:w-[500px] xl:w-[400px]
                             3xl:h-[500px] 2xl:h-[400px] xl:h-[300px] lg:hidden bg-cover bg-no-repeat mt-auto "
                                  style={divStyleGraduate}></div>
                         </div>

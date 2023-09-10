@@ -6,6 +6,8 @@ import {MainPage} from "./App/Pages/Main.page";
 import {QueryClientProvider, QueryClient} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools'
 import TeacherPage from "./App/Pages/Teacher.page";
+import MyProfilePage from "./App/Pages/MyProfile.page";
+import {MyProfileComponent} from "./App/Components/MyProfileComponent";
 
 const queryClient = new QueryClient()
 
@@ -20,6 +22,7 @@ export function App() {
                     <Route path="/" element={<MainPage/>}/>
                     <Route path="/teachers" element={<TeacherPage/>}/>
                     <Route path="/courses" element={<MainPage/>}/>
+                    <Route path="/myprofile" element={<MyProfilePage/>}/>
                 </Routes>
             </BrowserRouter>
             <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>

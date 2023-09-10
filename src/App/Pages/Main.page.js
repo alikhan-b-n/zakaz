@@ -11,7 +11,7 @@ export function MainPage() {
         "teacherName":"Тлеуова Дарина",
         "courseTitle":"История Казахстана",
         "courseDescription":"Вовлечем в новым мир истории нашей Родины",
-        "imagePathTeacher":"../Assets/teacher_history.svg",
+        "imagePathTeacher":"../Assets/teacherHistory.svg",
         "imagePath":"../Assets/historyLesson.png"
     };
 
@@ -29,7 +29,7 @@ export function MainPage() {
         'description':'С глубоким образованием и страстью к изучению истории своей страны, Аделина окончила\n' +
             '            исторический факультет Евразийского Национального Университета имени Л. Н. Гумилева. Вот уже более 10 лет\n' +
             '            она с вдохновением и преданностью делает историю Казахстана живой и увлекательной для своих студентов.\n',
-        'imageUrl': process.env.PUBLIC_URL + '../Assets/teacher_history.svg'
+        'imageUrl': process.env.PUBLIC_URL + '../Assets/business-finance-and-employment-female-successful-entrepreneurs-concept-friendly-smiling-office-manager-greeting-new-coworker-businesswoman-welcome-clients-with-hand-wave-hold-laptop.png'
     }
 
     return (
