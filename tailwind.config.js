@@ -9,7 +9,8 @@ module.exports = {
             fontFamily: {
                 'montserrat': ['Montserrat'],
                 'lato': ['Lato'],
-                'garamond': ['Garamond']
+                'garamond': ['Garamond'],
+                'Mont': ['Mont']
             },
             boxShadow: {
                 'custom': '2px 4px 4px 0px rgba(187, 187, 187, 0.25) inset;'

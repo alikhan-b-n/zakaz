@@ -5,6 +5,7 @@ import {NotFoundPage} from "./App/Pages/NotFound.page";
 import {MainPage} from "./App/Pages/Main.page";
 import {QueryClientProvider, QueryClient} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools'
+import TeacherPage from "./App/Pages/Teacher.page";
 
 const queryClient = new QueryClient()
 
@@ -17,7 +18,7 @@ export function App() {
                     <Route path="/signup" element={<SignUpPage/>}/>
                     <Route path="*" element={<NotFoundPage/>}/>
                     <Route path="/" element={<MainPage/>}/>
-                    <Route path="/teacher" element={<MainPage/>}/>
+                    <Route path="/teachers" element={<TeacherPage/>}/>
                     <Route path="/courses" element={<MainPage/>}/>
                 </Routes>
             </BrowserRouter>

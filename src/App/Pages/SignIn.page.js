@@ -1,54 +1,46 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
+import {useForm} from 'react-hook-form';
 import {useMutation} from "react-query";
+import axios from "axios";
+import * as userLocalStorage from "../LocalStorages/UserLocalStorage";
 
 export const SignInPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPwd, setShowPwd] = useState(false)
     const navigate = useNavigate();
-
-    const signIn = async user => {
-        const response = await fetch('http://193.70.125.178:4000/users/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                email: user.email,
-                password: user.password
-            }),
-            headers: {
-                'Content-type': 'application/json; charset-UTF-8'
-            }
-        })
-        return response.json()
-    }
-
-    const {mutate, isLoading, isError, error, isSuccess} = useMutation(signIn, {
-        onSuccess: (successData) => {
-            console.log(successData)
-        }
-    })
-
-    const usernameRef = useRef();
-
-    useEffect(() => {
-        usernameRef.current.focus()
-    }, [])
-
+    const {register, handleSubmit, formState: {errors}} = useForm()
     const showPassport = () => {
         setShowPwd(!showPwd)
     }
 
-    if(isLoading) {
+    const {mutate, isLoading, isError, error} = useMutation(async () =>
+        await axios.post('http://193.70.125.178:4000/users/login',
+            {
+                email: email,
+                password: password
+            }, {
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8'
+                }
+            }), {
+        onSuccess: (successData) => {
+            userLocalStorage.saveUser(successData)
+            navigate('/')
+        }
+    })
+
+    if (isLoading) {
         return <p>Loading...</p>
     }
 
-    if(isError){
+
+    if (isError) {
         return <p>{error.message}</p>
     }
 
-    if(isSuccess){
-        
-    }
+
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>
@@ -57,16 +49,20 @@ export const SignInPage = () => {
                     className="container 3xl:max-w-lg xl:max-w-md md:max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                     <div className="bg-white px-6 py-8 rounded-2xl shadow-md text-black w-full">
                         <div className="flex justify-between">
-                            <button className="flex-initial text-xl font-bold pb-3 pl-2.5" onClick={() => navigate(-1)}>{`<`}</button>
-                            {/*<p className="flex-initial text-xl font-bold">{`<`}</p>*/}
+                            <button className="flex-initial text-xl font-bold pb-3 pl-2.5"
+                                    onClick={() => navigate(-1)}>{`<`}</button>
                             <h1 className="flex-1 mb-5 text-2xl text-center mr-5 pr-3">Вход</h1>
                         </div>
-                        <label ref={usernameRef} className="pl-[18px] 3xl:text-[18px] md:text-[15px]">Email</label>
+                        <label className="pl-[18px] 3xl:text-[18px] md:text-[15px]">Email</label>
                         <input
                             type="text"
                             className="focus:outline-none focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block bg-slate-100 border bg-slate-100 mt-2 shadow-custom border-grey-light w-full p-3 rounded mb-4 shadow-custom"
                             name="email"
                             placeholder="Email"
+                            {...register("email", {
+                                required: true,
+                                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i
+                            })}
                             autoComplete="off"
                             onChange={(e) => {
                                 setEmail(e.target.value)
@@ -74,10 +70,11 @@ export const SignInPage = () => {
                             value={email}
                             required
                         />
+                        {errors.email && <span className="text-rose-700	mb-[20px] block">Invalid email</span>}
 
                         <div>
                             <label className="pl-[18px]">Пароль</label>
-                            <div className="flex mt-2">
+                            <div className="mt-2">
                                 <div
                                     className="outline-none block border bg-slate-100 w-full p-3 rounded mb-4 shadow-custom border-grey-light justify-between">
                                     <input type={showPwd ? "text" : "password"}
@@ -85,6 +82,10 @@ export const SignInPage = () => {
                                            id="password"
                                            autoComplete="off"
                                            placeholder="Пароль"
+                                           {...register("password", {
+                                               required: true,
+                                               pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+                                           })}
                                            onChange={(e) => {
                                                setPassword(e.target.value)
                                            }}
@@ -111,15 +112,17 @@ export const SignInPage = () => {
                                         }
                                     </button>
                                 </div>
+                                {errors.password && <span className="text-rose-700 mb-[5px] block">Invalid password</span>}
                             </div>
                         </div>
-                        <div className="text-center text-sm text-grey-dark mt-4 mb-3">
-                            <a className="no-underline border-grey-dark text-gray-500" href="#">
-                                Забыли пароль?
-                            </a>
-                        </div>
+                        {/*<div className="text-center text-sm text-grey-dark mt-4 mb-3">*/}
+                        {/*    <a className="no-underline border-grey-dark text-gray-500" href="#">*/}
+                        {/*        Забыли пароль?*/}
+                        {/*    </a>*/}
+                        {/*</div>*/}
                         <div className="flex justify-center">
-                            <button type="submit" onClick={() => mutate({email: email, password: password})} className="w-32 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
+                            <button type="submit"
+                                    onClick={handleSubmit(() => mutate({email: email, password: password}))} className="w-32 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Войти
                             </button>
                         </div>
@@ -133,5 +136,5 @@ export const SignInPage = () => {
                 </div>
             </div>
         </form>
-    );
-};
+    )
+}

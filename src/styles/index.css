@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: 'Mont';
+    src: url('../font-mont/Mont-Regular.woff2') format('woff2'),
+    url('../font-mont/Mont-Regular.woff') format('woff'),
+    url('../font-mont/Mont-Bold.eot') format('eof'),
+    url('../font-mont/Mont-Heavy.woff2') format('woff2'),
+    url('../font-mont/Mont-Black.woff2') format('woff2'),
+    url('../font-mont/Mont-ExtraLightItalic.woff2') format('woff2');
+    /* Add additional font weights/styles if needed */
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: inherit !important;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+}
