@@ -4,13 +4,52 @@
 @font-face {
     font-family: 'Mont';
     src: url('../font-mont/Mont-Regular.woff2') format('woff2'),
-    url('../font-mont/Mont-Regular.woff') format('woff'),
-    url('../font-mont/Mont-Bold.eot') format('eof'),
-    url('../font-mont/Mont-Heavy.woff2') format('woff2'),
-    url('../font-mont/Mont-Black.woff2') format('woff2'),
-    url('../font-mont/Mont-ExtraLightItalic.woff2') format('woff2');
+    url('../font-mont/Mont-Regular.woff') format('woff');
     /* Add additional font weights/styles if needed */
 }
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../font-mont/Mont-Bold.woff2') format('woff2'),
+    url('../font-mont/Mont-Bold.woff') format('woff');
+
+    font-weight: 700; /* Bold font weight */
+    font-style: normal; /* Normal (non-italic) style */
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../font-mont/Mont-SemiBold.woff2') format('woff2'),
+    url('../font-mont/Mont-SemiBold.woff') format('woff');
+
+    font-weight: 600; /* Bold font weight */
+    font-style: normal; /* Normal (non-italic) style */
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../font-mont/Mont-Black.woff2') format('woff2'),
+    url('../font-mont/Mont-Black.ttf') format('truetype'); /* 'ttf' should be 'truetype' */
+    font-weight: 900; /* Use '900' for 'black' font weight */
+    font-style: normal; /* Specify 'normal' for font style */
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../font-mont/Mont-Light.woff') format('woff'),
+    url('../font-mont/Mont-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: url('../font-mont/Mont-Heavy.woff2') format('woff2'),
+    url('../font-mont/Mont-Heavy.woff') format('woff');
+    font-weight: 800; /* Use '800' for 'heavy' font weight */
+    font-style: normal; /* Specify 'normal' for font style */
+}
+
 
 input:-webkit-autofill {
     -webkit-text-fill-color: inherit !important;
