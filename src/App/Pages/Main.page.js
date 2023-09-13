@@ -2,7 +2,7 @@ import {FooterComponent} from "../Components/FooterComponent";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {Appeal} from "../Components/AppealComponent";
-import {Course} from "../Components/CourseComponent";
+import {Course} from "../Components/courses/CourseComponent";
 import {MainInfoComponent} from "../Components/MainInfoComponent";
 import {Teacher} from "../Components/Teacher";
 
