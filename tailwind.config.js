@@ -37,6 +37,9 @@ module.exports = {
 
             'xsm': {'max': '450px'},
             // => @media (max-width: 639px) { ... }
+
+            'xxsm': {'max': '450px'},
+            // => @media (max-width: 639px) { ... }
         }
     },
     plugins: [],
