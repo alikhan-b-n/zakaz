@@ -1,12 +1,13 @@
-// src/components/Register.js
 import React, {useState} from 'react';
-import {useMutation, useQueryClient} from "react-query";
+import {useMutation} from "react-query";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useForm} from "react-hook-form";
+import {useSignIn} from 'react-auth-kit'
 
 
 export const SignUpPage = () => {
+    const signIn = useSignIn()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -33,6 +34,12 @@ export const SignUpPage = () => {
             }
         ), {
         onSuccess: (successData) => {
+            signIn({
+                token: successData.token,
+                expiresIn: 3600,
+                tokenType: "Bearer",
+                authState: {email: successData.email, firstname: successData.firstname, lastname: successData.lastname}
+            })
             navigate('/')
         }
     })
