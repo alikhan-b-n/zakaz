@@ -5,31 +5,6 @@ import {Appeal} from "../Components/AppealComponent";
 import {MainInfoComponent} from "../Components/MainInfoComponent";
 
 export function MainPage() {
-    const course = {
-        "teacherName":"Тлеуова Дарина",
-        "courseTitle":"История Казахстана",
-        "courseDescription":"Вовлечем в новым мир истории нашей Родины",
-        "imagePathTeacher":"../Assets/teacher_history.svg",
-        "imagePath":"../Assets/historyLesson.png"
-    };
-
-    const course1 = {
-        "teacherName":"Степанова Мария",
-        "courseTitle":"Математика",
-        "courseDescription":"Вовлечем в новым мир точной науки",
-        "imagePathTeacher":"../Assets/mathTeacher.png",
-        "imagePath":"../Assets/MathIcon.svg"
-    };
-
-    const teacher = {
-        'name': 'Тлеуова Дарина',
-        'subject':'История',
-        'description':'С глубоким образованием и страстью к изучению истории своей страны, Аделина окончила\n' +
-            '            исторический факультет Евразийского Национального Университета имени Л. Н. Гумилева. Вот уже более 10 лет\n' +
-            '            она с вдохновением и преданностью делает историю Казахстана живой и увлекательной для своих студентов.\n',
-        'imageUrl': process.env.PUBLIC_URL + '../Assets/teacher_history.svg'
-    }
-
     return (
         <div>
             <HeaderComponent/>
