@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { Course } from "./CourseComponent";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 
 
 function CoursesComponent() {
