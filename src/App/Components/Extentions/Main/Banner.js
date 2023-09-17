@@ -18,7 +18,7 @@ export function Banner() {
     return (
         <div className="flex justify-center">
             <div className="3xl:w-[1420px] 2xl:w-[1100px] xl:w-[900px] lg:w-[600px] md:w-[500px] sm:w-[400px] xsm:w-[350px]  mt-8
-            3xl:font-bold xl:font-semibold md:font-medium xxsm:hidden">
+            3xl:font-bold xl:font-semibold md:font-medium">
                 <div className="flex">
                     <div
                         className="w-full bg-white rounded-2xl 3xl:pl-[40px] 3xl:pt-[20px] xl:pl-[30px] sm:pt-[5px] sm:pl-0">

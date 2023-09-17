@@ -13,7 +13,7 @@ function TeacherPage() {
             <HeaderComponent/>
             <div className="lg:ml-0 flex">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
-                    <SidebarComponent/>
+                    <SidebarComponent page="teacher"/>
                 </div>
                 <div className="flex flex-col  3xl:w-[1420px] 2xl:w-[1100px] xl:w-[900px] lg:w-[600px] md:w-[500px] m-auto
                     3xl:font-bold xl:font-semibold md:font-medium">

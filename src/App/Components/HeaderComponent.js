@@ -1,6 +1,8 @@
 import {Link} from "react-router-dom";
+import { useSignOut } from 'react-auth-kit'
 
 export function HeaderComponent() {
+
     return (
         <div className="bg-white 3xl:pt-[44px] xl:pt-[30px] md:pt-[20px] xsm:pt-[10px] 3xl:px-[30px] 3xl:pb-[20px] flex 3xl:justify-between xsm:p-0">
             <img

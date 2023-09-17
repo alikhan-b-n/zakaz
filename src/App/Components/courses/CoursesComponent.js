@@ -5,8 +5,7 @@ import {Course} from "./CourseComponent";
 
 export async function CoursesComponent() {
     const [pageNumber, setPageNumber] = useState(1);
-    const url = `193.70.125.178:4000//courses/:${pageNumber}`;
-
+    const url = `http://193.70.125.178:4000/courses/:${pageNumber}`;
     const fetchCourses = async () => {
         return await axios.get(url)
     }
