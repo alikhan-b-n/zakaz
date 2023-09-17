@@ -16,12 +16,12 @@ export const Course = ({ course }) => {
                 <div className="flex flex-col 3xl:items-baseline ">
                     <div className="w-[150px] h-[39px] bg-[#FFECEC] rounded-xl text-[16px] mt-[23px]">
                         <div className="flex justify-center items-center h-full">
-                            {course.teacherName}
+                            {course.course.teacherName}
                         </div>
                     </div>
                     <div className="3xl:mt-[103px] xl:mt-[70px] lg:mt-[20px]">
-                        <div className="text-[28px]">{course.courseTitle}</div>
-                        <div className="text-[18px] ">{course.courseDescription}</div>
+                        <div className="text-[28px]">{course.course.courseTitle}</div>
+                        <div className="text-[18px] ">{course.course.courseDescription}</div>
                     </div>
                 </div>
                 <div className="flex 3xl:min-w-[270px] 3xl:max-h-[330px]

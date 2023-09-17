@@ -2,9 +2,7 @@ import {FooterComponent} from "../Components/FooterComponent";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {Appeal} from "../Components/AppealComponent";
-import {Course} from "../Components/courses/CourseComponent";
 import {MainInfoComponent} from "../Components/MainInfoComponent";
-import {Teacher} from "../Components/Teacher";
 
 export function MainPage() {
     const course = {
@@ -46,20 +44,7 @@ export function MainPage() {
                         <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]
                     m-auto">Наши курсы</h2>
                         <div className="flex m-auto lg:flex-col">
-                            <Course course={course}/>
-                            <Course course={course1}/>
                         </div>
-                        {/*<NoCourses/>*/}
-                    </div>
-                    <div className="lg:hidden flex flex-col justify-center">
-                        <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]
-                    m-auto">Преподаватели</h2>
-                        <h3 className="inline-block mt-[20px] 3xl:text-[28px] xl:text-[24px] md:text-[20px] 3xl:max-w-[900px]
-                    mb-3 m-auto font-Mont">Лучшие преподаватели и учителя Казахстана. Преподают квалифицированные и преподаватели-иследователи </h3>
-                        <div className="flex m-auto sm:flex-col ">
-                            <Teacher teacher={teacher}/>
-                        </div>
-                        {/*<NoTeachers/>*/}
                     </div>
                     <div className="flex flex-col ">
                         <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px] m-auto ">Нужна помощь?</h2>

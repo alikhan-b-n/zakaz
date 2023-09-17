@@ -4,7 +4,6 @@ import {useMutation, useQueryClient} from "react-query";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useForm} from "react-hook-form";
-import * as userLocalStorage from "../LocalStorages/UserLocalStorage";
 
 
 export const SignUpPage = () => {
@@ -34,7 +33,6 @@ export const SignUpPage = () => {
             }
         ), {
         onSuccess: (successData) => {
-            userLocalStorage.saveUser(successData)
             navigate('/')
         }
     })

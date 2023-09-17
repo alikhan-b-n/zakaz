@@ -3,9 +3,11 @@ import {Link, useNavigate} from "react-router-dom";
 import {useForm} from 'react-hook-form';
 import {useMutation} from "react-query";
 import axios from "axios";
-import * as userLocalStorage from "../LocalStorages/UserLocalStorage";
+import {useSignIn} from 'react-auth-kit'
+
 
 export const SignInPage = () => {
+    const signIn = useSignIn()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPwd, setShowPwd] = useState(false)
@@ -26,7 +28,14 @@ export const SignInPage = () => {
                 }
             }), {
         onSuccess: (successData) => {
-            userLocalStorage.saveUser(successData)
+            signIn(
+                {
+                    token: successData.token,
+                    expiresIn: successData.expiresIn,
+                    tokenType: "Bearer",
+                    authState: successData.authState
+                }
+            )
             navigate('/')
         }
     })
@@ -39,7 +48,6 @@ export const SignInPage = () => {
     if (isError) {
         return <p>{error.message}</p>
     }
-
 
 
     return (
@@ -112,7 +120,8 @@ export const SignInPage = () => {
                                         }
                                     </button>
                                 </div>
-                                {errors.password && <span className="text-rose-700 mb-[5px] block">Invalid password</span>}
+                                {errors.password &&
+                                    <span className="text-rose-700 mb-[5px] block">Invalid password</span>}
                             </div>
                         </div>
                         {/*<div className="text-center text-sm text-grey-dark mt-4 mb-3">*/}

@@ -6,22 +6,29 @@ import {MainPage} from "./App/Pages/Main.page";
 import {QueryClientProvider, QueryClient} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools'
 import TeacherPage from "./App/Pages/Teacher.page";
+import {AuthProvider} from "react-auth-kit";
 
 const queryClient = new QueryClient()
 
 export function App() {
     return (
         <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/signin" element={<SignInPage/>}/>
-                    <Route path="/signup" element={<SignUpPage/>}/>
-                    <Route path="*" element={<NotFoundPage/>}/>
-                    <Route path="/" element={<MainPage/>}/>
-                    <Route path="/teachers" element={<TeacherPage/>}/>
-                    <Route path="/courses" element={<MainPage/>}/>
-                </Routes>
-            </BrowserRouter>
+            <AuthProvider
+                authType={'cookie'}
+                authName={'_auth'}
+                cookieDomain={window.location.hostname}
+                cookieSecure={window.location.protocol === "https:"}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/signin" element={<SignInPage/>}/>
+                        <Route path="/signup" element={<SignUpPage/>}/>
+                        <Route path="*" element={<NotFoundPage/>}/>
+                        <Route path="/" element={<MainPage/>}/>
+                        <Route path="/teachers" element={<TeacherPage/>}/>
+                        <Route path="/courses" element={<MainPage/>}/>
+                    </Routes>
+                </BrowserRouter>
+            </AuthProvider>
             <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>
         </QueryClientProvider>
     );

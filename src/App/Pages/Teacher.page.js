@@ -3,8 +3,8 @@ import {SidebarComponent} from "../Components/SidebarComponent";
 import {Appeal} from "../Components/AppealComponent";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {FooterComponent} from "../Components/FooterComponent";
-import {OurTeachers} from "../Components/OutTeachers";
-import {TeacherComponent} from "../Components/TeacherComponent";
+import {OurTeachers} from "../Components/teachers/OurTeachers";
+import {TeacherComponent} from "../Components/teachers/TeacherComponent";
 import TeacherObject from "../Objects/TeacherObj";
 
 function TeacherPage() {
