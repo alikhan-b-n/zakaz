@@ -3,7 +3,7 @@ import {SidebarComponent} from "../Components/SidebarComponent";
 import {Appeal} from "../Components/AppealComponent";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {FooterComponent} from "../Components/FooterComponent";
-import {OurTeachers} from "../Components/teachers/OurTeachers";
+import {OurTeachers} from "../Components/Extentions/Teacher/OurTeachers";
 import {TeacherComponent} from "../Components/teachers/TeacherComponent";
 import TeacherObject from "../Objects/TeacherObj";
 

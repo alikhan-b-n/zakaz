@@ -2,7 +2,7 @@ import {FooterComponent} from "../Components/FooterComponent";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {Appeal} from "../Components/AppealComponent";
-import {MainInfoComponent} from "../Components/MainInfoComponent";
+import {Banner} from "../Components/Extentions/Main/Banner";
 
 export function MainPage() {
     return (
@@ -13,8 +13,8 @@ export function MainPage() {
                     <SidebarComponent/>
                 </div>
                 <div className="flex flex-col  3xl:w-[1420px] 2xl:w-[1100px] xl:w-[900px] lg:w-[600px] md:w-[500px] m-auto
-            3xl:font-bold xl:font-semibold md:font-medium">
-                    <MainInfoComponent/>
+                                3xl:font-bold xl:font-semibold md:font-medium">
+                    <Banner/>
                     <div className="flex flex-col justify-center">
                         <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]
                     m-auto">Наши курсы</h2>

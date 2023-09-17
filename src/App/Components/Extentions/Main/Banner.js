@@ -4,7 +4,7 @@ const imagePathGraduate = process.env.PUBLIC_URL + '../Assets/happy-graduates.pn
 const imagePathPlay = process.env.PUBLIC_URL + '../Assets/image_9.png'
 const imagePathMessage = process.env.PUBLIC_URL + '../Assets/Group.png'
 
-export function MainInfoComponent() {
+export function Banner() {
     const divStyleGraduate = {
         backgroundImage: `url(${imagePathGraduate})`,
         backgroundSize: 'contain',
