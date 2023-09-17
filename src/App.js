@@ -7,7 +7,8 @@ import {QueryClientProvider, QueryClient} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools'
 import TeacherPage from "./App/Pages/Teacher.page";
 import {AuthProvider} from "react-auth-kit";
-import {CoursesComponent} from "./App/Components/courses/CoursesComponent";
+import CoursesComponent from "./App/Components/courses/CoursesComponent";
+import CoursesPage from "./App/Pages/Courses.page";
 
 const queryClient = new QueryClient()
 
@@ -26,7 +27,7 @@ export function App() {
                         <Route path="*" element={<NotFoundPage/>}/>
                         <Route path="/" element={<MainPage/>}/>
                         <Route path="/teachers" element={<TeacherPage/>}/>
-                        <Route path="/courses" element={<CoursesComponent/>}/>
+                        <Route path="/courses" element={<CoursesPage/>}/>
                     </Routes>
                 </BrowserRouter>
             </AuthProvider>
