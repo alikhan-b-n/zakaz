@@ -28,14 +28,13 @@ export const SignInPage = () => {
                 }
             }), {
         onSuccess: (successData) => {
-            signIn(
-                {
-                    token: successData.token,
-                    expiresIn: successData.expiresIn,
-                    tokenType: "Bearer",
-                    authState: successData.authState
-                }
-            )
+            signIn({
+                token: successData.data.token,
+                expiresIn: 3600,
+                tokenType: "Bearer",
+                authState: {email: successData.data.email, firstname: successData.data.name, lastname: successData.data.surname}
+            })
+            console.log(successData)
             navigate('/')
         }
     })
