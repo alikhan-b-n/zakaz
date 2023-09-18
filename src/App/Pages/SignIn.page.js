@@ -48,7 +48,6 @@ export const SignInPage = () => {
         return <p>{error.message}</p>
     }
 
-
     return (
         <form onSubmit={(e) => e.preventDefault()}>
             <div className="bg-grey-lighter min-h-screen flex flex-auto">

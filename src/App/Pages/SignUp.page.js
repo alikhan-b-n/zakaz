@@ -3,16 +3,13 @@ import {useMutation} from "react-query";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useForm} from "react-hook-form";
-import {useSignIn} from 'react-auth-kit'
 
 
 export const SignUpPage = () => {
-    const signIn = useSignIn()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
-    const [type, setType] = useState('student');
     const navigate = useNavigate();
     const {register, handleSubmit, formState: {errors}} = useForm()
 
@@ -26,7 +23,6 @@ export const SignUpPage = () => {
                 surname: surname,
                 name: name,
                 patronymic: "das",
-                type: type
             }, {
                 headers: {
                     'Content-Type': 'application/json; charset=UTF-8'
@@ -37,14 +33,6 @@ export const SignUpPage = () => {
             navigate('/')
         }
     })
-
-    const setStudent = () => {
-        setType('');
-    }
-
-    const setTeacher = () => {
-        setType('teacher')
-    }
 
     const showPassport = () => {
         setShowPwd(!showPwd)
@@ -59,7 +47,6 @@ export const SignUpPage = () => {
     }
 
 
-
     return (
         <form onSubmit={(e) => e.preventDefault()}>
             <div className="bg-grey-lighter min-h-screen flex flex-auto">
@@ -70,18 +57,6 @@ export const SignUpPage = () => {
                             <button className="flex-initial text-xl font-bold pb-3 pl-2.5"
                                     onClick={() => navigate(-1)}>{`<`}</button>
                             <h1 className="flex-1 mb-5 text-2xl text-center mr-5">Регистрация</h1>
-                        </div>
-                        <div className="flex justify-around">
-                            <label className="inline-flex items-center">
-                                <input type="radio" onClick={setStudent} name="radioGroup"
-                                       className="form-radio text-blue-600" defaultChecked/>
-                                <span className="ml-2">Ученик</span>
-                            </label>
-                            <label className="inline-flex items-center">
-                                <input type="radio" name="radioGroup" onClick={setTeacher}
-                                       className="form-radio text-blue-600"/>
-                                <span className="ml-2">Преподаватель</span>
-                            </label>
                         </div>
                         <label className="pl-[18px]">Email</label>
                         <input
@@ -178,7 +153,6 @@ export const SignUpPage = () => {
                                 password: password,
                                 name: name,
                                 surname: surname,
-                                type: type
                             }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Зарегестрироваться
                             </button>

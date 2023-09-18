@@ -20,7 +20,7 @@ export function App() {
                 <Route path="*" element={<NotFoundPage/>}/>
                 <Route path="/" element={<MainPage/>}/>
                 <Route element={<RequireAuth/>}>
-                    <Route path="/teachers" element={<TeacherPage></TeacherPage>}/>
+                    <Route path="/teachers" element={<TeacherPage/>}/>
                     <Route path="/courses" element={<CoursesPage/>}/>
                 </Route>
             </Routes>

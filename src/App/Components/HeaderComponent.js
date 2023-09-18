@@ -1,9 +1,14 @@
-import {Link} from "react-router-dom";
-import {useIsAuthenticated} from 'react-auth-kit'
+import {Link, useNavigate} from "react-router-dom";
+import {useIsAuthenticated, useSignOut} from 'react-auth-kit'
 
 export function HeaderComponent() {
     const isAuthenticated = useIsAuthenticated()
-
+    const signOut = useSignOut()
+    const navigate = useNavigate();
+    const signOutHandler = () =>{
+        signOut()
+        navigate("/")
+    }
     return (
         <div
             className="bg-white 3xl:pt-[44px] xl:pt-[30px] md:pt-[20px] xsm:pt-[10px] 3xl:px-[30px] 3xl:pb-[20px] flex 3xl:justify-between xsm:p-0">
@@ -41,43 +46,44 @@ export function HeaderComponent() {
                             fill="#666666"/>
                     </svg>
                 </Link>
-                <div className="flex gap-x-3 pt-2 mr-10 lg:mr-0 md:mr-0">
-                    <svg
-                        className="3xl:w-[23px] 3xl:h-[23px] xl:w-[20px] xl:h-[20px] lg:w-[16px] lg:h-[16px] sm:w-[15px] sm:h-[15px] sm:ml-[10px] xsm:ml-0 mt-[6px]"
-                        xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <path
-                            d="M16.2037 12.2682L13.6637 11.9782C13.365 11.9431 13.0623 11.9761 12.7782 12.0749C12.4942 12.1736 12.2362 12.3354 12.0237 12.5482L10.1837 14.3882C7.34486 12.9444 5.03745 10.637 3.59367 7.79816L5.44367 5.94816C5.87367 5.51816 6.08367 4.91816 6.01367 4.30816L5.72367 1.78816C5.66698 1.30034 5.43287 0.850395 5.06591 0.524007C4.69895 0.197618 4.22478 0.0175757 3.73367 0.0181594H2.00367C0.873674 0.0181594 -0.0663265 0.958159 0.00367348 2.08816C0.533673 10.6282 7.36367 17.4482 15.8937 17.9782C17.0237 18.0482 17.9637 17.1082 17.9637 15.9782V14.2482C17.9737 13.2382 17.2137 12.3882 16.2037 12.2682Z"
-                            fill="#666666"/>
-                    </svg>
-                    <p className="inline 3xl:w-[180px] 3xl:text-[20px] xl:text-[16px] 2xl:w-[165px] lg:w-[150px] lg:text-[13px] md:hidden text-[#666] mt-[3px]">+7
-                        700 394 39 39</p>
-                </div>
-                <div>
-                    {
-                        !isAuthenticated.call() ?
-                            <Link to="/signin" className="flex pt-2">
-                                <p className="3xl:inline text-[#666666] font-bold font-montserrat pr-[12px] 3xl:text-[20px] xl:text-[16px] lg:text-[13px] mt-[-3px] md:hidden">Войти</p>
-                                <svg
-                                    className="3xl:w-[25px] 3xl:h-[25px] xl:w-[21px] xl:h-[21px] lg:w-[18px] lg:h-[18px] sm:w-[17px] sm:h-[17px]"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" fill="none">
-                                    <path
-                                        d="M8.3 4.7C8.20736 4.79152 8.13381 4.90052 8.08361 5.02068C8.03341 5.14084 8.00756 5.26977 8.00756 5.4C8.00756 5.53022 8.03341 5.65915 8.08361 5.77931C8.13381 5.89948 8.20736 6.00848 8.3 6.1L10.2 8H1C0.45 8 0 8.45 0 9C0 9.55 0.45 10 1 10H10.2L8.3 11.9C8.20736 11.9915 8.13381 12.1005 8.08361 12.2207C8.03341 12.3408 8.00756 12.4698 8.00756 12.6C8.00756 12.7302 8.03341 12.8592 8.08361 12.9793C8.13381 13.0995 8.20736 13.2085 8.3 13.3C8.69 13.69 9.31 13.69 9.7 13.3L13.29 9.71C13.3827 9.61749 13.4563 9.5076 13.5064 9.38662C13.5566 9.26565 13.5824 9.13597 13.5824 9.005C13.5824 8.87403 13.5566 8.74435 13.5064 8.62338C13.4563 8.5024 13.3827 8.39251 13.29 8.3L9.7 4.7C9.60848 4.60736 9.49948 4.53381 9.37932 4.48361C9.25915 4.43341 9.13023 4.40756 9 4.40756C8.86977 4.40756 8.74085 4.43341 8.62068 4.48361C8.50052 4.53381 8.39152 4.60736 8.3 4.7ZM18 16H11C10.45 16 10 16.45 10 17C10 17.55 10.45 18 11 18H18C19.1 18 20 17.1 20 16V2C20 0.9 19.1 0 18 0H11C10.45 0 10 0.45 10 1C10 1.55 10.45 2 11 2H18V16Z"
-                                        fill="#666666"/>
-                                </svg>
-                            </Link>
-                            :
-                            <div>
-                                <svg
-                                    className="3xl:mt-[7px] 3xl:w-[37px] 3xl:h-[34px] xl:w-[31px] xl:h-[28px] lg:w-[28px] lg:h-[25px] sm:w-[25px] sm:h-[22px]"
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#666666">
-                                    <path d="M11.9 4C6.3 4 9 11.3 9 11.3C9.6 12.3 10.4 12.1 10.4 12.8C10.4 13.4 9.7 13.6
-                                    9 13.7C7.9 13.7 6.9 13.5 5.9 15.3C5.3 16.4 5 20 5 20H18.7C18.7 20 18.4 16.4 17.9 15.3C16.9
-                                    13.4 15.9 13.7 14.8 13.6C14.1 13.5 13.4 13.3 13.4 12.7C13.4 12.1 14.2 12.3 14.8 11.2C14.8 11.3 17.5 4 11.9 4V4Z" fill="#666666"/>
-                                </svg>
-                            </div>
 
-                    }
-                </div>
+                {
+                    !isAuthenticated.call() ?
+                        <Link to="/signin" className="flex pt-2">
+                            <p className="3xl:inline text-[#666666] font-bold font-montserrat pr-[12px] 3xl:text-[20px] xl:text-[16px] lg:text-[13px] mt-[-3px] md:hidden">Войти</p>
+                            <svg
+                                className="3xl:w-[25px] 3xl:h-[25px] xl:w-[21px] xl:h-[21px] lg:w-[18px] lg:h-[18px] sm:w-[17px] sm:h-[17px]"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" fill="none">
+                                <path
+                                    d="M8.3 4.7C8.20736 4.79152 8.13381 4.90052 8.08361 5.02068C8.03341 5.14084 8.00756 5.26977 8.00756 5.4C8.00756 5.53022 8.03341 5.65915 8.08361 5.77931C8.13381 5.89948 8.20736 6.00848 8.3 6.1L10.2 8H1C0.45 8 0 8.45 0 9C0 9.55 0.45 10 1 10H10.2L8.3 11.9C8.20736 11.9915 8.13381 12.1005 8.08361 12.2207C8.03341 12.3408 8.00756 12.4698 8.00756 12.6C8.00756 12.7302 8.03341 12.8592 8.08361 12.9793C8.13381 13.0995 8.20736 13.2085 8.3 13.3C8.69 13.69 9.31 13.69 9.7 13.3L13.29 9.71C13.3827 9.61749 13.4563 9.5076 13.5064 9.38662C13.5566 9.26565 13.5824 9.13597 13.5824 9.005C13.5824 8.87403 13.5566 8.74435 13.5064 8.62338C13.4563 8.5024 13.3827 8.39251 13.29 8.3L9.7 4.7C9.60848 4.60736 9.49948 4.53381 9.37932 4.48361C9.25915 4.43341 9.13023 4.40756 9 4.40756C8.86977 4.40756 8.74085 4.43341 8.62068 4.48361C8.50052 4.53381 8.39152 4.60736 8.3 4.7ZM18 16H11C10.45 16 10 16.45 10 17C10 17.55 10.45 18 11 18H18C19.1 18 20 17.1 20 16V2C20 0.9 19.1 0 18 0H11C10.45 0 10 0.45 10 1C10 1.55 10.45 2 11 2H18V16Z"
+                                    fill="#666666"/>
+                            </svg>
+                        </Link>
+                        :
+                        <svg
+                            className="hover:cursor-pointer 3xl:mt-[7px] 3xl:w-[37px] 3xl:h-[34px] xl:w-[31px] xl:h-[28px] lg:w-[28px] lg:h-[25px] sm:w-[25px] sm:h-[22px]"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="#666666">
+                            <path d="M11.9 4C6.3 4 9 11.3 9 11.3C9.6 12.3 10.4 12.1 10.4 12.8C10.4 13.4 9.7 13.6
+                                    9 13.7C7.9 13.7 6.9 13.5 5.9 15.3C5.3 16.4 5 20 5 20H18.7C18.7 20 18.4 16.4 17.9 15.3C16.9
+                                    13.4 15.9 13.7 14.8 13.6C14.1 13.5 13.4 13.3 13.4 12.7C13.4 12.1 14.2 12.3 14.8 11.2C14.8 11.3 17.5 4 11.9 4V4Z"
+                                  fill="#666666"/>
+                        </svg>
+
+
+                }
+
+                {
+                    !isAuthenticated.call() ?
+                        <div/> :
+                        <svg
+                            onClick={signOutHandler}
+                            className="hover:cursor-pointer 3xl:mt-[7px] 3xl:w-[37px] 3xl:h-[34px] xl:w-[31px] xl:h-[28px] lg:w-[28px] lg:h-[25px] sm:w-[25px] sm:h-[22px]"
+                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M13 8V5H4V19H13V16H12V18H5V6H12V8H13Z" fill="#666666"/>
+                            <path d="M20 12L15 8V10H10V14H15V16L20 12Z" fill="#666666"/>
+                        </svg>
+                }
             </div>
         </div>
     );
