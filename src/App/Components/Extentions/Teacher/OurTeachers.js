@@ -12,7 +12,7 @@ export function OurTeachers() {
                 <div className="flex">
                     <div className="w-full bg-white rounded-2xl 3xl:pl-[40px] xl:pl-[30px] sm:pl-0">
                         <div className="flex 3xl:justify-around xl:justify-center 3xl:pl-10 3xl:mt-3 lg:pl-0 ">
-                            <div className="3xl:text-[75px] 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[25px] sm:ml-[30px]" >
+                            <div className="3xl:text-[75px] 3xl:mt-7 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[25px] sm:mt-2 sm:ml-[30px]">
                                 <h2 className="3xl:800px leading-tight">ПРОФФЕССИОНАЛЬНЫЕ
                                     ПРЕПОДАВАТЕЛИ</h2>
                                 <div className="lg:flex">

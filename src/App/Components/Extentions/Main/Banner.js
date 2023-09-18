@@ -44,7 +44,7 @@ export function Banner() {
                                             каждому студенту, чтобы обеспечить успешные результаты на экзамене.
                                         </div>
                                         <div className="flex justify-center">
-                                            <Link to='/signin'>
+                                            <Link to='/courses'>
                                                 <button type="submit" className="
                                                 3xl:text-[40px] 3xl:w-[400px] 3xl:h-[60px]
                                                 2xl:text-[35px] 2xl:w-[370px] 2xl:h-[55px]
