@@ -19,9 +19,9 @@ export function App() {
                 <Route path="/signup" element={<SignUpPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
                 <Route path="/" element={<MainPage/>}/>
-                <Route path="/courses" element={<CoursesPage/>}/>
                 <Route element={<RequireAuth/>}>
                     <Route path="/teachers" element={<TeacherPage></TeacherPage>}/>
+                    <Route path="/courses" element={<CoursesPage/>}/>
                 </Route>
             </Routes>
             <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>

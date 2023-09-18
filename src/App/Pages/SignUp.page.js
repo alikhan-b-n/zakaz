@@ -33,13 +33,7 @@ export const SignUpPage = () => {
                 }
             }
         ), {
-        onSuccess: (successData) => {
-            signIn({
-                token: successData.token,
-                expiresIn: 3600,
-                tokenType: "Bearer",
-                authState: {email: successData.email, firstname: successData.firstname, lastname: successData.lastname}
-            })
+        onSuccess: () => {
             navigate('/')
         }
     })
