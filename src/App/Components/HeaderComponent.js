@@ -11,11 +11,11 @@ export function HeaderComponent() {
     }
     return (
         <div
-            className="bg-white 3xl:pt-[44px] xl:pt-[30px] md:pt-[20px] xsm:pt-[10px] 3xl:px-[30px] 3xl:pb-[20px] flex 3xl:justify-between xsm:p-0">
+            className="bg-white 3xl:px-[30px] flex 3xl:justify-between xsm:p-0">
             <img
                 src={process.env.PUBLIC_URL + `../Assets/logo.jpg`}
                 alt="logo"
-                className="3xl:w-[100px] sm:w-[75px] xsm:w-[60px] xxsm:hidden"
+                className="3xl:w-[150px] sm:w-[100px] xsm:w-[60px] xxsm:hidden"
             />
             <div
                 className="flex justify-around 3xl:w-[30%] sm:w-[50%] xsm:w-[80%] xxsm:w-[100%] xxsm:pb-3 items-center md:ml-[20px] xsm:ml-0">
