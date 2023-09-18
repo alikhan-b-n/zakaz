@@ -29,11 +29,20 @@ function CoursesComponent() {
                     </div>
                 ))}
             </div>
-            <div className="text-[50px] flex justify-between w-[100px]">
-                <button disabled={pageNumber - 1 === 0} onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}>
+            <div className="text-[50px] flex justify-between w-[100px] text-orange-500">
+                <button
+                    className={`focus:outline-none ${pageNumber - 1 === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-orange-500 hover:bg-orange-600'}`}
+                    disabled={pageNumber - 1 === 0}
+                    onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}
+                >
                     {"<"}
                 </button>
-                <button disabled={data.data.numberOfPages - pageNumber === 0} onClick={() => setPageNumber((prev) => prev + 1)}>
+
+                <button
+                    className={`focus:outline-none ${data.data.numberOfPages - pageNumber === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-orange-500 hover:bg-orange-600'}`}
+                    disabled={data.data.numberOfPages - pageNumber === 0}
+                    onClick={() => setPageNumber((prev) => prev + 1)}
+                >
                     {">"}
                 </button>
             </div>
