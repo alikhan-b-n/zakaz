@@ -6,6 +6,7 @@ import {FooterComponent} from "../Components/FooterComponent";
 import {OurTeachers} from "../Components/Extentions/Teacher/OurTeachers";
 import {TeacherComponent} from "../Components/teachers/TeacherComponent";
 import TeacherObject from "../Objects/TeacherObj";
+import TeachersComponent from "../Components/teachers/TeachersComponent";
 
 function TeacherPage() {
     return (
@@ -20,9 +21,8 @@ function TeacherPage() {
                     <OurTeachers/>
                     <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]
                     m-auto">Преподаватели</h2>
-                    <div className="mt-5">
-                        <TeacherComponent obj={TeacherObject}/>
-                        <TeacherComponent obj={TeacherObject}/>
+                    <div className="mt-5 flex justify-center">
+                        <TeachersComponent/>
                     </div>
                     <div className="flex flex-col ">
                         <h2 className="inline-block 3xl:mt-[55px] lg:mt-0 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px] m-auto ">Нужна помощь?</h2>

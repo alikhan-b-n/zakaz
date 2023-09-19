@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import axios from "axios";
 import {useQuery} from "react-query";
-import {CourseComponent} from "./CourseComponent";
+import {TeacherComponent} from "./TeacherComponent";
 
-function CoursesComponent() {
+function TeachersComponent() {
     const [pageNumber, setPageNumber] = useState(1);
-    const url = `http://193.70.125.178:4000/courses/${pageNumber}`;
+    const url = `http://193.70.125.178:4000/teachers/${pageNumber}`;
 
     const {isLoading, data, isError, error} = useQuery(
-        ['courses', pageNumber],
+        ['teachers', pageNumber],
         () => axios.get(url)
     );
 
@@ -32,10 +32,10 @@ function CoursesComponent() {
                 >
                     {"<"}
                 </button>
-                <div className="flex lg:flex-col lg:mr-[20px]">
-                    {data.data.courses.map((x) => (
+                <div className="flex flex-col">
+                    {data.data.teachers.map((x) => (
                         <div className="" key={x.id}>
-                            <CourseComponent course={x}/>
+                            <TeacherComponent teacher={x}/>
                         </div>
                     ))}
                 </div>
@@ -52,4 +52,4 @@ function CoursesComponent() {
     );
 }
 
-export default CoursesComponent;
+export default TeachersComponent;
