@@ -4,6 +4,7 @@ import {FooterComponent} from "../Components/FooterComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {MyProfileComponent} from "../Components/profile/MyProfileComponent";
 import {useAuthUser} from 'react-auth-kit'
+import YourCoursesComponent from "../Components/courses/YourCoursesComponent";
 
 
 export default function (){
@@ -21,7 +22,11 @@ export default function (){
                     <h1 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]
                     m-auto">Мой профиль</h1>
                     <MyProfileComponent user={auth()}/>
+                    <div>
+                        <YourCoursesComponent id={auth().id}/>
+                    </div>
                 </div>
+
             </div>
             <FooterComponent/>
         </div>
