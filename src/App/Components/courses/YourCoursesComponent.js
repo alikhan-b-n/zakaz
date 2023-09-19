@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useQuery} from "react-query";
 import axios from "axios";
 import {CourseComponent} from "./CourseComponent";
+import {NoCourses} from "./NoCourses";
 
 
 function YourCoursesComponent(prop){
@@ -34,11 +35,11 @@ function YourCoursesComponent(prop){
                     {"<"}
                 </button>
                 <div className="flex lg:flex-col lg:mr-[20px]">
-                    {data?.data.mycourses.map((x) => (
+                    {data===null ? data?.data.mycourses.map((x) => (
                         <div className="" key={x.id}>
                             <CourseComponent mycourse={x}/>
                         </div>
-                    ))}
+                    )) : <NoCourses/>}
                 </div>
                 <button
                     className={`focus:outline-none ${data.data.numberOfPages - pageNumber === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-black'}
