@@ -34,9 +34,9 @@ function CoursesComponent() {
                     {"<"}
                 </button>
                 <div className="flex lg:flex-col lg:mr-[20px]">
-                    {data===null ? data?.data.courses.map((x) => (
+                    {data!=null ? data.data.courses.map((x) => (
                         <div className="" key={x.id}>
-                            <CourseComponent mycourse={x}/>
+                            <CourseComponent course={x}/>
                         </div>
                     )) : <NoCourses/>}
                 </div>

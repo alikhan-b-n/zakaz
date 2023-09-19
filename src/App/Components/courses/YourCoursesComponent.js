@@ -35,7 +35,7 @@ function YourCoursesComponent(prop){
                     {"<"}
                 </button>
                 <div className="flex lg:flex-col lg:mr-[20px]">
-                    {data===null ? data?.data.mycourses.map((x) => (
+                    {data===null ? data.data.mycourses.map((x) => (
                         <div className="" key={x.id}>
                             <CourseComponent mycourse={x}/>
                         </div>
