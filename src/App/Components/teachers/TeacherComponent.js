@@ -17,7 +17,7 @@ export function TeacherComponent(prop) {
             </div>
             <div className="col-span-3 bg-white p-[30px]">
                 <h1 className="text-[25px] font-bold">{prop.teacher.surname} {prop.teacher.name} {prop.teacher.patronymic}</h1>
-                <p className="text-[18px]">{prop.teacher.email}</p>
+                <p className="text-[18px] underline underline-offset-1 text-orange-500">{prop.teacher.email}</p>
                 <p className="text-[18px]">{prop.teacher.description}</p>
             </div>
         </div>
