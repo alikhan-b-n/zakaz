@@ -32,7 +32,7 @@ function TeachersComponent() {
                 >
                     {"<"}
                 </button>
-                <div className="flex flex-col">
+                <div className="mr-[20px] flex flex-col">
                     {data.data.teachers.map((x) => (
                         <div className="" key={x.id}>
                             <TeacherComponent teacher={x}/>

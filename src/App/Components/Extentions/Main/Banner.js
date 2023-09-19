@@ -17,20 +17,19 @@ export function Banner() {
     };
     return (
         <div className="flex justify-center">
-            <div className="3xl:w-[1420px] 2xl:w-[1100px] xl:w-[900px] lg:w-[600px] md:w-[500px] sm:w-[400px] xsm:w-[350px]  mt-8
-            3xl:font-bold xl:font-semibold md:font-medium">
+            <div className="3xl:w-[1420px] 2xl:w-[1100px] xl:w-[900px] lg:w-[600px] md:w-[500px] sm:w-[400px] xsm:w-[350px]  mt-8 font-normal">
                 <div className="flex">
                     <div
                         className="w-full bg-white rounded-2xl 3xl:pl-[40px] 3xl:pt-[20px] xl:pl-[30px] sm:pt-[5px] sm:pl-0">
                         <div className="flex 3xl:justify-around xl:justify-center 3xl:pl-10 lg:pl-0 lg:mt-3 md:pl-[10px]">
                             <div
                                 className="3xl:text-[75px] 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[30px]">
-                                <h2 className="3xl:800px leading-tight font-bold sm:text-[20px]">ОНЛАЙН ПОДГОТОВКА</h2>
+                                <h2 className="3xl:800px leading-tight sm:text-[20px]">ОНЛАЙН ПОДГОТОВКА</h2>
                                 <div className="flex">
                                     <div className="bg-no-repeat
                                     3xl:w-[120px] 2xl:w-[80px] xl:w-[80px] lg:w-[60px] md:w-[50px] bg-contain"
                                          style={divStylePlay}></div>
-                                    <h2 className="lg:w-[90px] font-bold sm:text-[20px]">К ЕНТ</h2>
+                                    <h2 className="lg:w-[90px] sm:text-[20px]">К ЕНТ</h2>
                                     <div className="bg-no-repeat 3xl:mt-[-20px] lg:mt-[-10px]
                                     3xl:w-[450px] 2xl:w-[300px] xl:w-[235px] lg:w-[210px] md:w-[200px]
                                     bg-contain " style={divStyleMessage}></div>

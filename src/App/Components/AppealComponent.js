@@ -5,7 +5,7 @@ export const Appeal = () => {
         backgroundImage: `url(${imageUrl})`
     };
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center font-normal">
             <div className="flex items-center">
                 <div style={divStyle} className="3xl:w-[552px] 3xl:h-[500px] 2xl:w-[450px] 2xl:h-[420px]
                 xl:w-[400px] xl:h-[360px] lg:hidden bg-no-repeat bg-contain"></div>

@@ -12,7 +12,7 @@ function TeacherPage() {
     return (
         <div>
             <HeaderComponent/>
-            <div className="lg:ml-0 flex">
+            <div className="lg:ml-0 flex font-normal">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
                     <SidebarComponent page="teacher"/>
                 </div>
