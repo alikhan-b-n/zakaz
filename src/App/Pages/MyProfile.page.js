@@ -8,7 +8,6 @@ import {useAuthUser} from 'react-auth-kit'
 
 export default function (){
     const auth = useAuthUser()
-    console.log(auth())
     return(
         <div>
             <HeaderComponent/>
