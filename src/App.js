@@ -9,7 +9,7 @@ import TeacherPage from "./App/Pages/Teacher.page";
 import {RequireAuth} from "./App/Components/Extentions/Auth/RequireAuth";
 import CoursesPage from "./App/Pages/Courses.page";
 import MyProfilePage from "./App/Pages/MyProfile.page";
-
+import "./styles/index.css"
 const queryClient = new QueryClient()
 
 export function App() {

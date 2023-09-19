@@ -6,6 +6,9 @@ input:-webkit-autofill {
     -webkit-text-fill-color: inherit !important;
 }
 
+svg:hover path {
+    fill: orange;
+}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

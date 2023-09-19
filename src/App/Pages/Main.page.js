@@ -3,6 +3,7 @@ import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {Appeal} from "../Components/AppealComponent";
 import {Banner} from "../Components/Extentions/Main/Banner";
+import CoursesComponent from "../Components/courses/CoursesComponent";
 
 export function MainPage() {
     return (
@@ -18,7 +19,8 @@ export function MainPage() {
                     <div className="flex flex-col justify-center">
                         <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]
                     m-auto">Наши курсы</h2>
-                        <div className="flex m-auto lg:flex-col">
+                        <div className="flex m-auto lg:flex-col mt-3">
+                            <CoursesComponent/>
                         </div>
                     </div>
                     <div className="flex flex-col ">
