@@ -14,11 +14,13 @@ export const CourseComponent = (prop) => {
                         {prop.course.title}
                     </div>
                 </div>
-                <div className="3xl:mt-[103px] xl:mt-[70px] lg:mt-[20px] text-white">
-                    <div className="text-[18px] ">{prop.course.description}</div>
-                </div>
-                <div className="">
-                    <div className="text-[18px] text-white">{prop.course.price} тг</div>
+                <div className="px-3 bg-[#FFECEC] rounded-xl text-[16px] 3xl:mt-[103px] xl:mt-[40px] lg:mt-[20px]">
+                    <div className="">
+                        <div className="text-[18px] ">{prop.course.description}</div>
+                    </div>
+                    <div className="">
+                        <div className="text-[18px]">{prop.course.price} тг</div>
+                    </div>
                 </div>
             </div>
             {/*<div className="flex 3xl:min-w-[270px] 3xl:max-h-[330px]*/}
