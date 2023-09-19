@@ -17,9 +17,10 @@ function CoursesPage() {
                     3xl:font-bold xl:font-semibold md:font-medium justify-center">
                     <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]
                     m-auto">Курсы</h2>
-                    <div className="mt-5 3xl:w-[450px] 2xl:w-[360px] xl:w-[280px] lg:w-[600px]
-                                    md:w-[500px] sm:w-[400px] xsm:w-[300px] flex justify-self-center">
-                        <CoursesComponent/>
+                    <div className="flex justify-center">
+                        <div className="mt-5">
+                            <CoursesComponent/>
+                        </div>
                     </div>
                     <div className="flex flex-col ">
                         <h2 className="inline-block 3xl:mt-[55px] lg:mt-0 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px] m-auto ">Нужна помощь?</h2>

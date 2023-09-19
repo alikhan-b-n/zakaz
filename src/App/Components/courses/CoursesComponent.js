@@ -22,11 +22,11 @@ function CoursesComponent() {
     }
 
     return (
-        <div className="carousel-container">
+        <div className="carousel-container ">
             <div className="flex 3xl:flex-row">
                 <button
-                    className={`focus:outline-none ${pageNumber - 1 === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-orange-500'}
-                    text-[50px] mr-[20px]`}
+                    className={`focus:outline-none ${pageNumber - 1 === 0 ? 'text-gray-400' : 'text-black'}
+                    3xl:text-[50px] lg:text-[40px] mr-[20px]`}
                     disabled={pageNumber - 1 === 0}
                     onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}
                 >
@@ -40,17 +40,13 @@ function CoursesComponent() {
                     ))}
                 </div>
                 <button
-                    className={`focus:outline-none ${data.data.numberOfPages - pageNumber === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-orange-500'}
-                    text-[50px]`}
+                    className={`focus:outline-none ${data.data.numberOfPages - pageNumber === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-black'}
+                    3xl:text-[50px] lg:text-[40px]`}
                     disabled={data.data.numberOfPages - pageNumber === 0}
                     onClick={() => setPageNumber((prev) => prev + 1)}
                 >
                     {">"}
                 </button>
-            </div>
-            <div className="text-[50px] flex justify-between w-[100px] text-orange-500">
-
-
             </div>
         </div>
     );
