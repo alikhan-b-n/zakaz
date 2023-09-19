@@ -7,13 +7,10 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                'montserrat': ['Montserrat'],
-                'lato': ['Lato'],
-                'garamond': ['Garamond'],
-                'Mont': ['Mont']
+                "Mont": ["Mont", "sans-serif"]
             },
             boxShadow: {
-                'custom': '2px 4px 4px 0px rgba(187, 187, 187, 0.25) inset;'
+                'custom': '2px 4px 4px 0px rgba(187, 187, 187, 0.25) inset'
             },
         },
         screens: {
@@ -41,6 +38,11 @@ module.exports = {
             'xxsm': {'max': '450px'},
             // => @media (max-width: 639px) { ... }
         }
+    },
+    variants: {
+        extend: {
+            fill: ['hover', 'focus'],
+        },
     },
     plugins: [],
 }

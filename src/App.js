@@ -8,6 +8,7 @@ import {ReactQueryDevtools} from 'react-query/devtools'
 import TeacherPage from "./App/Pages/Teacher.page";
 import {RequireAuth} from "./App/Components/Extentions/Auth/RequireAuth";
 import CoursesPage from "./App/Pages/Courses.page";
+import MyProfilePage from "./App/Pages/MyProfile.page";
 
 const queryClient = new QueryClient()
 
@@ -22,6 +23,7 @@ export function App() {
                 <Route element={<RequireAuth/>}>
                     <Route path="/teachers" element={<TeacherPage/>}/>
                     <Route path="/courses" element={<CoursesPage/>}/>
+                    <Route path="/profile" element={<MyProfilePage/>}/>
                 </Route>
             </Routes>
             <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>

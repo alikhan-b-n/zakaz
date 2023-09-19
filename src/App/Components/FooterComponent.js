@@ -23,8 +23,7 @@ export function FooterComponent() {
                                 d="M19.23 15.26L16.69 14.97C16.08 14.9 15.48 15.11 15.05 15.54L13.21 17.38C10.38 15.94 8.06004 13.63 6.62004 10.79L8.47004 8.94001C8.90004 8.51001 9.11004 7.91001 9.04004 7.30001L8.75004 4.78001C8.63004 3.77001 7.78004 3.01001 6.76004 3.01001H5.03004C3.90004 3.01001 2.96004 3.95001 3.03004 5.08001C3.56004 13.62 10.39 20.44 18.92 20.97C20.05 21.04 20.99 20.1 20.99 18.97V17.24C21 16.23 20.24 15.38 19.23 15.26Z"
                                 fill="#FF8E38"/>
                         </svg>
-                        <p className="font-montserrat 3xl:text-[14px] 3xl:pl-[16px] md:text-[12px] md:pl-[14px]">(123)
-                            456-7890</p>
+                        <p className="font-montserrat 3xl:text-[14px] 3xl:pl-[16px] md:text-[12px] md:pl-[14px]">+7 (771) 005 80 80</p>
                     </div>
                     <div className="flex">
                         <svg className="3xl:w-[24px] 3xl:p-0 md:pb-2 md:w-[18px]" xmlns="http://www.w3.org/2000/svg"
@@ -33,8 +32,7 @@ export function FooterComponent() {
                                 d="M7 3H17C17.55 3 18 3.45 18 4V6C18 6.55 17.55 7 17 7H7C6.45 7 6 6.55 6 6V4C6 3.45 6.45 3 7 3ZM5 8H19C20.66 8 22 9.34 22 11V15C22 16.1 21.1 17 20 17H18V19C18 20.1 17.1 21 16 21H8C6.9 21 6 20.1 6 19V17H4C2.9 17 2 16.1 2 15V11C2 9.34 3.34 8 5 8ZM9 19H15C15.55 19 16 18.55 16 18V14H8V18C8 18.55 8.45 19 9 19ZM19 12C18.45 12 18 11.55 18 11C18 10.45 18.45 10 19 10C19.55 10 20 10.45 20 11C20 11.55 19.55 12 19 12Z"
                                 fill="#FF8E38"/>
                         </svg>
-                        <p className="font-montserrat 3xl:text-[14px] 3xl:pl-[16px] md:text-[12px] md:pl-[14px]">(123)
-                            456-7890</p>
+                        <p className="font-montserrat 3xl:text-[14px] 3xl:pl-[16px] md:text-[12px] md:pl-[14px]">+7 (771) 005 80 80</p>
 
                     </div>
                 </div>
