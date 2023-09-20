@@ -74,7 +74,7 @@ export const MyProfileComponent = (props) => {
     })
 
     return (
-        <div className="rounded-xl bg-white drop-shadow-lg m-[5%] w-[60%] mx-auto">
+        <div className="rounded-xl bg-white drop-shadow-lg m-[5%] 3xl:w-[60%] xl:w-[80%] sm:w-[100%] mx-auto">
             <div className="flex flex-col items-center p-[5%]">
                 <div className="mb-[5%] flex flex-col justify-center items-center" {...getRootProps()}>
                     {editMode
