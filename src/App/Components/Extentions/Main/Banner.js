@@ -57,9 +57,8 @@ export function Banner() {
                             </div>
                         </div>
                         <div className="flex 3xl:justify-around xl:justify-center 3xl:pl-10 lg:pl-0 lg:mt-3 md:pl-[10px]">
-                            <div
-                                className="3xl:text-[75px] 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[30px]">
-                                <h2 className="3xl:800px leading-tight sm:text-[20px]">ОНЛАЙН ПОДГОТОВКА</h2>
+                            <div className="3xl:text-[75px] 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[30px] font-[600]">
+                                <h2 className="3xl:800px leading-tight sm:text-[20px] ">ОНЛАЙН ПОДГОТОВКА</h2>
                                 <div className="flex">
                                     <div className="bg-no-repeat
                                     3xl:w-[120px] 2xl:w-[80px] xl:w-[80px] lg:w-[60px] md:w-[50px] bg-contain"

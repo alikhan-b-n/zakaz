@@ -10,18 +10,17 @@ export function OurCourses() {
         backgroundImage: `url(${imagePathMessage})`,
     };
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center ">
             <div className="3xl:w-[1400px] 2xl:w-[1100px] xl:w-[900px] lg:w-[600px] md:w-[500px] sm:w-[400px] xsm:w-[350px]  mt-8
-            font-medium ">
+            font-medium">
                 <div className="flex">
                     <div className="w-full bg-white rounded-2xl 3xl:pl-[40px] xl:pl-[30px] sm:pl-0">
                         <div className="flex 3xl:justify-around xl:justify-center 3xl:pl-10 lg:pl-0 lg:mt-3">
-                            <div
-                                className="3xl:text-[75px] 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[30px] ">
-                                <h2 className="sm:text-[20px]">НАШИ КУРСЫ</h2>
+                            <div className="3xl:text-[75px] 2xl:text-[55px] xl:text-[50px] lg:text-[30px] md:text-[30px] ">
+                                <h2 className="sm:text-[20px] 3xl:pt-[20px] lg:pt-0 font-[600]">НАШИ КУРСЫ</h2>
                                 <div className="">
                                     <div className="text-sm 3xl:max-w-[600px] lg:max-w-[450px] sm:max-w-[300px]
-                                        3xl:text-[24px] 2xl:text-[20px] xl:text-[18px] lg:text-[16px] md:text-[14px] sm:text-[14px] font-normal">
+                                        3xl:text-[24px] 2xl:text-[20px] xl:text-[18px] lg:text-[16px] md:text-[14px] sm:text-[14px] font-[500]">
                                         Наши онлайн курсы разработаны экспертами в соответствии с актуальными стандартами и требованиями, обеспечивая высокий уровень образования. Материалы курсов доступны 24/7, так что вы можете изучать их в темпе, который подходит именно вам.
                                     </div>
                                     <div style={divStyleMessage} className="3xl:w-[350px] 3xl:h-[170px] 2xl:w-[300px] 2xl:h-[130px] xl:w-[250px] xl:h-[100px]
