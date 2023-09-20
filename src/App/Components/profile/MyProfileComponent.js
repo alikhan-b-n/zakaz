@@ -16,7 +16,7 @@ export const MyProfileComponent = (props) => {
         <div className="rounded-xl bg-white drop-shadow-lg m-[5%] w-[60%] mx-auto">
             <div className="flex flex-col items-center p-[5%]">
                 <div className="mb-[5%]">
-                    <img src={props.user.avatar && typeof props.user.avatar === 'object' && Object.keys(props.user.avatar).length > 0 ?  avatarUrl : imageUrl} alt="asd" className="pb-[15px] w-[200px]"/>
+                    <img src={props.user.avatar!=null ?  avatarUrl : imageUrl} alt="asd" className="pb-[15px] w-[200px]"/>
                     {/*<input*/}
                     {/*    id="image"*/}
                     {/*    type="file"*/}
@@ -26,7 +26,7 @@ export const MyProfileComponent = (props) => {
                     {/*/>*/}
 
                     <label htmlFor="image"
-                           className="3xl:w-[200px] 3xl:h-[47px] lg:w-[160px] lg:h-[35px] sm:w-[130px] 3xl:text-[18px] lg:text-[13px] rounded-lg bg-orange-500 flex justify-center items-center text-white text-center py-2 px-4 cursor-pointer">
+                           className="3xl:w-[200px] 3xl:h-[47px] lg:w-[160px] lg:h-[35px] sm:w-[130px] 3xl:text-[18px] lg:text-[13px] rounded-lg bg-orange-500 flex justify-center items-center text-white font-medium text-center py-2 px-4 cursor-pointer">
                         Загрузить фото
                     </label>
                 </div>
@@ -35,21 +35,24 @@ export const MyProfileComponent = (props) => {
                         disabled={!editMode}
                         className="3xl:w-[323px] h-[43px] sm:w-[250px]
                     shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black"
+                    items-center pl-2 mb-[15px] placeholder:text-black
+                    placeholder:font-thin"
                         placeholder={props.user.firstname}
                     />
                     <input
                         disabled={!editMode}
                         className="3xl:w-[323px] h-[43px] sm:w-[250px]
                     shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black"
+                    items-center pl-2 mb-[15px] placeholder:text-black
+                    placeholder:font-thin"
                         placeholder={props.user.lastname}
                     />
                     <input
                         disabled={!editMode}
                         className="3xl:w-[323px] h-[43px] sm:w-[250px]
                     shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black"
+                    items-center pl-2 mb-[15px] placeholder:text-black
+                    placeholder:font-thin"
                         placeholder={props.user.email}
                     />
 
@@ -57,7 +60,8 @@ export const MyProfileComponent = (props) => {
                         disabled={!editMode}
                         className="3xl:w-[323px] h-[43px] sm:w-[250px]
                     shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black"
+                    items-center pl-2 mb-[15px] placeholder:text-black
+                    placeholder:font-thin"
                         placeholder={props.user.id}
                     />
 
@@ -66,7 +70,7 @@ export const MyProfileComponent = (props) => {
                             editMode ?
                                 <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
                                     sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
-                                    items-center"
+                                    items-center font-medium"
                                         onClick={() => window.location.reload()}
                                 >
                                     Сохранить изменения
@@ -74,7 +78,7 @@ export const MyProfileComponent = (props) => {
                                 :
                                 <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
                                     sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
-                                    items-center"
+                                    items-center font-medium"
                                         onClick={() => setEditMode(true)}
                                 >
                                     Отредактировать
