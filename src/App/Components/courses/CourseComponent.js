@@ -9,12 +9,12 @@ export const CourseComponent = (prop) => {
              md:w-[450px] sm:w-[330px] xsm:w-[250px] font-medium
              bg-white rounded-2xl flex px-7 justify-between bg-no-repeat bg-cover" style={divStyle}>
             <div className="flex flex-col 3xl:items-baseline ">
-                <div className="3xl:h-[45px] xl:h-[70px] px-3 bg-[#FFECEC] rounded-xl text-[16px] mt-[23px]">
+                <div className="3xl:h-[45px] xl:h-[70px] px-3 bg-white rounded-xl text-[16px] mt-[23px]">
                     <div className="flex justify-center items-center h-full">
                         {prop.course.title}
                     </div>
                 </div>
-                <div className="px-3 bg-[#FFECEC] rounded-xl text-[16px] 3xl:mt-[103px] xl:mt-[40px] lg:mt-[20px]">
+                <div className="px-3 bg-white rounded-xl text-[16px] 3xl:mt-[103px] xl:mt-[40px] lg:mt-[20px]">
                     <div className="">
                         <div className="text-[18px] ">{prop.course.description}</div>
                     </div>
@@ -22,6 +22,7 @@ export const CourseComponent = (prop) => {
                         <div className="text-[18px]">{prop.course.price} тг</div>
                     </div>
                 </div>
+                <buttin className="mt-[10px] bg-">Записаться</buttin>
             </div>
             {/*<div className="flex 3xl:min-w-[270px] 3xl:max-h-[330px]*/}
             {/*xl:min-w-[250px] xl:max-h-[290px] sm:hidden bg-contain bg-no-repeat" style={divStyle}></div>*/}
