@@ -6,7 +6,7 @@ export const CourseComponent = (prop) => {
     }
     return (
         <div className="3xl:mr-[20px] mb-[20px] lg:mr-0 3xl:w-[400px] 3xl:h-[350px] 2xl:w-[320px] xl:w-[250px] xl:h-[370px] lg:h-[250px] lg:w-[500px]
-             md:w-[450px] sm:w-[330px] xsm:w-[250px] sm:h-[290px] font-medium
+             md:w-[450px] sm:w-[330px] xsm:w-[250px] sm:h-[290px] xxsm:h-[350px] font-medium
              bg-white rounded-2xl px-7 justify-between bg-no-repeat bg-cover " style={divStyle}>
 
             <div className="flex flex-col 3xl:items-baseline ">

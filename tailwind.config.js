@@ -32,7 +32,7 @@ module.exports = {
             'sm': {'max': '639px'},
             // => @media (max-width: 639px) { ... }
 
-            'xsm': {'max': '450px'},
+            'xsm': {'max': '550px'},
             // => @media (max-width: 639px) { ... }
 
             'xxsm': {'max': '450px'},
