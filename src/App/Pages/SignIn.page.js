@@ -32,7 +32,7 @@ export const SignInPage = () => {
                 token: successData.data.token,
                 expiresIn: 3600,
                 tokenType: "Bearer",
-                authState: {email: successData.data.email, firstname: successData.data.name, lastname: successData.data.surname, id: successData.data.id},
+                authState: {email: successData.data.email, firstname: successData.data.name, lastname: successData.data.surname, id: successData.data.id, avatar: successData.data.avatar},
             })
             console.log(successData)
             navigate('/')

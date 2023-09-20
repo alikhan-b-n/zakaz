@@ -1,5 +1,30 @@
 @font-face {
     font-family: 'Mont';
+    src: local('Mont Regular'), local('Mont-Regular'),
+    url('Mont-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mont';
+    src: local('Mont Regular Italic'), local('Mont-RegularItalic'),
+    url('Mont-RegularItalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: 'Mont';
+    src: local('Mont SemiBold'), local('Mont-SemiBold'),
+    url('Mont-SemiBold.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Mont';
     src: local('Mont Black'), local('Mont-Black'),
     url('Mont-Black.ttf') format('truetype');
     font-weight: 900;
@@ -12,14 +37,6 @@
     url('Mont-BlackItalic.ttf') format('truetype');
     font-weight: 900;
     font-style: italic;
-}
-
-@font-face {
-    font-family: 'Mont';
-    src: local('Mont Bold'), local('Mont-Bold'),
-    url('Mont-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
 }
 
 @font-face {
@@ -45,5 +62,14 @@
     font-weight: 200;
     font-style: italic;
 }
+
+@font-face {
+    font-family: 'Mont';
+    src: local('Mont Bold'), local('Mont-Bold'),
+    url('Mont-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
 
 /* ... and so on for each font style ... */

@@ -30,7 +30,7 @@ export const SignUpPage = () => {
             }
         ), {
         onSuccess: () => {
-            navigate('/')
+            navigate('/signin')
         }
     })
 
