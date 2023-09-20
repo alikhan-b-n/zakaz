@@ -90,7 +90,6 @@ export const MyProfileComponent = (props) => {
                     <input
                         {...getInputProps()}
                     />
-
                     {
                         editMode ?
                             isDragActive ?
@@ -98,7 +97,6 @@ export const MyProfileComponent = (props) => {
                                 <p className="font-medium">Drag 'n' drop some files here, or click to select files</p>
                             : <div></div>
                     }
-
                 </div>
                 <div className="">
                     <input
