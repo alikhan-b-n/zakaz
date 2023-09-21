@@ -33,13 +33,11 @@ export const MyProfileComponent = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         // Check if the file exists
         if (!file) {
             console.log("No file selected");
             setFile(null);
         }
-
         // Append the file to the FormData instance
         formData.append("image", file);
 
