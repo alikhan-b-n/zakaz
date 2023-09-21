@@ -6,12 +6,15 @@ import {NoCourses} from "./NoCourses";
 import {useAuthUser} from "react-auth-kit";
 
 
-function YourCoursesComponent(){
-    const [pageNumber, setPageNumber] = useState(1)
-    const user = useAuthUser()
-    const url = `http://193.70.125.178:4000/studentCourses/${user().id}/${pageNumber}`
+function YourCoursesComponent() {
+    const [pageNumber, setPageNumber] = useState(1);
+    const getUser = useAuthUser();
+    const user = getUser();
+
+    const url = `http://193.70.125.178:4000/studentCourses/${user.id}/${pageNumber}`;
+
     const {isLoading, data, isError, error} = useQuery(
-        ['my-courses', pageNumber],
+        ['my-courses', user.id, pageNumber],
         () => axios.get(url)
     );
 
@@ -36,9 +39,9 @@ function YourCoursesComponent(){
                     {"<"}
                 </button>
                 <div className="flex lg:flex-col lg:mr-[20px]">
-                    {data===null ? data.data.mycourses.map((x) => (
+                    {data!=null ? data.data.courses.map((x) => (
                         <div className="" key={x.id}>
-                            <CourseComponent mycourse={x}/>
+                            <CourseComponent course={x}/>
                         </div>
                     )) : <NoCourses/>}
                 </div>
