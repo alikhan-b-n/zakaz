@@ -79,113 +79,119 @@ export const MyProfileComponent = (props) => {
     }
 
     return (
-        <div className="rounded-xl bg-white drop-shadow-lg m-[5%] 3xl:w-[60%] xl:w-[80%] sm:w-[100%] mx-auto">
-            <div className="flex flex-col items-center p-[5%]">
-                <div className="mb-[5%] flex flex-col justify-center items-center" {...getRootProps()}>
-                    {editMode
-                        ?
-                        preview && (
-                            <p><img className="w-[300px]" src={preview} alt="Upload preview"/></p>
-                        )
-                        :
-                        <img src={props.user.avatar != null ? avatarUrl : imageUrl} alt="Your avatar"
-                             className="pb-[15px] w-[200px]"/>
-                    }
+        <form action="form-data">
+            <div className="rounded-xl bg-white drop-shadow-lg m-[5%] 3xl:w-[60%] xl:w-[80%] sm:w-[100%] mx-auto">
+                <div className="flex flex-col items-center p-[5%]">
+                    <div className="mb-[5%] flex flex-col justify-center items-center" {...getRootProps()}>
+                        {editMode
+                            ?
+                            preview && (
+                                <p><img className="w-[300px]" src={preview} alt="Upload preview"/></p>
+                            )
+                            :
+                            <img src={props.user.avatar != null ? avatarUrl : imageUrl} alt="Your avatar"
+                                 className="pb-[15px] w-[200px]"/>
+                        }
 
-                    <input
-                        {...getInputProps()}
-                    />
-                    {
-                        editMode ?
-                            isDragActive ?
-                                <p className="font-medium">Drop the files here ...</p> :
-                                <p className="font-medium">Drag 'n' drop some files here, or click to select files</p>
-                            : <div></div>
-                    }
-                </div>
-                <div className="">
-                    <input
-                        disabled={!editMode}
-                        className="3xl:w-[323px] h-[43px] sm:w-[250px]
-                    shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black
-                    placeholder:font-thin"
-                        placeholder={props.user.firstname}
-                        onChange={(e) => {
-                            setName(e.target.value)
-                        }}
-                    />
-                    <input
-                        disabled={!editMode}
-                        className="3xl:w-[323px] h-[43px] sm:w-[250px]
-                    shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black
-                    placeholder:font-thin"
-                        placeholder={props.user.lastname}
-                        onChange={(e) => {
-                            setSurname(e.target.value)
-                        }}
-                    />
-                    <input
-                        disabled={!editMode}
-                        className="3xl:w-[323px] h-[43px] sm:w-[250px]
-                    shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black
-                    placeholder:font-thin"
-                        autoComplete="off"
-                        onChange={(e) => {
-                            setEmail(e.target.value)
-                        }}
-                        placeholder={props.user.email}
-                    />
-
-                    <input
-                        disabled
-                        className="3xl:w-[323px] h-[43px] sm:w-[250px]
-                    shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black
-                    placeholder:font-thin"
-                        placeholder={props.user.id}
-                    />
-
-                    <div className="3xl:w-[323px] h-[43px] sm:w-[250px] flex justify-center lg:my-4">
+                        <input
+                            {...getInputProps()}
+                        />
                         {
                             editMode ?
-                                <div className="flex gap-x-[10px]">
-                                    <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
-                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
-                                    items-center font-medium"
-                                            onClick={() => setEditMode(false)}
-                                    >
-                                        Отмена
-                                    </button>
-                                    <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
-                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
-                                    items-center font-medium"
-                                            disabled={email === null && name === null && surname === null
-                                                && formData.get("avatar") === null}
-                                            onClick={() => mutate({
-                                                email: email,
-                                                name: name,
-                                                surname: surname,
-                                                avatar: formData
-                                            })}
-                                    >
-                                        Сохранить изменения
-                                    </button>
-                                </div>
-                                :
-                                <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
-                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
-                                    items-center font-medium"
-                                        onClick={() => setEditMode(true)}
-                                >
-                                    Отредактировать
-                                </button>
+                                isDragActive ?
+                                    <p className="font-medium">Drop the files here ...</p> :
+                                    <p className="font-medium">Drag 'n' drop some files here, or click to select files</p>
+                                : <div></div>
                         }
+                    </div>
+                    <div className="">
+                        <input
+                            disabled={!editMode}
+                            className="3xl:w-[323px] h-[43px] sm:w-[250px]
+                    shadow-custom bg-gray-100 rounded-[15px] flex
+                    items-center pl-2 mb-[15px] placeholder:text-black
+                    placeholder:font-thin"
+                            placeholder={props.user.firstname}
+                            onChange={(e) => {
+                                setName(e.target.value)
+                            }}
+                        />
+                        <input
+                            disabled={!editMode}
+                            className="3xl:w-[323px] h-[43px] sm:w-[250px]
+                    shadow-custom bg-gray-100 rounded-[15px] flex
+                    items-center pl-2 mb-[15px] placeholder:text-black
+                    placeholder:font-thin"
+                            placeholder={props.user.lastname}
+                            onChange={(e) => {
+                                setSurname(e.target.value)
+                            }}
+                        />
+                        <input
+                            disabled={!editMode}
+                            className="3xl:w-[323px] h-[43px] sm:w-[250px]
+                    shadow-custom bg-gray-100 rounded-[15px] flex
+                    items-center pl-2 mb-[15px] placeholder:text-black
+                    placeholder:font-thin"
+                            autoComplete="off"
+                            onChange={(e) => {
+                                setEmail(e.target.value)
+                            }}
+                            placeholder={props.user.email}
+                        />
+
+                        <input
+                            disabled={!editMode}
+                            className="3xl:w-[323px] h-[43px] sm:w-[250px]
+                    shadow-custom bg-gray-100 rounded-[15px] flex
+                    items-center pl-2 mb-[15px] placeholder:text-black
+                    placeholder:font-thin"
+                            autoComplete="off"
+                            onChange={(e) => {
+                                setEmail(e.target.value)
+                            }}
+                            placeholder={props.user.password}
+                        />
+
+                        <div className="3xl:w-[323px] h-[43px] sm:w-[250px] flex justify-center lg:my-4">
+                            {
+                                editMode ?
+                                    <div className="flex gap-x-[10px]">
+                                        <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
+                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
+                                    items-center font-medium"
+                                                onClick={() => setEditMode(false)}
+                                        >
+                                            Отмена
+                                        </button>
+                                        <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
+                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
+                                    items-center font-medium"
+                                                disabled={email === null && name === null && surname === null
+                                                    && formData.get("avatar") === null}
+                                                onClick={() => mutate({
+                                                    email: email,
+                                                    name: name,
+                                                    surname: surname,
+                                                    avatar: formData
+                                                })}
+                                        >
+                                            Сохранить изменения
+                                        </button>
+                                    </div>
+                                    :
+                                    <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
+                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
+                                    items-center font-medium"
+                                            onClick={() => setEditMode(true)}
+                                    >
+                                        Отредактировать
+                                    </button>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     );
 };
