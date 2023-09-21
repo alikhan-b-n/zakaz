@@ -1,7 +1,9 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
-import {useMutation, useQueryClient} from "react-query";
+import {useMutation} from "react-query";
+import {useAuthHeader} from "react-auth-kit";
+import {useSignIn} from 'react-auth-kit'
 import axios from "axios";
 
 const imageUrl = process.env.PUBLIC_URL + '../Assets/img.png'
@@ -9,14 +11,16 @@ export const MyProfileComponent = (props) => {
     const [file, setFile] = useState();
     const [editMode, setEditMode] = useState(false)
     const [preview, setPreview] = useState(null)
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('');
-    const [surname, setSurname] = useState('')
+    const [name, setName] = useState(null)
+    const [email, setEmail] = useState(null);
+    const [surname, setSurname] = useState(null)
+    const signIn = useSignIn()
     const formData = new FormData();
+    const authHeader = useAuthHeader();
     const avatarUrl = `http://193.70.125.178:4000/user/${props.user.id}/${props.user.avatar}`
 
     const onDrop = useCallback((acceptedFile: File) => {
-        const file = new FileReader;
+        const file = new FileReader();
 
         file.onload = function () {
             setPreview(file.result);
@@ -29,47 +33,46 @@ export const MyProfileComponent = (props) => {
         onDrop
     })
 
-    formData.append("image", file);
+    console.log(name)
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Check if the file exists
-        if (!file) {
-            console.log("No file selected");
-            setFile(null);
-        }
-        // Append the file to the FormData instance
-        formData.append("image", file);
-
-        // Now you can send formData to your server
-        // For example, using the fetch API:
-        fetch("/your-api-endpoint", {
-            method: "POST",
-            body: formData,
-        })
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-    };
+    formData.append("avatar", file);
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
         await axios.patch('http://193.70.125.178:4000/auth/update/user', {
                 avatar: formData,
-                email: email,
                 name: name,
-                lastname: surname
+                email: email,
+                surname: surname
             }, {
                 headers: {
-                    'Content-Type': 'application/json; charset=UTF-8'
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': `${authHeader()}`
                 }
             }
         ), {
-        onSuccess: () => {
-
+        onSuccess: (successData) => {
+            signIn({
+                token: successData.data.token,
+                expiresIn: 3600,
+                tokenType: "Bearer",
+                authState: {
+                    email: successData.data.email,
+                    firstname: successData.data.name,
+                    lastname: successData.data.surname,
+                    avatar: successData.data.avatar
+                }
+            })
+            console.log(successData.data.avatar)
         }
     })
+
+    if (isLoading) {
+        return <p>Loading...</p>
+    }
+
+    if (isError) {
+        return <p>{error.message}</p>
+    }
 
     return (
         <div className="rounded-xl bg-white drop-shadow-lg m-[5%] 3xl:w-[60%] xl:w-[80%] sm:w-[100%] mx-auto">
@@ -133,6 +136,7 @@ export const MyProfileComponent = (props) => {
                     />
 
                     <input
+                        disabled
                         className="3xl:w-[323px] h-[43px] sm:w-[250px]
                     shadow-custom bg-gray-100 rounded-[15px] flex
                     items-center pl-2 mb-[15px] placeholder:text-black
@@ -143,13 +147,28 @@ export const MyProfileComponent = (props) => {
                     <div className="3xl:w-[323px] h-[43px] sm:w-[250px] flex justify-center lg:my-4">
                         {
                             editMode ?
-                                <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
+                                <div className="flex gap-x-[10px]">
+                                    <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
                                     sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
                                     items-center font-medium"
-                                        onClick={() => window.location.reload()}
-                                >
-                                    Сохранить изменения
-                                </button>
+                                            onClick={() => setEditMode(false)}
+                                    >
+                                        Отмена
+                                    </button>
+                                    <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
+                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
+                                    items-center font-medium"
+                                            disabled={true}
+                                            onClick={() => mutate({
+                                                email: email,
+                                                name: name,
+                                                surname: surname,
+                                                avatar: formData
+                                            })}
+                                    >
+                                        Сохранить изменения
+                                    </button>
+                                </div>
                                 :
                                 <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
                                     sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center

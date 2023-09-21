@@ -3,16 +3,17 @@ import {useQuery} from "react-query";
 import axios from "axios";
 import {CourseComponent} from "./CourseComponent";
 import {NoCourses} from "./NoCourses";
+import {useAuthUser} from "react-auth-kit";
 
 
-function YourCoursesComponent(prop){
-    const [pageNumber, setPageNumber] = useState(1);
-    const url = `http://193.70.125.178:4000/studentCourses/${prop.id}/${pageNumber}`;
+function YourCoursesComponent(){
+    const [pageNumber, setPageNumber] = useState(1)
+    const user = useAuthUser()
+    const url = `http://193.70.125.178:4000/studentCourses/${user().id}/${pageNumber}`
     const {isLoading, data, isError, error} = useQuery(
-        ['mycourses', pageNumber],
+        ['my-courses', pageNumber],
         () => axios.get(url)
     );
-
 
     if (isLoading) {
         return <h2>Loading...</h2>;

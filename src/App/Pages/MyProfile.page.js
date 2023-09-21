@@ -22,7 +22,7 @@ export default function (){
                     m-auto">Мой профиль</h1>
                     <MyProfileComponent user={auth()}/>
                     <div>
-                        <YourCoursesComponent id={auth().id}/>
+                        <YourCoursesComponent/>
                     </div>
                 </div>
 
