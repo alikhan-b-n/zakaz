@@ -26,7 +26,7 @@ function YourCoursesComponent(){
     return (
         <div className="carousel-container ">
 
-            <div className="flex 3xl:flex-row">
+            <div className="flex 3xl:flex-row justify-center">
                 <button
                     className={`focus:outline-none ${pageNumber - 1 === 0 ? 'text-gray-400' : 'text-black'}
                     3xl:text-[50px] lg:text-[40px] mr-[20px]`}
