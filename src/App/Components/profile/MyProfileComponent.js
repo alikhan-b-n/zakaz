@@ -19,23 +19,26 @@ export const MyProfileComponent = (props) => {
     const authHeader = useAuthHeader();
     const avatarUrl = `http://193.70.125.178:4000/user/${props.user.id}/${props.user.avatar}`
 
-    const onDrop = useCallback((acceptedFile: File) => {
-        const file = new FileReader();
+    const onDrop = useCallback((acceptedFiles) => {
+        const fileReader = new FileReader();
+        const file = acceptedFiles[0]; // Get the first file from the array
 
-        file.onload = function () {
-            setPreview(file.result);
+        fileReader.onload = function () {
+            setPreview(fileReader.result);
+            setFile(fileReader.result);
         }
 
-        file.readAsDataURL(acceptedFile[0])
-    }, [])
+        fileReader.readAsDataURL(file);
+
+        const formData = new FormData();
+        formData.append("avatar", file); // Append the file, not the FileReader
+    }, []);
 
     const {getRootProps, getInputProps, isDragActive} = useDropzone({
         onDrop
     })
 
-    console.log(name)
-
-    formData.append("avatar", file);
+    console.log(formData)
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
         await axios.patch('http://193.70.125.178:4000/auth/update/user', {
@@ -59,7 +62,8 @@ export const MyProfileComponent = (props) => {
                     email: successData.data.email,
                     firstname: successData.data.name,
                     lastname: successData.data.surname,
-                    avatar: successData.data.avatar
+                    avatar: successData.data.avatar,
+                    id: successData.data.id
                 }
             })
             console.log(successData.data.avatar)
@@ -158,7 +162,8 @@ export const MyProfileComponent = (props) => {
                                     <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
                                     sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
                                     items-center font-medium"
-                                            disabled={true}
+                                            disabled={email === null && name === null && surname === null
+                                                && formData.get("avatar") === null}
                                             onClick={() => mutate({
                                                 email: email,
                                                 name: name,
