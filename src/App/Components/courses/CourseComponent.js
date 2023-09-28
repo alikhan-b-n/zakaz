@@ -2,15 +2,15 @@ import React from "react";
 import {useMutation, useQuery, useQueryClient} from 'react-query';
 import axios from 'axios';
 import {useAuthHeader} from "react-auth-kit";
-import {useAuthUser} from "react-auth-kit";
+import {useNavigate} from "react-router-dom";
+
 
 
 export const CourseComponent = (prop) => {
+    const navigate = useNavigate()
     const divStyle = {
         'backgroundImage': `url(${'http://193.70.125.178:4000/static/' + prop.course.image })`
     }
-    const getUser = useAuthUser();
-    const user = getUser();
     const authHeader = useAuthHeader();
     const url = `http://193.70.125.178:4000/auth/attendCourse/${prop.course.id}`
     const {mutate, isLoading, isError, error} = useMutation(async () =>
@@ -22,9 +22,18 @@ export const CourseComponent = (prop) => {
             }
         ), {
         onSuccess: (successData) => {
-
+            navigate("/profile")
         }
     })
+
+    if (isLoading) {
+        return <p>Loading...</p>
+    }
+
+
+    if (isError) {
+        return <p>{error.response.data.message}</p>
+    }
 
     return (
         <div className="3xl:mr-[20px] mb-[20px] lg:mr-0 3xl:w-[400px] 3xl:h-[350px] 2xl:w-[320px] xl:w-[250px] xl:h-[370px] lg:h-[250px] lg:w-[500px]
