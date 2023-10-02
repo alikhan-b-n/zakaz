@@ -72,6 +72,9 @@ export const CourseComponent = (prop) => {
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.course.description}</p>
                 </div>
                 <p className="3xl:text-[22px] sm:text-[15px] text-orange-500">{prop.course.price} тг</p>
+                <div className="flex justify-center w-full">
+                    <button onClick={() => mutate({})} className="mt-[15px] bg-orange-500 text-white rounded-xl p-[10px]" >Записаться</button>
+                </div>
             </div>
         </div>
     );
