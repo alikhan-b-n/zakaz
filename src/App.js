@@ -21,9 +21,9 @@ export function App() {
                 <Route path="/signup" element={<SignUpPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
                 <Route path="/" element={<MainPage/>}/>
+                <Route path="/courses" element={<CoursesPage/>}/>
                 <Route element={<RequireAuth/>}>
                     <Route path="/teachers" element={<TeacherPage/>}/>
-                    <Route path="/courses" element={<CoursesPage/>}/>
                     <Route path="/profile" element={<MyProfilePage/>}/>
                     <Route path="/course/:id" element={<CoursePage/>}/>
                 </Route>
