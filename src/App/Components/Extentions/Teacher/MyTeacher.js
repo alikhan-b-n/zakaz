@@ -25,7 +25,7 @@ export function MyTeacher(props){
                 <h1>{data.data.surname} {data.data.name} {data.data.patronymic}</h1>
                 <h1>{data.data.email}</h1>
             </div>
-            <div style={divStyle} className="3xl:w-[280px] 3xl:h-[300px] lg:w-[200px] lg:h-[220px] md:hidden mt-[-100px] bg-no-repeat bg-cover"></div>
+            <div style={divStyle} className="3xl:w-[280px] 3xl:h-[300px] lg:w-[200px] lg:h-[240px] md:hidden 3xl:mt-[-120px] lg:mt-[-80px] bg-no-repeat bg-cover"></div>
         </div>
     );
 }
