@@ -1,8 +1,8 @@
 import React from "react";
-import {useMutation, useQuery, useQueryClient} from 'react-query';
+import {useMutation} from 'react-query';
 import axios from 'axios';
 import {useAuthHeader} from "react-auth-kit";
-import {Navigate, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 
@@ -36,7 +36,7 @@ export const CourseComponent = (prop) => {
     }
 
     const sendToAuth = () =>{
-        Navigate("/signin")
+        navigate("/signin")
     }
 
     return (
@@ -77,7 +77,7 @@ export const CourseComponent = (prop) => {
                 </div>
                 <p className="3xl:text-[22px] sm:text-[15px] text-orange-500">{prop.course.price} тг</p>
                 <div className="flex justify-center w-full">
-                    <button onClick={authHeader()==='' ? sendToAuth() : () => {mutate({})}} className="mt-[15px] bg-orange-500 text-white rounded-xl p-[10px]" >Записаться</button>
+                    <button onClick={authHeader()==='' ? () => sendToAuth() : () => mutate({})} className="mt-[15px] bg-orange-500 text-white rounded-xl p-[10px]" >Записаться</button>
                 </div>
             </div>
         </div>

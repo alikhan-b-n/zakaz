@@ -7,7 +7,6 @@ export function MyTeacher(props){
     const {isLoading, data, isError, error } = useQuery(['course', props.id],  () =>
         axios.get(url)
     );
-    // const avatarUrl = `http://193.70.125.178:4000/user/${props.id}/${data.data.avatar}`
 
     if (isLoading) {
         return <p>Loading...</p>
@@ -16,13 +15,16 @@ export function MyTeacher(props){
     if (isError) {
         return <p>{error.response.data.message}</p>
     }
+    console.log(data.data.avatar)
+    const avatarUrl = `http://193.70.125.178:4000/user/${props.id}/${data.data.avatar}`
+
     return(
         <div>
             <h1>{data.data.email}</h1>
             <h1>{data.data.name}</h1>
             <h1>{data.data.surname}</h1>
             <h1>{data.data.patronymic}</h1>
-            {/*<img src={avatarUrl} alt="Teachers avatar"/>*/}
+            <img src={avatarUrl} alt="Teachers avatar"/>
         </div>
     );
 }
