@@ -28,7 +28,7 @@ export const CoursePage = () => {
         return <p>{error.message}</p>
     }
 
-    console.log(data.data.course.Elements)
+    console.log(data.data.course)
 
     return (
         <div className="3xl:mr-[20px] mb-[20px] lg:mr-0 3xl:w-[400px] 3xl:h-[350px] 2xl:w-[320px] xl:w-[250px] xl:h-[370px] lg:h-[250px] lg:w-[500px]
@@ -37,9 +37,9 @@ export const CoursePage = () => {
             <div className="flex flex-col 3xl:items-baseline ">
                 <div className="3xl:h-[45px] xl:h-[70px] rounded-xl text-[16px]">
                     <div className="justify-center items-center h-full">
-                        <h2 className="bg-amber-50">{data.data.course.Course.title}</h2>
-                        <p>{data.data.course.Course.description}</p>
-                        <MyTeacher id={data.data.course.Course.teacherId}/>
+                        <h2 className="bg-amber-50">{data.data.course.title}</h2>
+                        <p>{data.data.course.description}</p>
+                        <MyTeacher id={data.data.course.teacherId}/>
                     </div>
                 </div>
             </div>

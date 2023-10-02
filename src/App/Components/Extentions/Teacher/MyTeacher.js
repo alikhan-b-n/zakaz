@@ -15,7 +15,6 @@ export function MyTeacher(props){
     if (isError) {
         return <p>{error.response.data.message}</p>
     }
-    console.log(data.data.avatar)
     const avatarUrl = `http://193.70.125.178:4000/user/${props.id}/${data.data.avatar}`
 
     return(
