@@ -13,7 +13,7 @@ export function HeaderComponent() {
         <div
             className="bg-white 3xl:px-[30px] flex 3xl:justify-between xsm:p-0">
             <img
-                src={process.env.PUBLIC_URL + `../Assets/logo.jpg`}
+                src={process.env.PUBLIC_URL + `../../../Assets/logo.jpg`}
                 alt="logo"
                 className="3xl:w-[150px] sm:w-[100px] xsm:w-[60px] xxsm:hidden"
             />

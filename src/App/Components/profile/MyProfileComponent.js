@@ -39,8 +39,6 @@ export const MyProfileComponent = (props) => {
         onDrop
     })
 
-    console.log(props.user)
-
     const {mutate, isLoading, isError, error} = useMutation(async () =>
         await axios.patch('http://193.70.125.178:4000/auth/update/user', {
                 avatar: formData,
@@ -68,7 +66,6 @@ export const MyProfileComponent = (props) => {
                     id: successData.data.id
                 }
             })
-            console.log(successData.data.avatar)
         }
     })
 
