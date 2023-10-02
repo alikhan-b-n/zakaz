@@ -6,8 +6,6 @@ import {useParams} from "react-router-dom";
 import {MyTeacher} from "../Components/Extentions/Teacher/MyTeacher";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
-import CoursesComponent from "../Components/courses/CoursesComponent";
-import {Appeal} from "../Components/AppealComponent";
 import {FooterComponent} from "../Components/FooterComponent";
 
 export const CoursePage = () => {

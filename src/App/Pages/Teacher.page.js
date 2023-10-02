@@ -10,7 +10,7 @@ function TeacherPage() {
     return (
         <div>
             <HeaderComponent/>
-            <div className="lg:ml-0 flex font-normal">
+            <div className="lg:ml-0 flex font-normal mb-[10%]">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
                     <SidebarComponent page="teacher"/>
                 </div>
@@ -22,10 +22,10 @@ function TeacherPage() {
                     <div className="mt-5 flex justify-center">
                         <TeachersComponent/>
                     </div>
-                    <div className="flex flex-col ">
-                        <h2 className="inline-block 3xl:mt-[55px] lg:mt-0 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px] m-auto ">Нужна помощь?</h2>
-                        <Appeal/>
-                    </div>
+                    {/*<div className="flex flex-col ">*/}
+                    {/*    <h2 className="inline-block 3xl:mt-[55px] lg:mt-0 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px] m-auto ">Нужна помощь?</h2>*/}
+                    {/*    <Appeal/>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             <FooterComponent/>

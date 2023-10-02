@@ -2,7 +2,7 @@ export function FooterComponent() {
     return (
         <div
             className="bg-white mt-auto border-1 border-[#E2E9EF] bg-[#FFF] sm:w-100 sm:h-[120px] justify-between 2xl:p-[50px] lg:p-[20px] justify-between flex">
-            <img src={process.env.PUBLIC_URL + `../Assets/logo.jpg`} alt="logo"
+            <img src={process.env.PUBLIC_URL + `../../../Assets/logo.jpg`} alt="logo"
                  className="3xl:w-[230px] 3xl:block md:w-[160px] p-[30px] sm:hidden"/>
 
             <div className="3xl:block sm:hidden sm:w-[100%] mt-[20px]">

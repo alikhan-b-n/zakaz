@@ -1,6 +1,5 @@
 import React from 'react';
 import {SidebarComponent} from "../Components/SidebarComponent";
-import {Appeal} from "../Components/AppealComponent";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {FooterComponent} from "../Components/FooterComponent";
 import CoursesComponent from "../Components/courses/CoursesComponent";
@@ -9,7 +8,7 @@ function CoursesPage() {
     return (
         <div>
             <HeaderComponent/>
-            <div className="lg:ml-0 flex">
+            <div className="lg:ml-0 flex mb-[10%]">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
                     <SidebarComponent page="courses"/>
                 </div>
@@ -22,10 +21,10 @@ function CoursesPage() {
                             <CoursesComponent/>
                         </div>
                     </div>
-                    <div className="flex flex-col ">
-                        <h2 className="inline-block 3xl:mt-[55px] lg:mt-0 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px] m-auto ">Нужна помощь?</h2>
-                        <Appeal/>
-                    </div>
+                    {/*<div className="flex flex-col ">*/}
+                    {/*    <h2 className="inline-block 3xl:mt-[55px] lg:mt-0 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px] m-auto ">Нужна помощь?</h2>*/}
+                    {/*    <Appeal/>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             <FooterComponent/>
