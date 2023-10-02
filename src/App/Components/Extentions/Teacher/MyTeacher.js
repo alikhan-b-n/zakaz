@@ -18,11 +18,13 @@ export function MyTeacher(props){
     const avatarUrl = `http://193.70.125.178:4000/user/${props.id}/${data.data.avatar}`
 
     return(
-        <div>
-            <h1>{data.data.email}</h1>
-            <h1>{data.data.name}</h1>
-            <h1>{data.data.surname}</h1>
-            <h1>{data.data.patronymic}</h1>
+        <div className="flex">
+            <div>
+                <h1>{data.data.email}</h1>
+                <h1>{data.data.name}</h1>
+                <h1>{data.data.surname}</h1>
+                <h1>{data.data.patronymic}</h1>
+            </div>
             <img src={avatarUrl} alt="Teachers avatar"/>
         </div>
     );
