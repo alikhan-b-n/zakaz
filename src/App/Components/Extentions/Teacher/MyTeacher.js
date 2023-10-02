@@ -16,16 +16,16 @@ export function MyTeacher(props){
         return <p>{error.response.data.message}</p>
     }
     const avatarUrl = `http://193.70.125.178:4000/user/${props.id}/${data.data.avatar}`
-
+    const divStyle = {
+        'backgroundImage': `url(${avatarUrl})`
+    }
     return(
-        <div className="flex">
+        <div className="flex justify-between lg:text-[16px] sm:text-[12px]">
             <div>
+                <h1>{data.data.surname} {data.data.name} {data.data.patronymic}</h1>
                 <h1>{data.data.email}</h1>
-                <h1>{data.data.name}</h1>
-                <h1>{data.data.surname}</h1>
-                <h1>{data.data.patronymic}</h1>
             </div>
-            <img src={avatarUrl} alt="Teachers avatar"/>
+            <div style={divStyle} className="3xl:w-[280px] 3xl:h-[300px] lg:w-[200px] lg:h-[220px] md:hidden mt-[-100px] bg-no-repeat bg-cover"></div>
         </div>
     );
 }

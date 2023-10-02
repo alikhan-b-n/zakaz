@@ -46,19 +46,17 @@ export const CoursePage = () => {
                     3xl:font-bold xl:font-semibold md:font-medium justify-center">
                     <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]
                     m-auto">Курс</h2>
-                    <div className="3xl:mr-[20px] mb-[20px] lg:mr-0
-                    3xl:w-[910px] 3xl:h-[400px] 2xl:w-[320px] xl:w-[250px] xl:h-[370px] lg:h-[250px] lg:w-[500px]
-                    md:w-[450px] sm:w-[330px] xsm:w-[250px] sm:h-[290px] xxsm:h-[350px] font-medium
+                    <div className="flex justify-center">
+                        <div className="3xl:mr-[20px] mb-[20px] lg:mr-0
+                    3xl:w-[750px] 3xl:h-[360px] xl:w-[700px] xl:h-[380px] lg:h-[300px] lg:w-[550px]
+                    md:w-[450px] md:h-[250px] sm:w-[350px] sm:h-[200px] font-medium
                     bg-white rounded-2xl px-7 justify-between bg-no-repeat bg-cover">
-                        <div className="flex flex-col 3xl:items-baseline ">
-                            <div className="rounded-xl text-[16px]">
-                                <div className="justify-center items-center h-full">
-                                    <h2 className="bg-amber-50">{data.data.course.title}</h2>
-                                    <p>{data.data.course.description}</p>
-                                    <MyTeacher id={data.data.course.teacherId}/>
-                                </div>
+                            <div className="justify-center items-center h-full mt-[20px]">
+                                <h2 className="3xl:text-[40px] lg:text-[30px] sm:text-[25px]">{data.data.course.title}</h2>
+                                <p className="3xl:text-[28px] lg:text-[22px] sm:text-[18px] text-orange-500 w-[300px]">{data.data.course.description}</p>
+                                <MyTeacher id={data.data.course.teacherId}/>
                             </div>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
