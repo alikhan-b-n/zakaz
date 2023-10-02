@@ -20,8 +20,8 @@ export function MyTeacher(props){
         'backgroundImage': `url(${avatarUrl})`
     }
     return(
-        <div className="flex text-[32px]  mb-[20px] ">
-            <div style={divStyle} className="w-[150px] h-[150px] md:hidden bg-no-repeat bg-cover rounded-3xl mr-[20px]"></div>
+        <div className="flex 3xl:text-[32px] lg:text-[25px] mb-[20px] md:flex-col ">
+            <div style={divStyle} className="w-[150px] h-[150px] bg-no-repeat bg-cover rounded-3xl mr-[20px]"></div>
             <div className="flex flex-col justify-center">
                 <h1>{data.data.surname} {data.data.name} {data.data.patronymic}</h1>
                 <h1 className="underline text-orange-500">{data.data.email}</h1>
