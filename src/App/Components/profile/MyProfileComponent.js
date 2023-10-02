@@ -14,6 +14,7 @@ export const MyProfileComponent = (props) => {
     const [name, setName] = useState(null)
     const [email, setEmail] = useState(null);
     const [surname, setSurname] = useState(null)
+    const [password, setPassword] = useState('')
     const signIn = useSignIn()
     const formData = new FormData();
     const authHeader = useAuthHeader();
@@ -38,14 +39,15 @@ export const MyProfileComponent = (props) => {
         onDrop
     })
 
-    console.log(formData)
+    console.log(props.user)
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
         await axios.patch('http://193.70.125.178:4000/auth/update/user', {
                 avatar: formData,
                 name: name,
                 email: email,
-                surname: surname
+                surname: surname,
+                password: password
             }, {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -148,7 +150,7 @@ export const MyProfileComponent = (props) => {
                     placeholder:font-thin"
                             autoComplete="off"
                             onChange={(e) => {
-                                setEmail(e.target.value)
+                                setPassword(e.target.value)
                             }}
                             placeholder={props.user.password}
                         />
@@ -173,7 +175,8 @@ export const MyProfileComponent = (props) => {
                                                     email: email,
                                                     name: name,
                                                     surname: surname,
-                                                    avatar: formData
+                                                    avatar: formData,
+                                                    password: password
                                                 })}
                                         >
                                             Сохранить изменения

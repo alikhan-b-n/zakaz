@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import {useQuery} from "react-query";
 import axios from "axios";
-import {CourseComponent} from "./CourseComponent";
 import {NoCourses} from "./NoCourses";
 import {useAuthUser} from "react-auth-kit";
+import {YourCourseComponent} from "./YourCourseComponent";
 
 
 function YourCoursesComponent() {
@@ -41,7 +41,7 @@ function YourCoursesComponent() {
                 <div className="flex lg:flex-col lg:mr-[20px]">
                     {data!=null ? data.data.courses.map((x) => (
                         <div className="" key={x.id}>
-                            <CourseComponent course={x}/>
+                            <YourCourseComponent course={x}/>
                         </div>
                     )) : <NoCourses/>}
                 </div>
