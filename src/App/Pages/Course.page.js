@@ -51,6 +51,7 @@ export const CoursePage = () => {
                    <div className="flex flex-col justify-center">
                        <div className="">
                            <MyTeacher id={data.data.course.teacherId}/>
+                           <div className="w-full h-1 bg-orange-200 rounded-lg mb-[10px]"></div>
                            <div className="grid 3xl:grid-cols-5 lg:grid-cols-1 flex 3xl:w-[1300px] 2xl:w-[1000px] xl:w-[900px]
                            lg:w-[600px] md:w-[450px] sm:w-[300px] mx-auto bg-white mb-[40px] rounded font-medium">
                                <div className="col-span-1 3xl:border-r-4 border-r-[#E2E9EF] lg:border-r-0 lg:border-b-4 p-[10px] flex lg:flex-row
