@@ -14,7 +14,7 @@ export function ElementComponent(props){
                 <p className="3xl:text-[18px] sm:text-[15px]">{props.element.content}</p>
             </div>
             <div className="flex justify-center w-full items-center">
-                <button className="bg-orange-500 h-[50px] px-[10px] rounded-lg text-white lg:mb-[20px] 3xl:ml-[100px] xl:ml-0">Перейти на урок</button>
+                <button onClick={handleClick} className="bg-orange-500 h-[50px] px-[10px] rounded-lg text-white lg:mb-[20px] 3xl:ml-[100px] xl:ml-0">Перейти на урок</button>
             </div>
         </div>
     )

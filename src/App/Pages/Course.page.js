@@ -23,7 +23,6 @@ export const CoursePage = () => {
         })
     );
 
-
     if (isLoading) {
         return <p>Loading...</p>
     }
@@ -32,7 +31,7 @@ export const CoursePage = () => {
         return <p>{error.message}</p>
     }
 
-    // console.log(data.data.course.elements)
+    console.log(data.data.course)
     const divStyle = {
         'backgroundImage': `url(${'http://193.70.125.178:4000/static/' + data.data.course.image })`
     }
