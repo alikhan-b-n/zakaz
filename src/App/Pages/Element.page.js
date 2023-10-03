@@ -6,6 +6,7 @@ import React from "react";
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {FooterComponent} from "../Components/FooterComponent";
+import {VideoComponents} from "../Components/courses/elementComponents/VideoComponents";
 
 export function ElementPage(){
     const { elementId, courseId } = useParams();
@@ -19,8 +20,6 @@ export function ElementPage(){
             }
         })
     );
-
-    console.log(data.data)
 
     if (isLoading) {
         return <p>Loading...</p>
@@ -42,6 +41,7 @@ export function ElementPage(){
                     <h1>{data.data.element.name}</h1>
                     <p>{data.data.element.content}</p>
                 </div>
+                <VideoComponents videos={data.data.element.Videos} elementId={elementId}/>
             </div>
             <FooterComponent/>
         </div>
