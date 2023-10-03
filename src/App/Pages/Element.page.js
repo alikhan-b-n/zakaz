@@ -41,6 +41,7 @@ export function ElementPage(){
                 <div className="rounded-md p-[2%] flex flex-col 3xl:w-[1262px] 2xl:w-[1000px] xl:w-[800px] lg:w-[500px] md:w-[500px] sm:w-[310px]
             3xl:font-bold xl:font-semibold md:font-medium 3xl:mb-[260px] 2xl:mb-[230px] xl:mb-[200px] lg:mb-[100px] mx-auto bg-white">
                     <h1>{data.data.element.name}</h1>
+
                 </div>
             </div>
             <FooterComponent/>

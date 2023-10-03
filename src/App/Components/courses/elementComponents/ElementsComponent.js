@@ -1,4 +1,3 @@
-import {YourCourseComponent} from "../YourCourseComponent";
 import React from "react";
 import {NoElements} from "./NoElements";
 import {ElementComponent} from "./ElementComponent";

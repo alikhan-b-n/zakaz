@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { useAuthHeader } from "react-auth-kit";
@@ -42,7 +42,7 @@ export const CoursePage = () => {
             <HeaderComponent/>
             <div className="lg:ml-0 flex">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
-                    <SidebarComponent page="courses"/>
+                    <SidebarComponent/>
                 </div>
                 <div className="flex flex-col  3xl:w-[1300px] 2xl:w-[1000px] xl:w-[900px] lg:w-[650px] md:w-[450px] sm:w-[300px] m-auto
                     3xl:font-bold xl:font-semibold md:font-medium justify-center">
