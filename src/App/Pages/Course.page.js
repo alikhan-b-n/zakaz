@@ -8,6 +8,7 @@ import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {FooterComponent} from "../Components/FooterComponent";
 import {ElementsComponent} from "../Components/courses/elementComponents/ElementsComponent";
+import {StreamComponent} from "../Components/courses/stream/StreamComponent";
 
 export const CoursePage = () => {
     const { id } = useParams();
@@ -66,7 +67,8 @@ export const CoursePage = () => {
                                </div>
                            </div>
                            <ElementsComponent elements={data.data.course.elements} courseId={id}/>
-                   </div>
+                           <StreamComponent courseId={id}/>
+                       </div>
                     </div>
                 </div>
             </div>
