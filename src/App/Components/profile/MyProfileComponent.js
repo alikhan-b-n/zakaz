@@ -155,10 +155,10 @@ export const MyProfileComponent = (props) => {
                         <div className="3xl:w-[323px] h-[43px] sm:w-[250px] flex justify-center lg:my-4">
                             {
                                 editMode ?
-                                    <div className="flex gap-x-[10px]">
+                                    <div className="flex gap-x-[10px] lg:flex-col">
                                         <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
                                     sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
-                                    items-center font-medium"
+                                    items-center font-medium lg:mb-[10px]"
                                                 onClick={() => setEditMode(false)}
                                         >
                                             Отмена
