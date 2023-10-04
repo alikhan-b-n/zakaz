@@ -6,6 +6,7 @@ export function ElementComponent(props){
     const handleClick = () => {
         navigate(`/course/${props.courseId}/element/${props.element.id}`)
     }
+
     return(
         <div className="grid 3xl:grid-cols-2 lg:grid-cols-1 flex 3xl:w-[1420] mx-auto bg-white mb-[40px]
         rounded font-medium rounded-lg ">

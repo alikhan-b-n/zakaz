@@ -12,7 +12,6 @@ export const MyProfileComponent = (props) => {
     const [editMode, setEditMode] = useState(false)
     const [preview, setPreview] = useState(null)
     const [name, setName] = useState(null)
-    const [email, setEmail] = useState(null);
     const [surname, setSurname] = useState(null)
     const [password, setPassword] = useState('')
     const signIn = useSignIn()
@@ -20,19 +19,17 @@ export const MyProfileComponent = (props) => {
     const authHeader = useAuthHeader();
     const avatarUrl = `http://193.70.125.178:4000/user/${props.user.id}/${props.user.avatar}`
 
+
     const onDrop = useCallback((acceptedFiles) => {
         const fileReader = new FileReader();
-        const file = acceptedFiles[0]; // Get the first file from the array
+        fileReader.readAsDataURL(acceptedFiles[0])
 
         fileReader.onload = function () {
             setPreview(fileReader.result);
-            setFile(fileReader.result);
         }
+        setFile(acceptedFiles[0])
 
-        fileReader.readAsDataURL(file);
 
-        const formData = new FormData();
-        formData.append("avatar", file); // Append the file, not the FileReader
     }, []);
 
     const {getRootProps, getInputProps, isDragActive} = useDropzone({
@@ -40,15 +37,14 @@ export const MyProfileComponent = (props) => {
     })
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.patch('http://193.70.125.178:4000/auth/update/user', {
-                avatar: formData,
-                name: name,
-                email: email,
-                surname: surname,
-                password: password
+        await axios.patch('http://193.70.125.178:4000/auth/formupdate/user', {
+                "name":name,
+                "surname":surname,
+                "password": password,
+                "avatar": file
             }, {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'multipart/form-data',
                     'Authorization': `${authHeader()}`
                 }
             }
@@ -85,7 +81,7 @@ export const MyProfileComponent = (props) => {
                         {editMode
                             ?
                             preview && (
-                                <p><img className="w-[300px]" src={preview} alt="Upload preview"/></p>
+                                <p><img className="w-[300px]" src={preview} alt="Предпросмотр"/></p>
                             )
                             :
                             <img src={props.user.avatar != null ? avatarUrl : imageUrl} alt="Your avatar"
@@ -98,8 +94,8 @@ export const MyProfileComponent = (props) => {
                         {
                             editMode ?
                                 isDragActive ?
-                                    <p className="font-medium">Drop the files here ...</p> :
-                                    <p className="font-medium">Drag 'n' drop some files here, or click to select files</p>
+                                    <p className="font-medium">Выберите файл</p> :
+                                    <p className="font-medium">Выберите файл</p>
                                 : <div></div>
                         }
                     </div>
@@ -109,78 +105,63 @@ export const MyProfileComponent = (props) => {
                             className="3xl:w-[323px] h-[43px] sm:w-[250px]
                     shadow-custom bg-gray-100 rounded-[15px] flex
                     items-center pl-2 mb-[15px] placeholder:text-black
-                    placeholder:font-thin"
-                            placeholder={props.user.firstname}
-                            onChange={(e) => {
-                                setName(e.target.value)
-                            }}
-                        />
-                        <input
-                            disabled={!editMode}
-                            className="3xl:w-[323px] h-[43px] sm:w-[250px]
+                    placeholder:font-thin font-thin"
+                        placeholder={props.user.firstname}
+                        onChange={(e) => {
+                            setName(e.target.value)
+                        }}
+                        value={!editMode ? props.user.firstname : name ?? ""}
+                    />
+                    <input
+                        disabled={!editMode}
+                        className="3xl:w-[323px] h-[43px] sm:w-[250px]
                     shadow-custom bg-gray-100 rounded-[15px] flex
                     items-center pl-2 mb-[15px] placeholder:text-black
-                    placeholder:font-thin"
-                            placeholder={props.user.lastname}
-                            onChange={(e) => {
-                                setSurname(e.target.value)
-                            }}
-                        />
-                        <input
-                            disabled={!editMode}
-                            className="3xl:w-[323px] h-[43px] sm:w-[250px]
-                    shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black
-                    placeholder:font-thin"
-                            autoComplete="off"
-                            onChange={(e) => {
-                                setEmail(e.target.value)
-                            }}
-                            placeholder={props.user.email}
-                        />
+                    placeholder:font-thin font-thin"
+                        placeholder={props.user.lastname}
+                        onChange={(e) => {
+                            setSurname(e.target.value)
+                        }}
+                        value={!editMode ? props.user.lastname : surname ?? ""}
+                    />
 
-                        <input
-                            disabled={!editMode}
-                            className="3xl:w-[323px] h-[43px] sm:w-[250px]
+                    <input
+                        disabled={!editMode}
+                        className="3xl:w-[323px] h-[43px] sm:w-[250px]
                     shadow-custom bg-gray-100 rounded-[15px] flex
-                    items-center pl-2 mb-[15px] placeholder:text-black
+                    font-thin items-center pl-2 mb-[15px] placeholder:text-black
                     placeholder:font-thin"
-                            autoComplete="off"
-                            onChange={(e) => {
-                                setPassword(e.target.value)
-                            }}
-                            placeholder={props.user.password}
-                        />
+                        autoComplete="off"
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                        }}
+                        value={!editMode ? "Введите новый пароль" : password ?? ""}
+                        placeholder={"Введите новый пароль"}
+                    />
 
-                        <div className="3xl:w-[323px] h-[43px] sm:w-[250px] flex justify-center lg:my-4">
-                            {
-                                editMode ?
-                                    <div className="flex gap-x-[10px] lg:flex-col">
-                                        <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
-                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
-                                    items-center font-medium lg:mb-[10px]"
-                                                onClick={() => setEditMode(false)}
-                                        >
-                                            Отмена
-                                        </button>
-                                        <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
+                    <div className="3xl:w-[323px] h-[43px] sm:w-[250px] flex justify-center lg:my-4">
+                        {editMode ? <div className="flex gap-x-[10px]">
+                            <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
                                     sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
                                     items-center font-medium"
-                                                disabled={email === null && name === null && surname === null
-                                                    && formData.get("avatar") === null}
-                                                onClick={() => mutate({
-                                                    email: email,
-                                                    name: name,
-                                                    surname: surname,
-                                                    avatar: formData,
-                                                    password: password
-                                                })}
-                                        >
-                                            Сохранить изменения
-                                        </button>
-                                    </div>
-                                    :
-                                    <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
+                                    onClick={() => setEditMode(false)}
+                            >
+                                Отмена
+                            </button>
+                            <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
+                                    sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
+                                    items-center font-medium"
+                                    disabled={name === null && surname === null && file === null}
+                                    onClick={() => mutate({
+                                        name: name,
+                                        surname: surname,
+                                        avatar: formData,
+                                        password: password
+                                    })}
+                            >
+                                Сохранить изменения
+                            </button>
+                        </div> : <button className="3xl:w-[221px] sm:w-[200px] 3xl:h-[47px] sm:h-[40px] 3xl:text-[18px]
                                     sm:text-[13px] bg-orange-500 rounded-lg text-white flex justify-center
                                     items-center font-medium"
                                             onClick={() => setEditMode(true)}

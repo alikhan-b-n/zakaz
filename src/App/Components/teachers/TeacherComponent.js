@@ -2,7 +2,7 @@ import React from "react";
 
 export function TeacherComponent(prop) {
     const imgUrl =  `${`http://193.70.125.178:4000/user/${prop.teacher.id}/` + prop.teacher.avatar }`
-    console.log(imgUrl)
+
     return (
         <div className="grid 3xl:grid-cols-5 lg:grid-cols-1 flex 3xl:w-[1420] mx-auto bg-white mb-[40px] rounded font-medium">
             <div className="col-span-1 3xl:border-r-4 border-r-[#E2E9EF] lg:border-r-0 lg:border-b-4 px-[20px] pt-[15px] flex lg:flex-row

@@ -12,7 +12,6 @@ export function ElementPage(){
     const { elementId, courseId } = useParams();
     const authHeader = useAuthHeader();
     const url = `http://193.70.125.178:4000/auth/course/attend/${courseId}/${elementId}`
-
     const {isLoading, data, isError, error } = useQuery(['element', courseId, elementId],  () =>
         axios.get(url, {
             headers: {
