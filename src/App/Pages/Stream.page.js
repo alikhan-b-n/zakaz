@@ -47,7 +47,7 @@ export function StreamPage(){
                                 isStreamOn
                                     ?
                                     <div className="flex flex-col items-center">
-                                        <iframe src={data.data.link} width="600px" height="300px" title="Stream"></iframe>
+                                        <iframe src={data.data.link} width="100%" height="100%" title="Stream"></iframe>
                                         <p className="text-[30px] font-normal mt-[10px]">{`${data.data.teacherSurname} ${data.data.teacherName} ${data.data.teacherPatronymic}`}</p>
                                         <p className="text-[25px] font-normal">{data.data.courseName}</p>
                                     </div>
