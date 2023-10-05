@@ -69,6 +69,7 @@ export const CoursePage = () => {
                            <ElementsComponent elements={data.data.course.elements} courseId={id}/>
                            <StreamComponent courseId={id}/>
                        </div>
+
                     </div>
                 </div>
             </div>

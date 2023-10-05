@@ -10,6 +10,8 @@ export function VideoComponent(prop){
                         ?
                         <iframe
                                 src={videoUrl}
+                                width="100%"
+                                height="auto"
                                 allowFullScreen
                                 className="embed-responsive-item"
                         >

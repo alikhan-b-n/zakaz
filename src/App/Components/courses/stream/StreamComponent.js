@@ -8,7 +8,7 @@ export function StreamComponent(props){
 
     return(
         <div>
-            <button onClick={handleClick}>Go to stream</button>
+            <button className="bg-orange-500 text-white p-[20px] rounded-lg mb-[20px]" onClick={handleClick}>Go to stream</button>
         </div>
     )
 }
