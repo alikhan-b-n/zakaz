@@ -22,7 +22,7 @@ export function VideoComponent(prop){
                         </video>
                 }
                 <div className="flex justify-center mt-[10px]">
-                    <h2 className="text-[20px]">{prop.video.name}</h2>
+                    <h2 className="text-[30px]">{prop.video.name}</h2>
                 </div>
             </div>
         </div>
