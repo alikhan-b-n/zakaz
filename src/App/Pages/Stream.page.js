@@ -46,10 +46,11 @@ export function StreamPage(){
                             {
                                 isStreamOn
                                     ?
-                                    <div className="flex flex-col items-center">
-                                        <iframe src={data.data.link} width="100%" height="100%" title="Stream"></iframe>
-                                        <p className="text-[30px] font-normal mt-[10px]">{`${data.data.teacherSurname} ${data.data.teacherName} ${data.data.teacherPatronymic}`}</p>
-                                        <p className="text-[25px] font-normal">{data.data.courseName}</p>
+                                    <div className="flex flex-col items-center 3xl:w-[700px] 3xl:h-[500px]  xl:w-[500px] xl:h-[400px] lg:w-[450px] lg:h-[350px] sm:w-[350px] sm:h-[300px] ">
+                                        <iframe src={data.data.link} width="100%" height="100%" title="Stream" allowFullScreen
+                                                className="embed-responsive-item "></iframe>
+                                        <p className="3xl:text-[40px] xl:text-[35px] lg:text-[30px] sm:text-[25px] font-normal mt-[10px]">{`${data.data.teacherSurname} ${data.data.teacherName} ${data.data.teacherPatronymic}`}</p>
+                                        <p className="3xl:text-[30px] xl:text-[25px] lg:text-[20px] sm:text-[15px] font-normal">{data.data.courseName}</p>
                                     </div>
                                     :
                                     <div>
