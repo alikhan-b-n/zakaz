@@ -5,7 +5,7 @@ import {VideoComponent} from "./VideoComponent";
 export function VideoComponents(props){
     console.log(props)
     return(
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center mb-[70px]">
             <div className="text-[45px] my-[30px] font-semibold">Видео</div>
             {props.videos!=null ? props.videos.map((x, index) => (
                 <div className="" key={index}>
