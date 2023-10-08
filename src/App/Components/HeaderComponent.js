@@ -50,7 +50,7 @@ export function HeaderComponent() {
                 {
                     !isAuthenticated.call() ?
                         <Link to="/signin" className="flex pt-2">
-                            <p className="3xl:inline text-[#666666] font-bold font-montserrat pr-[12px] 3xl:text-[20px] xl:text-[16px] lg:text-[13px] mt-[-3px] md:hidden">Войти</p>
+                            <p className="3xl:inline text-[#666666] font-bold font-montserrat pr-[12px] 3xl:text-[25px] xl:text-[20px] lg:text-[17px] mt-[-3px] md:hidden">Войти</p>
                             <svg
                                 className="fill-orange-500 3xl:w-[25px] 3xl:h-[25px] xl:w-[21px] xl:h-[21px] lg:w-[18px] lg:h-[18px] sm:w-[17px] sm:h-[17px]"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 18" fill="none">
