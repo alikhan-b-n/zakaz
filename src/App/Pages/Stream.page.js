@@ -25,7 +25,7 @@ export function StreamPage(){
     }
 
     if (isError) {
-        return <p>{error.message}</p>
+        return <p>{error.response.data.message}</p>
     }
 
     let isStreamOn = data.data !== "";

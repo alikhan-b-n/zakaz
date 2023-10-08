@@ -19,7 +19,7 @@ function CoursesComponent() {
     }
 
     if (isError) {
-        return <h2>{error.message}</h2>;
+        return <p>{error.response.data.message}</p>
     }
 
     return (

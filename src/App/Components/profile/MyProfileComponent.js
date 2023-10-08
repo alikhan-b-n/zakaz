@@ -70,7 +70,7 @@ export const MyProfileComponent = (props) => {
     }
 
     if (isError) {
-        return <p>{error.message}</p>
+        return <p>{error.response.data.message}</p>
     }
 
     return (
