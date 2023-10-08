@@ -5,6 +5,7 @@ import {useMutation} from "react-query";
 import {useAuthHeader} from "react-auth-kit";
 import {useSignIn} from 'react-auth-kit'
 import axios from "axios";
+import {baseUrl} from "../../api/axios";
 
 const imageUrl = process.env.PUBLIC_URL + '../Assets/img.png'
 export const MyProfileComponent = (props) => {
@@ -17,7 +18,7 @@ export const MyProfileComponent = (props) => {
     const signIn = useSignIn()
     const formData = new FormData();
     const authHeader = useAuthHeader();
-    const avatarUrl = `http://193.70.125.178:4000/user/${props.user.id}/${props.user.avatar}`
+    const avatarUrl = `${baseUrl}/user/${props.user.id}/${props.user.avatar}`
 
 
     const onDrop = useCallback((acceptedFiles) => {

@@ -1,7 +1,9 @@
+import {baseUrl} from "../../../api/axios";
+
 export function VideoComponent(prop){
     let isFile = prop.video.url === "";
     let videoUrl = prop.video.url
-    let videoFile = `http://193.70.125.178:4000/video/${prop.elementId}/${prop.video.filename}`
+    let videoFile = `${baseUrl}/video/${prop.elementId}/${prop.video.filename}`
     return(
         <div className="flex justify-center mb-[50px]">
             <div className="3xl:w-[700px] xl:w-[500px] lg:w-[350px] sm:w-[300px]">

@@ -4,6 +4,7 @@ import axios from "axios";
 import {NoCourses} from "./NoCourses";
 import {useAuthUser} from "react-auth-kit";
 import {YourCourseComponent} from "./YourCourseComponent";
+import {baseUrl} from "../../api/axios";
 
 
 function YourCoursesComponent() {
@@ -11,7 +12,7 @@ function YourCoursesComponent() {
     const getUser = useAuthUser();
     const user = getUser();
 
-    const url = `http://193.70.125.178:4000/studentCourses/${user.id}/${pageNumber}`;
+    const url = `${baseUrl}/studentCourses/${user.id}/${pageNumber}`;
 
     const {isLoading, data, isError, error} = useQuery(
         ['my-courses', user.id, pageNumber],
@@ -31,7 +32,7 @@ function YourCoursesComponent() {
 
             <div className="flex 3xl:flex-row justify-center">
                 <button
-                    className={`focus:outline-none ${pageNumber - 1 === 0 ? 'text-gray-400' : 'text-black'}
+                    className={`focus:outline-none ${pageNumber - 1 <= 0 ? 'text-gray-400' : 'text-black'}
                     3xl:text-[50px] lg:text-[40px] mr-[20px]`}
                     disabled={pageNumber - 1 === 0}
                     onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}
@@ -46,7 +47,7 @@ function YourCoursesComponent() {
                     )) : <NoCourses/>}
                 </div>
                 <button
-                    className={`focus:outline-none ${data.data.numberOfPages - pageNumber === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-black'}
+                    className={`focus:outline-none ${data.data.numberOfPages - pageNumber <= 0 ? 'text-gray-400 cursor-not-allowed' : 'text-black'}
                     3xl:text-[50px] lg:text-[40px]`}
                     disabled={data.data.numberOfPages - pageNumber === 0}
                     onClick={() => setPageNumber((prev) => prev + 1)}

@@ -4,6 +4,7 @@ import {useForm} from 'react-hook-form';
 import {useMutation} from "react-query";
 import axios from "axios";
 import {useSignIn} from 'react-auth-kit'
+import {baseUrl} from "../api/axios";
 
 
 export const SignInPage = () => {
@@ -18,7 +19,7 @@ export const SignInPage = () => {
     }
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post('http://193.70.125.178:4000/users/login',
+        await axios.post(`${baseUrl}/users/login`,
             {
                 email: email,
                 password: password

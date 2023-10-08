@@ -3,10 +3,11 @@ import axios from "axios";
 import {useQuery} from "react-query";
 import {CourseComponent} from "./CourseComponent";
 import {NoCourses} from "./NoCourses";
+import {baseUrl} from "../../api/axios";
 
 function CoursesComponent() {
     const [pageNumber, setPageNumber] = useState(1);
-    const url = `http://193.70.125.178:4000/courses/${pageNumber}`;
+    const url = `${baseUrl}/courses/${pageNumber}`;
 
     const {isLoading, data, isError, error} = useQuery(
         ['courses', pageNumber],
@@ -26,7 +27,7 @@ function CoursesComponent() {
         <div className="carousel-container font-[600]">
             <div className="flex 3xl:flex-row">
                 <button
-                    className={`focus:outline-none ${pageNumber - 1 === 0 ? 'text-gray-400' : 'text-black'}
+                    className={`focus:outline-none ${pageNumber - 1 <= 0 ? 'text-gray-400' : 'text-black'}
                     3xl:text-[50px] lg:text-[40px] mr-[20px]`}
                     disabled={pageNumber - 1 === 0}
                     onClick={() => setPageNumber((prev) => Math.max(prev - 1, 1))}
@@ -41,7 +42,7 @@ function CoursesComponent() {
                     )) : <NoCourses/>}
                 </div>
                 <button
-                    className={`focus:outline-none ${data.data.numberOfPages - pageNumber === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-black'}
+                    className={`focus:outline-none ${data.data.numberOfPages - pageNumber <= 0 ? 'text-gray-400 cursor-not-allowed' : 'text-black'}
                     3xl:text-[50px] lg:text-[40px]`}
                     disabled={data.data.numberOfPages - pageNumber === 0}
                     onClick={() => setPageNumber((prev) => prev + 1)}

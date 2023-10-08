@@ -9,11 +9,12 @@ import {SidebarComponent} from "../Components/SidebarComponent";
 import {FooterComponent} from "../Components/FooterComponent";
 import {ElementsComponent} from "../Components/courses/elementComponents/ElementsComponent";
 import {StreamComponent} from "../Components/courses/stream/StreamComponent";
+import {baseUrl} from "../api/axios";
 
 export const CoursePage = () => {
     const { id } = useParams();
     const authHeader = useAuthHeader();
-    const url = `http://193.70.125.178:4000/auth/user/course/${id}`
+    const url = `${baseUrl}/auth/user/course/${id}`
 
 
     const {isLoading, data, isError, error } = useQuery(['course', id],  () =>

@@ -6,11 +6,12 @@ import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {FooterComponent} from "../Components/FooterComponent";
 import React from "react";
+import {baseUrl} from "../api/axios";
 
 export function StreamPage(){
     const {courseId} = useParams()
     const authHeader = useAuthHeader()
-    const url = `http://193.70.125.178:4000/auth/stream/${courseId}`
+    const url = `${baseUrl}/auth/stream/${courseId}`
 
     const {isLoading, data, isError, error } = useQuery(['stream', courseId],  () =>
         axios.get(url, {

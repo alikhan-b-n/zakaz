@@ -7,12 +7,15 @@ import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {FooterComponent} from "../Components/FooterComponent";
 import {VideoComponents} from "../Components/courses/elementComponents/VideoComponents";
+import {baseUrl} from "../api/axios";
+import {QuizComponents} from "../Components/courses/elementComponents/QuizComponents";
 
-export function ElementPage(){
-    const { elementId, courseId } = useParams();
-    const authHeader = useAuthHeader();
-    const url = `http://193.70.125.178:4000/auth/course/attend/${courseId}/${elementId}`
-    const {isLoading, data, isError, error } = useQuery(['element', courseId, elementId],  () =>
+export function ElementPage() {
+    const {elementId, courseId} = useParams()
+    const authHeader = useAuthHeader()
+    const url = `${baseUrl}/auth/course/attend/${courseId}/${elementId}`
+
+    const {isLoading, data, isError, error} = useQuery(['element', courseId, elementId], () =>
         axios.get(url, {
             headers: {
                 'Authorization': `${authHeader()}`
@@ -28,7 +31,7 @@ export function ElementPage(){
         return <p>{error.response.data.message}</p>
     }
 
-    return(
+    return (
         <div>
             <HeaderComponent/>
             <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
@@ -41,6 +44,7 @@ export function ElementPage(){
                     <p>{data.data.element.content}</p>
                 </div>
                 <VideoComponents videos={data.data.element.Videos} elementId={elementId}/>
+                <QuizComponents/>
             </div>
             <FooterComponent/>
         </div>

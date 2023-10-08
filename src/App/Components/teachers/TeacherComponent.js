@@ -1,7 +1,8 @@
 import React from "react";
+import {baseUrl} from "../../api/axios";
 
 export function TeacherComponent(prop) {
-    const imgUrl =  `${`http://193.70.125.178:4000/user/${prop.teacher.id}/` + prop.teacher.avatar }`
+    const imgUrl =  `${`${baseUrl}/user/${prop.teacher.id}/` + prop.teacher.avatar }`
 
     return (
         <div className="grid 3xl:grid-cols-5 lg:grid-cols-1 flex 3xl:w-[1420] mx-auto bg-white mb-[40px] rounded font-medium">

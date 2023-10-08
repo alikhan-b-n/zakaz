@@ -3,6 +3,7 @@ import {useMutation} from "react-query";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {useForm} from "react-hook-form";
+import {baseUrl} from "../api/axios";
 
 
 export const SignUpPage = () => {
@@ -16,7 +17,7 @@ export const SignUpPage = () => {
     const [showPwd, setShowPwd] = useState(false)
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post('http://193.70.125.178:4000/users/signup', {
+        await axios.post(`${baseUrl}/users/signup`, {
                 username: "dsa",
                 email: email,
                 password: password,

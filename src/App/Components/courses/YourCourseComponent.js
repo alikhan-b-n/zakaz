@@ -1,10 +1,11 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import {baseUrl} from "../../api/axios";
 
 export const YourCourseComponent = (prop) => {
     const navigate = useNavigate();
     const divStyle = {
-        'backgroundImage': `url(${'http://193.70.125.178:4000/static/' + prop.course.image})`
+        'backgroundImage': `url(${baseUrl + '/static/' + prop.course.image})`
     }
 
     const handleClick = () => {

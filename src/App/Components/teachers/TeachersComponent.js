@@ -2,10 +2,11 @@ import React, {useState} from "react";
 import axios from "axios";
 import {useQuery} from "react-query";
 import {TeacherComponent} from "./TeacherComponent";
+import {baseUrl} from "../../api/axios";
 
 function TeachersComponent() {
     const [pageNumber, setPageNumber] = useState(1);
-    const url = `http://193.70.125.178:4000/teachers/${pageNumber}`;
+    const url = `${baseUrl}/teachers/${pageNumber}`;
 
     const {isLoading, data, isError, error} = useQuery(
         ['teachers', pageNumber],

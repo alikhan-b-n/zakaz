@@ -1,9 +1,10 @@
 import {useQuery} from "react-query";
 import axios from "axios";
 import React from "react";
+import {baseUrl} from "../../../api/axios";
 
 export function MyTeacher(props){
-    const url = `http://193.70.125.178:4000/teacherinfo/${props.id}`
+    const url = `${baseUrl}/teacherinfo/${props.id}`
     const {isLoading, data, isError, error } = useQuery(['course', props.id],  () =>
         axios.get(url)
     );
