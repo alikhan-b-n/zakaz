@@ -24,7 +24,7 @@ export function VideoComponent(prop){
                         </video>
                 }
                 <div className="flex justify-center mt-[10px] mb-[20px]">
-                    <h2 className="text-[30px]">{prop.video.name}</h2>
+                    <h2 className="3xl:text-[30px] xl:text-[24px] md:text-[20px]">{prop.video.name}</h2>
                 </div>
             </div>
         </div>
