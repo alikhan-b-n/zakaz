@@ -59,51 +59,52 @@ export function QuizComponents() {
 
     return (
         <div className="flex flex-col justify-center items-center mb-[70px]">
-            <div>{data.data.name}</div>
-            <div className="flex gap-x-1">
-                <span>Number of available attempts</span>
-            </div>
+            <div className="bg-white py-[20px] px-[50px] rounded-xl">
+                <div>{data.data.name}</div>
+                <div className="flex gap-x-1">
+                    <span>Number of available attempts</span>
+                </div>
 
-            <div>
+                <div>
 
-                <h2 className="bold underline">{data.data.attempt}</h2>
-                <div className="my-[30px]">
-                    {
-                        currentQuestionIndex >= data.data.QuizQuestions.length ?
-                            <div className="flex">
-                                {
-                                    isLoadingSend ?
-                                        <div>
-                                            <p>Loading</p>
-                                        </div>
-                                        :
-                                        <div>
+                    <h2 className="bold underline">{data.data.attempt}</h2>
+                    <div className="my-[30px]">
+                        {
+                            currentQuestionIndex >= data.data.QuizQuestions.length ?
+                                <div className="flex">
+                                    {
+                                        isLoadingSend ?
                                             <div>
-                                                {result}
+                                                <p>Loading</p>
                                             </div>
+                                            :
                                             <div>
-                                                {attempts}
+                                                <div>
+                                                    {result}
+                                                </div>
+                                                <div>
+                                                    {attempts}
+                                                </div>
                                             </div>
-                                        </div>
-                                }
-                            </div>
-                            :
-                            <div>
-                                <h3>{question.question}</h3>
-                                <div className="flex flex-col">
-                                    {question.answers.map((answer, index) => (
-                                        <button key={index}
-                                                onClick={() => handleAnswer(answer)}>
-                                            {answer}
-                                        </button>
-                                    ))}
+                                    }
                                 </div>
-                            </div>
-                    }
-
+                                :
+                                <div>
+                                    <h3>{question.question}</h3>
+                                    <div className="flex flex-col">
+                                        {question.answers.map((answer, index) => (
+                                            <button key={index}
+                                                    onClick={() => handleAnswer(answer)}
+                                            className="flex justify-start">
+                                                *{answer}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                        }
+                    </div>
                 </div>
             </div>
-
         </div>
     )
 }
