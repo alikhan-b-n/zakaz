@@ -14,6 +14,7 @@ export function QuizComponents() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const quizUrl = `${baseUrl}/auth/quizAttempt/${courseId}/${elementId}`
 
+
     const {isLoading, data, isError, error} = useQuery(['element/quiz', courseId, elementId], () => axios.get(quizUrl, {
         headers: {
             'Authorization': `${authHeader()}`
@@ -59,54 +60,51 @@ export function QuizComponents() {
 
     return (
         <div className="flex flex-col justify-center items-center mb-[70px]">
-            <div>{data.data.name}</div>
-            <div className="flex gap-x-1">
-                <span>Number of available attempts</span>
-            </div>
-
-            <div>
-
-                <h2 className="bold underline">{data.data.attempt}</h2>
-                <div className="my-[30px]">
-                    {
-                        currentQuestionIndex >= data.data.QuizQuestions.length ?
-                            <div className="flex">
-                                {
-                                    isLoadingSend ?
-                                        <div>
-                                            <p>Loading</p>
-                                        </div>
-                                        :
-                                        <div>
+            <div className="bg-white rounded-xl py-[20px] px-[30px]">
+                <div className="text-[30px]">{data.data.name}</div>
+                <div className="text-[24px] flex gap-x-1">
+                    <span>Number of available attempts</span>
+                </div>
+                <div>
+                    <h2 className="bold underline">{data.data.attempt}</h2>
+                    <div className="my-[30px]">
+                        {
+                            currentQuestionIndex >= data.data.QuizQuestions.length ?
+                                <div className="flex">
+                                    {
+                                        isLoadingSend ?
                                             <div>
-                                                {result}
+                                                <p>Loading</p>
                                             </div>
+                                            :
                                             <div>
-                                                {attempts}
+                                                <div>
+                                                    {result}
+                                                </div>
+                                                <div>
+                                                    {attempts}
+                                                </div>
                                             </div>
-                                        </div>
-                                }
-                            </div>
-                            :
-                            <div>
-                                <h3>{question.question}</h3>
-                                <div className="flex flex-col">
-                                    {question.answers.map((answer, index) => (
-                                        <div className="flex gap-x-[5px]">
-                                            <p>{answer}</p>
-                                            <button key={index}
-                                                    onClick={() => handleAnswer(answer)}>
-                                            Submit
-                                            </button>
-                                        </div>
-                                    ))}
+                                    }
                                 </div>
-                            </div>
-                    }
-
+                                :
+                                <div className="bg-white text-[20px]">
+                                    <h3>{question.question}</h3>
+                                    <div className="flex flex-col">
+                                        {question.answers.map((answer, index) => (
+                                            <div className="flex bg-gray-100 rounded-xl mb-[5px] pl-[10px]">
+                                                <button key={index}
+                                                        onClick={() => handleAnswer(answer)} className="w-full">
+                                                    <p className="w-full">{answer}</p>
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                        }
+                    </div>
                 </div>
             </div>
-
         </div>
     )
 }
