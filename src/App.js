@@ -13,6 +13,7 @@ import "./styles/index.css"
 import {CoursePage} from "./App/Pages/Course.page";
 import {ElementPage} from "./App/Pages/Element.page";
 import {StreamPage} from "./App/Pages/Stream.page";
+import {QuizPage} from "./App/Pages/Quiz.page";
 const queryClient = new QueryClient()
 
 export function App() {
@@ -29,6 +30,7 @@ export function App() {
                     <Route path="/profile" element={<MyProfilePage/>}/>
                     <Route path="/course/:id" element={<CoursePage/>}/>
                     <Route path="/course/:courseId/element/:elementId" element={<ElementPage/>}/>
+                    <Route path="/course/:courseId/element/:elementId/weeklyQuiz" element={<QuizPage/>}/>
                     <Route path="/course/:courseId/stream" element={<StreamPage/>}/>
                 </Route>
             </Routes>

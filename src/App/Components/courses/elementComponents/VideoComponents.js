@@ -3,7 +3,6 @@ import {NoVideo} from "./NoVideo";
 import {VideoComponent} from "./VideoComponent";
 
 export function VideoComponents(props){
-    console.log(props.videos)
     return(
         <div className="flex flex-col justify-center items-center mb-[70px]">
             <div className="text-[45px] my-[30px] font-semibold">Видео</div>

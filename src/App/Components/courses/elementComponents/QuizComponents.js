@@ -1,50 +1,55 @@
-import {baseUrl} from "../../../api/axios";
-import {useMutation, useQuery} from "react-query";
-import axios from "axios";
-import {useParams} from "react-router-dom";
-import {useAuthHeader} from "react-auth-kit";
-import React, {useState} from "react";
+import {baseUrl} from "../../../api/axios"
+import {useMutation, useQuery} from "react-query"
+import axios from "axios"
+import {useParams} from "react-router-dom"
+import {useAuthHeader} from "react-auth-kit"
+import React, {useState} from "react"
+import PropTypes from 'prop-types'
 
-export function QuizComponents() {
+QuizComponents.propTypes = {
+    urlGet: PropTypes.string,
+    urlSend: PropTypes.string,
+};
+
+export function QuizComponents(prop) {
+
     const authHeader = useAuthHeader()
     const {elementId, courseId} = useParams()
     const [answers, setAnswers] = useState([])
     const [result, setResult] = useState()
     const [attempts, setAttempts] = useState()
+    const [id, setId] = useState(1)
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const quizUrl = `${baseUrl}/auth/quizAttempt/${courseId}/${elementId}`
+    const quizUrlGet = prop.urlGet != null ? `${baseUrl}/${prop.urlGet}` : `${baseUrl}/auth/quizAttempt/${courseId}/${elementId}`
+    const {isLoading, data, isError, error, isSuccess} = useQuery(prop.urlGet != null ? ['element/weekly/quiz', courseId, elementId] : ['element/quiz', courseId, elementId],
+        () => axios.get(quizUrlGet, {
+            headers: {
+                'Authorization': `${authHeader()}`
+            }
+        }))
+
+    let quizUrlSend;
+    if (isSuccess) {
+        quizUrlSend = prop.urlSend != null ? `${baseUrl}/${prop.urlSend}` : `${baseUrl}/auth/quizCheck/${courseId}/${elementId}`
+    }
 
 
-    const {isLoading, data, isError, error} = useQuery(['element/quiz', courseId, elementId], () => axios.get(quizUrl, {
-        headers: {
-            'Authorization': `${authHeader()}`
+    const {mutate, isLoadingSend} = useMutation(async () => {
+        setId(data.data.id)
+        const url = `${quizUrlSend}/${id}`;
+        const response = await axios.post(url, {answers: answers}, {
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8',
+                'Authorization': `${authHeader()}`
+            }
+        });
+        return response.data;
+    }, {
+        onSuccess: (data) => {
+            setResult(data.result)
+            setAttempts(data.status)
         }
-    }))
-
-    const {mutate, isLoadingSend} = useMutation(async () =>
-        await axios.post(`${baseUrl}/auth/quizCheck/${courseId}/${elementId}`,
-            {
-                answers: answers
-            }, {
-                headers: {
-                    'Content-Type': 'application/json; charset=UTF-8',
-                    'Authorization': `${authHeader()}`
-                }
-            }), {
-        onSuccess: (successData) => {
-            setResult(successData.data.result)
-            setAttempts(successData.data.status)
-        }
-    })
-    const handleAnswer = (answer) => {
-        setAnswers(prevAnswers => [...prevAnswers, answer])
-        setCurrentQuestionIndex(prevIndex => prevIndex + 1)
-
-        // Check if all questions have been answered
-        if (currentQuestionIndex + 1 === data.data.QuizQuestions.length) {
-            mutate(answers);
-        }
-    };
+    });
 
     if (isLoading) {
         return <p>Loading...</p>
@@ -53,6 +58,17 @@ export function QuizComponents() {
     if (isError) {
         return <p>{error.response.data.message}</p>
     }
+
+    const handleAnswer = (answer) => {
+        setAnswers(prevAnswers => [...prevAnswers, answer])
+        setCurrentQuestionIndex(prevIndex => prevIndex + 1)
+
+        // Check if all questions have been answered
+        if (currentQuestionIndex + 1 === data.data.QuizQuestions.length) {
+            answers.push(answer)
+            mutate(answers);
+        }
+    };
 
     const question = data.data.QuizQuestions[currentQuestionIndex];
 
@@ -90,9 +106,9 @@ export function QuizComponents() {
                                     <h3>{question.question}</h3>
                                     <div className="flex flex-col">
                                         {question.answers.map((answer, index) => (
-                                            <div className="flex bg-gray-100 rounded-xl mb-[5px] pl-[10px]">
-                                                <button key={index}
-                                                        onClick={() => handleAnswer(answer)} className="w-full">
+                                            <div key={index} className="flex bg-gray-100 rounded-xl mb-[5px] pl-[10px]">
+                                                <button
+                                                    onClick={() => handleAnswer(answer)} className="w-full">
                                                     <p className="w-full">{answer}</p>
                                                 </button>
                                             </div>

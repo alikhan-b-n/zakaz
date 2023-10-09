@@ -1,6 +1,6 @@
 import {useQuery} from "react-query";
 import axios from "axios";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useAuthHeader} from "react-auth-kit";
 import React from "react";
 import {HeaderComponent} from "../Components/HeaderComponent";
@@ -13,6 +13,7 @@ import {QuizComponents} from "../Components/courses/elementComponents/QuizCompon
 export function ElementPage() {
     const {elementId, courseId} = useParams()
     const authHeader = useAuthHeader()
+    const navigate = useNavigate()
     const url = `${baseUrl}/auth/course/attend/${courseId}/${elementId}`
 
     const {isLoading, data, isError, error} = useQuery(['element', courseId, elementId], () =>
@@ -28,6 +29,9 @@ export function ElementPage() {
     }
 
     if (isError) {
+        if (error.response.data.message === "pass daliy quiz"){
+            navigate(`/course/${courseId}/element/${elementId}/weeklyQuiz`)
+        }
         return <p>{error.response.data.message}</p>
     }
 
