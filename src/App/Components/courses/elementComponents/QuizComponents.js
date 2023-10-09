@@ -21,23 +21,18 @@ export function QuizComponents(prop) {
     const [id, setId] = useState(1)
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const quizUrlGet = prop.urlGet != null ? `${baseUrl}/${prop.urlGet}` : `${baseUrl}/auth/quizAttempt/${courseId}/${elementId}`
-    const {isLoading, data, isError, error, isSuccess} = useQuery(prop.urlGet != null ? ['element/weekly/quiz', courseId, elementId] : ['element/quiz', courseId, elementId],
+    const {isLoading, data, isError, error} = useQuery(prop.urlGet != null ? ['element/weekly/quiz', courseId, elementId] : ['element/quiz', courseId, elementId],
         () => axios.get(quizUrlGet, {
             headers: {
                 'Authorization': `${authHeader()}`
             }
         }))
 
-    let quizUrlSend;
-    if (isSuccess) {
-        quizUrlSend = prop.urlSend != null ? `${baseUrl}/${prop.urlSend}` : `${baseUrl}/auth/quizCheck/${courseId}/${elementId}`
-    }
-
 
     const {mutate, isLoadingSend} = useMutation(async () => {
         setId(data.data.id)
-        const url = `${quizUrlSend}/${id}`;
-        const response = await axios.post(url, {answers: answers}, {
+        let quizUrlSend = prop.urlSend != null ? `${baseUrl}/${prop.urlSend}/${id}` : `${baseUrl}/auth/quizCheck/${courseId}/${elementId}`
+        const response = await axios.post(quizUrlSend, {answers: answers}, {
             headers: {
                 'Content-Type': 'application/json; charset=UTF-8',
                 'Authorization': `${authHeader()}`
