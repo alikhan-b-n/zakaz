@@ -59,52 +59,54 @@ export function QuizComponents() {
 
     return (
         <div className="flex flex-col justify-center items-center mb-[70px]">
-            <div className="bg-white py-[20px] px-[50px] rounded-xl">
-                <div>{data.data.name}</div>
-                <div className="flex gap-x-1">
-                    <span>Number of available attempts</span>
-                </div>
+            <div>{data.data.name}</div>
+            <div className="flex gap-x-1">
+                <span>Number of available attempts</span>
+            </div>
 
-                <div>
+            <div>
 
-                    <h2 className="bold underline">{data.data.attempt}</h2>
-                    <div className="my-[30px]">
-                        {
-                            currentQuestionIndex >= data.data.QuizQuestions.length ?
-                                <div className="flex">
-                                    {
-                                        isLoadingSend ?
+                <h2 className="bold underline">{data.data.attempt}</h2>
+                <div className="my-[30px]">
+                    {
+                        currentQuestionIndex >= data.data.QuizQuestions.length ?
+                            <div className="flex">
+                                {
+                                    isLoadingSend ?
+                                        <div>
+                                            <p>Loading</p>
+                                        </div>
+                                        :
+                                        <div>
                                             <div>
-                                                <p>Loading</p>
+                                                {result}
                                             </div>
-                                            :
                                             <div>
-                                                <div>
-                                                    {result}
-                                                </div>
-                                                <div>
-                                                    {attempts}
-                                                </div>
+                                                {attempts}
                                             </div>
-                                    }
-                                </div>
-                                :
-                                <div>
-                                    <h3>{question.question}</h3>
-                                    <div className="flex flex-col">
-                                        {question.answers.map((answer, index) => (
+                                        </div>
+                                }
+                            </div>
+                            :
+                            <div>
+                                <h3>{question.question}</h3>
+                                <div className="flex flex-col">
+                                    {question.answers.map((answer, index) => (
+                                        <div className="flex gap-x-[5px]">
+                                            <p>{answer}</p>
                                             <button key={index}
-                                                    onClick={() => handleAnswer(answer)}
-                                            className="flex justify-start">
-                                                *{answer}
+                                                    onClick={() => handleAnswer(answer)}>
+                                            Submit
                                             </button>
-                                        ))}
-                                    </div>
+                                        </div>
+                                    ))}
                                 </div>
-                        }
-                    </div>
+                            </div>
+                    }
+
                 </div>
             </div>
+
         </div>
     )
 }
