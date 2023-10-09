@@ -56,17 +56,15 @@ export function QuizComponents() {
 
     const question = data.data.QuizQuestions[currentQuestionIndex];
 
-    console.log(result)
-
     return (
         <div className="flex flex-col justify-center items-center mb-[70px]">
             <div className="bg-white rounded-xl py-[20px] px-[30px]">
                 <div className="text-[30px]">{data.data.name}</div>
                 <div className="text-[24px] flex gap-x-1">
                     <span>Number of available attempts</span>
+                    <h2 className="bold underline">{data.data.attempts}</h2>
                 </div>
                 <div>
-                    <h2 className="bold underline">{data.data.attempt}</h2>
                     <div className="my-[30px]">
                         {
                             currentQuestionIndex >= data.data.QuizQuestions.length ?
