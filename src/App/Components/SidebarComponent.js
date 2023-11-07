@@ -21,7 +21,7 @@ export function SidebarComponent(prop) {
                 <Link to="/users">
                     <div className="work-icon">
                         <svg
-                            className=" 3xl:mt-[7px] 3xl:w-[37px] 3xl:h-[34px] xl:w-[31px] xl:h-[28px] lg:w-[28px] lg:h-[25px] sm:w-[25px] sm:h-[22px]"
+                            className="mt-[7px] w-[40px] h-[40px]"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="#666666">
                             <path d="M11.9 4C6.3 4 9 11.3 9 11.3C9.6 12.3 10.4 12.1 10.4 12.8C10.4 13.4 9.7 13.6

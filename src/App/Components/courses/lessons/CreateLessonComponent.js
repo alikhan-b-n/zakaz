@@ -10,9 +10,9 @@ export function CreateLessonComponent() {
     const [lessonName, setLessonName] = useState('');
     const [content, setContent] = useState('');
     const [quizName, setQuizName] = useState('')
-    const [questions, setQuestions] = useState(0)
-    const [answers, setAnswers] = useState(0)
-    const [rightAnswers, setRightAnswers] = useState(0)
+    const [questions, setQuestions] = useState([''])
+    const [answers, setAnswers] = useState([''])
+    const [rightAnswers, setRightAnswers] = useState([''])
     const [courseId, setCourseId] = useState(0)
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
@@ -95,6 +95,15 @@ export function CreateLessonComponent() {
                             value={quizName}
                             required
                         />
+                        {questions.map((question, index) => (
+                            <label key={index}>
+                                Question {index + 1}:
+                                <input type="text" value={question} onChange={e => {
+                                    const newQuestions = [...questions];
+                                    newQuestions[index] = e.target.value;
+                                    setQuestions(newQuestions);
+                                }} />
+                            </label>))}
                         <label className="pl-[18px]">ID курса</label>
                         <input
                             type="text"
