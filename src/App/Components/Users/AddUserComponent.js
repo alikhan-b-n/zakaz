@@ -13,6 +13,7 @@ export function AddUserComponent() {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
+    const [patronym, setPatronym] = useState('');
     const [roleId, setRoleId] = useState(1)
     const navigate = useNavigate();
     const {register, handleSubmit, formState: {errors}} = useForm()
@@ -28,7 +29,7 @@ export function AddUserComponent() {
                 password: password,
                 surname: surname,
                 name: name,
-                patronymic: "das",
+                patronymic: patronym,
                 roleId: roleId
             }, {
                 headers: {
@@ -93,6 +94,7 @@ export function AddUserComponent() {
                             value={name}
                             required
                             placeholder="Имя"/>
+
                         <label className="pl-[18px]">Фамилие</label>
                         <input
                             type="text"
@@ -101,6 +103,19 @@ export function AddUserComponent() {
                             placeholder="Фамилие"
                             onChange={(e) => {
                                 setSurname(e.target.value)
+                            }}
+                            value={surname}
+                            required
+                        />
+
+                        <label className="pl-[18px]">Отчество</label>
+                        <input
+                            type="text"
+                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                            name="patronym"
+                            placeholder="Отчество"
+                            onChange={(e) => {
+                                setPatronym(e.target.value)
                             }}
                             value={surname}
                             required

@@ -2,9 +2,22 @@ import {baseUrl} from "../../api/axios";
 
 export function UserComponent(prop) {
     const divStyle = {
-        'backgroundImage': `url(${baseUrl}/user/${prop.user.id}/${prop.user.avatar})`
+        'backgroundImage': `url(${baseUrl}/user/${prop.user.Id}/${prop.user.avatar})`
     }
-
+    var kind;
+    switch (prop.user.roleId){
+        case 3:
+            kind = "Админ"
+            break
+        case 2:
+            kind = "Учитель"
+            break
+        case 1:
+            kind = "Ученик"
+            break
+    }
+    if (prop.user.Id === 1)
+        console.log(prop.user.roleId)
     return(
         <div className="grid 3xl:grid-cols-5 lg:grid-cols-1 flex 3xl:w-[1420] mx-auto bg-white mb-[40px] rounded font-medium">
             <div className="col-span-1 3xl:border-r-4 border-r-[#E2E9EF] lg:border-r-0 lg:border-b-4 p-[10px] flex lg:flex-row
@@ -18,6 +31,7 @@ export function UserComponent(prop) {
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.name}</p>
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.surname}</p>
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.lastQuiz}</p>
+                    <p className="3xl:text-[18px] sm:text-[15px]">{kind}</p>
                 </div>
             </div>
         </div>

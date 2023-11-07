@@ -35,9 +35,7 @@ export function UsersComponent() {
                 </button>
                 <div className="flex flex-col mr-[20px]">
                     {data!=null ? data.data.users.map((x) => (
-                        <div className="" key={x.id}>
-                            <UserComponent user={x}/>
-                        </div>
+                            <UserComponent key={x.Id} user={x}/>
                     )) : <NoUsers/>}
                 </div>
                 <button
