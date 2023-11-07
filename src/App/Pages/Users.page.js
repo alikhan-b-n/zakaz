@@ -17,7 +17,8 @@ export function UsersPage() {
                     m-auto">Пользователи</h2>
                     <div className="mt-5">
                         <UsersComponent/>
-                        <Link to="/usersAdd" className="">add</Link>
+                        <Link to="/usersAdd" className="py-5 px-10 rounded-xl bg-orange-500 hover:bg-green-dark
+                    justify-self-center text-white text-2xl mx-[45px]">Add</Link>
                     </div>
                 </div>
             </div>

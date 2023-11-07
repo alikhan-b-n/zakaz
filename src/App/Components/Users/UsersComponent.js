@@ -42,7 +42,7 @@ export function UsersComponent() {
                 </div>
                 <button
                     className={`focus:outline-none ${data.data.numberOfPages - pageNumber <= 0 ? 'text-gray-400 cursor-not-allowed' : 'text-black'}
-                    3xl:text-[50px] lg:text-[40px]`}
+                    3xl:text-[50px] lg:text-[40px] `}
                     disabled={data.data.numberOfPages - pageNumber === 0}
                     onClick={() => setPageNumber((prev) => prev + 1)}
                 >
