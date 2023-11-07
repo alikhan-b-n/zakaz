@@ -5,25 +5,21 @@ import {useAuthHeader} from "react-auth-kit";
 import {useMutation} from "react-query";
 import axios from "axios";
 import {baseUrl} from "../../api/axios";
-import Dropdown from "react-dropdown";
-
 export function CreateCourseComponent() {
     const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
+    const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0)
+    const [teacherId, setTeacherId] = useState(0)
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
-    const options = [
-        1, 2, 3
-    ];
-    const defaultOption = options[0];
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post(`${baseUrl}/adminPanel/createUser`, {
-                surname: surname,
+        await axios.post(`${baseUrl}/adminPanel/createLesson`, {
+                description: description,
                 name: name,
-                roleId: price
+                price: price,
+                teacherId: teacherId
             }, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +52,7 @@ export function CreateCourseComponent() {
                             <h1 className="flex-1 mb-5 text-2xl text-center mr-5">Добавлене курса</h1>
                         </div>
 
-                        <label className="pl-[18px]">Имя</label>
+                        <label className="pl-[18px]">Название курса</label>
                         <input
                             type="text"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
@@ -67,22 +63,50 @@ export function CreateCourseComponent() {
                             value={name}
                             required
                             placeholder="Имя"/>
-                        <label className="pl-[18px]">Фамилие</label>
+
+                        <label className="pl-[18px]">Id учителя</label>
                         <input
-                            type="text"
+                            type="number"
+                            step="any"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
-                            name="surname"
-                            placeholder="Фамилие"
+                            name="teacher_id"
                             onChange={(e) => {
-                                setSurname(e.target.value)
+                                setTeacherId(e.target.value)
                             }}
-                            value={surname}
+                            value={teacherId}
+                            required
+                            placeholder="Id Учителя"/>
+
+                        <label className="pl-[18px]">Цена курса</label>
+                        <input
+                            type="number"
+                            step="any"
+                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                            name="price"
+                            onChange={(e) => {
+                                setPrice(e.target.value)
+                            }}
+                            value={price}
+                            required
+                            placeholder="Цена"/>
+
+                        <label className="pl-[18px]">Описание</label>
+                        <textarea
+                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                            name="description"
+                            placeholder="Описание"
+                            onChange={(e) => {
+                                setDescription(e.target.value)
+                            }}
+                            value={description}
                             required
                         />
                         <div className="flex justify-center">
                             <button onClick={handleSubmit(() => mutate({
                                 name: name,
-                                surname: surname,
+                                description: description,
+                                price: price,
+                                teacherId: teacherId
                             }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Зарегестрировать
                             </button>

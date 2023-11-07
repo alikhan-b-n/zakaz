@@ -8,6 +8,7 @@ import "./styles/index.css"
 import React from "react";
 import {UsersToAddPage} from "./App/Pages/UsersToAdd.page";
 import {UsersPage} from "./App/Pages/Users.page";
+import {CoursesToCreatePage} from "./App/Pages/CoursesToCreate.page";
 const queryClient = new QueryClient()
 
 export function App() {
@@ -19,6 +20,7 @@ export function App() {
                 <Route path="/" element={<CoursesPage/>}/>
                 <Route path="/usersAdd" element={<UsersToAddPage/>}/>
                 <Route path="/users" element={<UsersPage/>}/>
+                <Route path="/courseCreate" element={<CoursesToCreatePage/>}/>
             </Routes>
             <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>
         </QueryClientProvider>

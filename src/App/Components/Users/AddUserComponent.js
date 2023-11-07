@@ -33,7 +33,7 @@ export function AddUserComponent() {
                 roleId: roleId
             }, {
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': "multipart/form-data; boundary=<calculated when request is sent>",
                     'Authorization': `${authHeader()}`
                 }
             }

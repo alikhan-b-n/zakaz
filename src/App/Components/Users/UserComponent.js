@@ -31,6 +31,7 @@ export function UserComponent(prop) {
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.name}</p>
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.surname}</p>
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.lastQuiz}</p>
+                    <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.Id}</p>
                     <p className="3xl:text-[18px] sm:text-[15px]">{kind}</p>
                 </div>
             </div>
