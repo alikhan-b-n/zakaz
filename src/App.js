@@ -9,6 +9,7 @@ import React from "react";
 import {UsersToAddPage} from "./App/Pages/UsersToAdd.page";
 import {UsersPage} from "./App/Pages/Users.page";
 import {CoursesToCreatePage} from "./App/Pages/CoursesToCreate.page";
+import {LessonsToCreate} from "./App/Pages/LessonsToCreate.page";
 const queryClient = new QueryClient()
 
 export function App() {
@@ -21,6 +22,7 @@ export function App() {
                 <Route path="/usersAdd" element={<UsersToAddPage/>}/>
                 <Route path="/users" element={<UsersPage/>}/>
                 <Route path="/courseCreate" element={<CoursesToCreatePage/>}/>
+                <Route path="/lessonCreate" element={<LessonsToCreate/>}/>
             </Routes>
             <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>
         </QueryClientProvider>

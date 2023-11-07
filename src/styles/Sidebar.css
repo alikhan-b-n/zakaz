@@ -1,11 +1,9 @@
 nav {
-    float: left;
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     background: transparent;
 }
-
 nav ul {
     text-align: center;
     display: flex;
@@ -14,7 +12,6 @@ nav ul {
 
 nav ul a {
     position: relative;
-    width: 50px;
     cursor: pointer;
     text-transform: uppercase;
     transition:all .4s ease-out;
@@ -25,7 +22,7 @@ nav ul a:after {
     background: white;
     color: #666;
     top:0;
-    left: 60px;
+    padding-left: 20px;
     width: 70px; height: 100%;
     opacity:.5;
     transform: perspective(500px) rotateY(90deg);
@@ -43,19 +40,18 @@ nav ul a:nth-child(1):after {
 nav ul a:nth-child(2):after {
     content: "Юзеры";
     line-height: 88px;
-    width: 20px;
 }
 
 
-
 nav ul a:hover {
-    transform: translateX(-70px);
+    transform: translateX(-72px);
 }
 
 nav ul a:hover:after {
     opacity: 1;
-    transform: perspective(500px) rotateY(0deg) scale(1) ;
+    transform: perspective(400px) rotateY(0deg) scale(1) ;
 }
+
 
 nav ul a > div {
     display: inline-block;

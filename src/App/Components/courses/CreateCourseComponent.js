@@ -5,6 +5,7 @@ import {useAuthHeader} from "react-auth-kit";
 import {useMutation} from "react-query";
 import axios from "axios";
 import {baseUrl} from "../../api/axios";
+
 export function CreateCourseComponent() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');

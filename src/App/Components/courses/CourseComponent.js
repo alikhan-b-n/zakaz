@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom";
 import {baseUrl} from "../../api/axios";
 
 
-
 export const CourseComponent = (prop) => {
     const navigate = useNavigate()
     const divStyle = {
