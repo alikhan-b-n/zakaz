@@ -3,6 +3,7 @@ import axios from "axios";
 import {useQuery} from "react-query";
 import {TeacherComponent} from "./TeacherComponent";
 import {baseUrl} from "../../api/axios";
+import {NoTeachers} from "./NoTeachersComponent";
 
 function TeachersComponent() {
     const [pageNumber, setPageNumber] = useState(1);
@@ -12,7 +13,6 @@ function TeachersComponent() {
         ['teachers', pageNumber],
         () => axios.get(url)
     );
-
 
     if (isLoading) {
         return <h2>Loading...</h2>;
@@ -34,11 +34,13 @@ function TeachersComponent() {
                     {"<"}
                 </button>
                 <div className="mr-[20px] flex flex-col">
-                    {data.data.teachers.map((x) => (
+                    {data.data.teachers != null ? data.data.teachers.map((x) => (
                         <div className="" key={x.id}>
                             <TeacherComponent teacher={x}/>
                         </div>
-                    ))}
+                    ))
+                    :
+                    <NoTeachers/>}
                 </div>
                 <button
                     className={`focus:outline-none ${data.data.numberOfPages - pageNumber === 0 ? 'text-gray-400 cursor-not-allowed' : 'text-black'}

@@ -48,7 +48,6 @@ export function HeaderComponent() {
                 </Link>
 
                 {
-                    !isAuthenticated.call() ?
                         <Link to="/signin" className="flex pt-2">
                             <p className="3xl:inline text-[#666666] font-bold font-montserrat pr-[12px] 3xl:text-[25px] xl:text-[20px] lg:text-[17px] mt-[-3px] md:hidden">Войти</p>
                             <svg
@@ -59,21 +58,7 @@ export function HeaderComponent() {
                                     fill="#666666"/>
                             </svg>
                         </Link>
-                        :
-                        <Link to="/profile">
-                            <svg
-                                className=" 3xl:mt-[7px] 3xl:w-[37px] 3xl:h-[34px] xl:w-[31px] xl:h-[28px] lg:w-[28px] lg:h-[25px] sm:w-[25px] sm:h-[22px]"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="#666666">
-                                <path d="M11.9 4C6.3 4 9 11.3 9 11.3C9.6 12.3 10.4 12.1 10.4 12.8C10.4 13.4 9.7 13.6
-                                    9 13.7C7.9 13.7 6.9 13.5 5.9 15.3C5.3 16.4 5 20 5 20H18.7C18.7 20 18.4 16.4 17.9 15.3C16.9
-                                    13.4 15.9 13.7 14.8 13.6C14.1 13.5 13.4 13.3 13.4 12.7C13.4 12.1 14.2 12.3 14.8 11.2C14.8 11.3 17.5 4 11.9 4V4Z"
-                                      fill="#666666"/>
-                            </svg>
-                        </Link>
-
                 }
-
                 {
                     !isAuthenticated.call() ?
                         <div/> :

@@ -21,10 +21,6 @@ function CoursesPage() {
                             <CoursesComponent/>
                         </div>
                     </div>
-                    {/*<div className="flex flex-col ">*/}
-                    {/*    <h2 className="inline-block 3xl:mt-[55px] lg:mt-0 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px] m-auto ">Нужна помощь?</h2>*/}
-                    {/*    <Appeal/>*/}
-                    {/*</div>*/}
                 </div>
             </div>
             <FooterComponent/>

@@ -24,7 +24,7 @@ nav ul a:after {
     background: white;
     color: #666;
     top:0;
-    left: 70px;
+    left: 60px;
     opacity:.5;
     transform: perspective(500px) rotateY(90deg);
     transform-origin: 0 100%;
@@ -32,19 +32,14 @@ nav ul a:after {
 }
 
 nav ul a:nth-child(1):after {
-    content: "Главная";
-    line-height: 88px;
-    width: 100px;
-}
-nav ul a:nth-child(2):after {
     content: "Курсы";
     line-height: 88px;
-    width: 100px;
+    width: 20px;
 }
-nav ul a:nth-child(3):after {
+nav ul a:nth-child(2):after {
     content: "Учителя";
-    line-height: 85px;
-    width: 100px;
+    line-height: 88px;
+    width: 20px;
 }
 
 

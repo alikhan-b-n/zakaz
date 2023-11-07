@@ -19,7 +19,7 @@ export const SignInPage = () => {
     }
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post(`${baseUrl}/users/login`,
+        await axios.post(`${baseUrl}/adminLogin`,
             {
                 email: email,
                 password: password
