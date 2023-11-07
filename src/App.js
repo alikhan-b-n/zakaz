@@ -8,6 +8,7 @@ import CoursesPage from "./App/Pages/Courses.page";
 import "./styles/index.css"
 import React from "react";
 import {UsersToAddPage} from "./App/Pages/UsersToAdd.page";
+import {UsersPage} from "./App/Pages/Users.page";
 const queryClient = new QueryClient()
 
 export function App() {
@@ -19,6 +20,7 @@ export function App() {
                 <Route path="/" element={<CoursesPage/>}/>
                 <Route path="/teachers" element={<TeacherPage/>}/>
                 <Route path="/usersAdd" element={<UsersToAddPage/>}/>
+                <Route path="/users" element={<UsersPage/>}/>
             </Routes>
             <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>
         </QueryClientProvider>

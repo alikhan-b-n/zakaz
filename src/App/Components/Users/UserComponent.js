@@ -17,9 +17,8 @@ export function UserComponent(prop) {
                     <h1 className="3xl:text-[25px] sm:text-[22px] font-[600]">{prop.user.email}</h1>
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.name}</p>
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.surname}</p>
-                    <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.lasQuiz}</p>
+                    <p className="3xl:text-[18px] sm:text-[15px]">{prop.user.lastQuiz}</p>
                 </div>
-                <p className="3xl:text-[22px] sm:text-[15px] text-orange-500">{prop.course.isFree} тг</p>
             </div>
         </div>
     )
