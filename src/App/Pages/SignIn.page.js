@@ -19,13 +19,13 @@ export const SignInPage = () => {
     }
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post(`${baseUrl}/adminLogin`,
+        await axios.post(`${baseUrl}/adminLogin/`,
             {
                 email: email,
                 password: password
             }, {
                 headers: {
-                    'Content-Type': 'application/json; charset=UTF-8'
+                    'Content-Type': 'application/json'
                 }
             }), {
         onSuccess: (successData) => {

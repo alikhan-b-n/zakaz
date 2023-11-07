@@ -27,18 +27,12 @@ export const CourseComponent = (prop) => {
         }
     })
 
-
     if (isLoading) {
         return <p>Loading...</p>
     }
 
-
     if (isError) {
         return <p>{error.response.data.message}</p>
-    }
-
-    const sendToAuth = () =>{
-        navigate("/signin")
     }
 
     return (

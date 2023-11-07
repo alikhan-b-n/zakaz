@@ -41,6 +41,11 @@ nav ul a:nth-child(2):after {
     line-height: 88px;
     width: 20px;
 }
+nav ul a:nth-child(3):after {
+    content: "Юзеры";
+    line-height: 88px;
+    width: 20px;
+}
 
 
 nav ul a:hover {
