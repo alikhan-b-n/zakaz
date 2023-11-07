@@ -38,7 +38,7 @@ export const MyProfileComponent = (props) => {
     })
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.patch('http://193.70.125.178:4000/auth/formupdate/user', {
+        await axios.patch(`${baseUrl}/auth/formupdate/user`, {
                 "name":name,
                 "surname":surname,
                 "password": password,
