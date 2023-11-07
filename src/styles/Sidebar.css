@@ -14,8 +14,9 @@ nav ul {
 
 nav ul a {
     position: relative;
+    width: 50px;
     cursor: pointer;
-    background: white;
+    text-transform: uppercase;
     transition:all .4s ease-out;
 }
 
@@ -25,11 +26,14 @@ nav ul a:after {
     color: #666;
     top:0;
     left: 60px;
+    width: 70px; height: 100%;
     opacity:.5;
     transform: perspective(500px) rotateY(90deg);
     transform-origin: 0 100%;
     transition:all .4s ease-out;
 }
+
+
 
 nav ul a:nth-child(1):after {
     content: "Курсы";
@@ -37,15 +41,11 @@ nav ul a:nth-child(1):after {
     width: 20px;
 }
 nav ul a:nth-child(2):after {
-    content: "Учителя";
-    line-height: 88px;
-    width: 20px;
-}
-nav ul a:nth-child(3):after {
     content: "Юзеры";
     line-height: 88px;
     width: 20px;
 }
+
 
 
 nav ul a:hover {

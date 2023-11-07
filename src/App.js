@@ -3,7 +3,6 @@ import {SignInPage} from "./App/Pages/SignIn.page";
 import {NotFoundPage} from "./App/Pages/NotFound.page";
 import {QueryClientProvider, QueryClient} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools'
-import TeacherPage from "./App/Pages/Teacher.page";
 import CoursesPage from "./App/Pages/Courses.page";
 import "./styles/index.css"
 import React from "react";
@@ -18,7 +17,6 @@ export function App() {
                 <Route path="/signin" element={<SignInPage/>}/>
                 <Route path="*" element={<NotFoundPage/>}/>
                 <Route path="/" element={<CoursesPage/>}/>
-                <Route path="/teachers" element={<TeacherPage/>}/>
                 <Route path="/usersAdd" element={<UsersToAddPage/>}/>
                 <Route path="/users" element={<UsersPage/>}/>
             </Routes>
