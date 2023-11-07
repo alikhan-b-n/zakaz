@@ -13,6 +13,7 @@ export const SignUpPage = () => {
     const [surname, setSurname] = useState('');
     const navigate = useNavigate();
     const {register, handleSubmit, formState: {errors}} = useForm()
+    const [patronym, setPatronym] = useState('');
 
     const [showPwd, setShowPwd] = useState(false)
 
@@ -23,7 +24,7 @@ export const SignUpPage = () => {
                 password: password,
                 surname: surname,
                 name: name,
-                patronymic: "das",
+                patronymic: patronym,
             }, {
                 headers: {
                     'Content-Type': 'application/json; charset=UTF-8'
@@ -98,6 +99,18 @@ export const SignUpPage = () => {
                             placeholder="Фамилие"
                             onChange={(e) => {
                                 setSurname(e.target.value)
+                            }}
+                            value={surname}
+                            required
+                        />
+
+                        <input
+                            type="text"
+                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                            name="patronym"
+                            placeholder="Отчество"
+                            onChange={(e) => {
+                                setPatronym(e.target.value)
                             }}
                             value={surname}
                             required
