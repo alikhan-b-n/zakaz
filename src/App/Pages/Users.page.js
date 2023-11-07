@@ -17,7 +17,9 @@ export function UsersPage() {
                     m-auto">Пользователи</h2>
                     <div className="mt-5">
                         <UsersComponent/>
-                        <Link to="/usersAdd" className="py-5 px-10 rounded-xl bg-orange-500 hover:bg-green-dark
+                        <Link to="/usersAdd" className="3xl:py-5 3xl:px-10 3xl:text-2xl xl:py-4 xl:px-8 xl:text-xl
+                        md:py-3 md:px-6 md:text-lg xsm:py-2 xsm:px-4 xsm:text-base
+                        rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white text-2xl mx-[45px]">Add</Link>
                     </div>
                 </div>
