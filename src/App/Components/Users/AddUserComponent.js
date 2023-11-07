@@ -30,10 +30,11 @@ export function AddUserComponent() {
                 surname: surname,
                 name: name,
                 patronymic: patronym,
-                roleId: roleId
+                roleId: roleId,
+                description: ""
             }, {
                 headers: {
-                    'Content-Type': "multipart/form-data; boundary=<calculated when request is sent>",
+                    'Content-Type': "application/json",
                     'Authorization': `${authHeader()}`
                 }
             }
@@ -117,7 +118,7 @@ export function AddUserComponent() {
                             onChange={(e) => {
                                 setPatronym(e.target.value)
                             }}
-                            value={surname}
+                            value={patronym}
                             required
                         />
 
@@ -150,6 +151,8 @@ export function AddUserComponent() {
                                 password: password,
                                 name: name,
                                 surname: surname,
+                                patronymic: patronym,
+                                roleId: roleId
                             }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Зарегестрировать
                             </button>

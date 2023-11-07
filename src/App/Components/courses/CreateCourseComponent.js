@@ -16,14 +16,15 @@ export function CreateCourseComponent() {
     const authHeader = useAuthHeader()
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post(`${baseUrl}/adminPanel/createLesson`, {
+        await axios.post(`${baseUrl}/adminPanel/createCourse`, {
                 description: description,
                 name: name,
                 price: price,
-                teacherId: teacherId
+                teacherId: teacherId,
+                image: null
             }, {
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
                     'Authorization': `${authHeader()}`
                 }
             }
