@@ -12,7 +12,7 @@ export function CreateLessonComponent() {
     const [content, setContent] = useState('');
     const [quizName, setQuizName] = useState('')
     const [questions, setQuestions] = useState([{ question: "", correctAnswer: "", answers: [""] }]);
-    const [courseId, setCourseId] = useState(id)
+    const [courseId, setCourseId] = useState(parseInt(id))
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
