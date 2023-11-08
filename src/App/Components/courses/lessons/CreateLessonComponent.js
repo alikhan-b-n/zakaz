@@ -37,7 +37,7 @@ export function CreateLessonComponent() {
             }
         ), {
         onSuccess: () => {
-            navigate('/users')
+            navigate('/')
         }
     })
 
@@ -49,7 +49,12 @@ export function CreateLessonComponent() {
         return <p>{error.response.data.message}</p>
     }
 
-    return (
+    const AddQuestion=()=>{
+        setQuestions(questions.concat(''))
+    }
+
+
+return (
         <form onSubmit={(e) => e.preventDefault()}>
             <div className="bg-grey-lighter min-h-screen flex flex-auto">
                 <div
@@ -95,16 +100,7 @@ export function CreateLessonComponent() {
                             value={quizName}
                             required
                         />
-                        {questions.map((question, index) => (
-                            <label key={index}>
-                                Question {index + 1}:
-                                <input type="text" value={question} onChange={e => {
-                                    const newQuestions = [...questions];
-                                    newQuestions[index] = e.target.value;
-                                    setQuestions(newQuestions);
-                                }} />
-                            </label>))}
-                        <label className="pl-[18px]">ID курса</label>
+
                         <input
                             type="text"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
@@ -116,6 +112,28 @@ export function CreateLessonComponent() {
                             value={courseId}
                             required
                         />
+
+                        {
+                            questions.map((question, index) => (
+                                <div key={index}>
+                                    <label>Question {question}:</label>
+                                    <input
+                                        type="text"
+                                        value={question}
+                                        placeholder="Вопрос"
+                                        onChange={e => {
+                                            const newQuestions = [...questions];
+                                            newQuestions[index] = e.target.value;
+                                            setQuestions(newQuestions);
+                                        }}
+                                    />
+
+                                </div>
+                            ))
+                        }
+
+                        <button onClick={(e)=>AddQuestion()}>Add Question</button>
+
                         <div className="flex justify-center">
                             <button onClick={handleSubmit(() => mutate({
                                 name: lessonName,
