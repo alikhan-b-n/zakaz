@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useAuthHeader} from "react-auth-kit";
 import {useMutation} from "react-query";
@@ -7,11 +7,12 @@ import axios from "axios";
 import {baseUrl} from "../../../api/axios";
 
 export function CreateLessonComponent() {
+    const {id} = useParams()
     const [lessonName, setLessonName] = useState('');
     const [content, setContent] = useState('');
     const [quizName, setQuizName] = useState('')
     const [questions, setQuestions] = useState([{ question: "", correctAnswer: "", answers: [""] }]);
-    const [courseId, setCourseId] = useState(1)
+    const [courseId, setCourseId] = useState(id)
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
@@ -23,7 +24,9 @@ export function CreateLessonComponent() {
                 courseId: courseId,
                 quiz:{
                     name: quizName,
-                    questions: questions,
+                    questions: questions.map(q=>q.question),
+                    rightAnswers: questions.map(q=>q.correctAnswer),
+                    answers: questions.map(q => q.answers.map(answer => ( answer )))
                 }
             }, {
                 headers: {
@@ -48,8 +51,6 @@ export function CreateLessonComponent() {
     const AddQuestion=()=>{
         setQuestions(questions.concat({ question: "", correctAnswer: "", answers: [""] }))
     }
-
-    console.log(questions)
 
 return (
         <form onSubmit={(e) => e.preventDefault()}>
@@ -135,6 +136,7 @@ return (
                                         onChange={e => {
                                             const newQuestions = [...questions];
                                             newQuestions[index].correctAnswer = e.target.value;
+                                            newQuestions[index].answers[2] = e.target.value;
                                             setQuestions(newQuestions);
                                         }}
                                     />
@@ -163,6 +165,18 @@ return (
                                         }}
                                     />
 
+                                    <label className="pl-[18px]">Incorrect answer</label>
+                                    <input
+                                        type="text"
+                                        className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                                        value={question.answers[3]}
+                                        placeholder="Ответ"
+                                        onChange={e => {
+                                            const newQuestions = [...questions];
+                                            newQuestions[index].answers[3] = e.target.value;
+                                            setQuestions(newQuestions);
+                                        }}
+                                    />
                                 </div>
                             ))
                         }
@@ -179,7 +193,9 @@ return (
                                 courseId: courseId,
                                 quiz:{
                                     name: quizName,
-                                    questions: questions,
+                                    questions: questions.map(q=>q.question),
+                                    rightAnswers: questions.map(q=>q.correctAnswer),
+                                    answers: questions.map(q => q.answers.map(answer => ( answer )))
                                 }
                             }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Добавить урок

@@ -1,37 +1,14 @@
 import React from "react";
-import {useMutation} from 'react-query';
-import axios from 'axios';
-import {useAuthHeader} from "react-auth-kit";
 import {useNavigate} from "react-router-dom";
 import {baseUrl} from "../../api/axios";
-
 
 export const CourseComponent = (prop) => {
     const navigate = useNavigate()
     const divStyle = {
         'backgroundImage': `url(${baseUrl + '/static/' + prop.course.image })`
     }
-    const authHeader = useAuthHeader();
-    const url = `${baseUrl}/auth/attendCourse/${prop.course.id}`
-    const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post(url, {
-            }, {
-                headers: {
-                    'Authorization': `${authHeader()}`
-                }
-            }
-        ), {
-        onSuccess: () => {
-            navigate("/profile")
-        }
-    })
-
-    if (isLoading) {
-        return <p>Loading...</p>
-    }
-
-    if (isError) {
-        return <p>{error.response.data.message}</p>
+    const handleClick = () => {
+        navigate(`${prop.course.Id}/lessonCreate`)
     }
 
     return (
@@ -47,6 +24,9 @@ export const CourseComponent = (prop) => {
                     <p className="3xl:text-[18px] sm:text-[15px]">{prop.course.description}</p>
                 </div>
                 <p className="3xl:text-[22px] sm:text-[15px] text-orange-500">{prop.course.price} тг</p>
+                <div className="flex justify-center w-full">
+                    <button onClick={handleClick} className="mt-[15px] bg-orange-500 text-white rounded-xl p-[10px]" >Добавить урок</button>
+                </div>
             </div>
         </div>
     );
