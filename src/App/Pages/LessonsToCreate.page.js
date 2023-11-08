@@ -1,7 +1,6 @@
 import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponent} from "../Components/SidebarComponent";
 import {FooterComponent} from "../Components/FooterComponent";
-import {CreateTest} from "../Components/courses/lessons/CreateQuizComponent";
 import {CreateLessonComponent} from "../Components/courses/lessons/CreateLessonComponent";
 export function LessonsToCreate() {
     return(

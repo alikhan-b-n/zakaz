@@ -10,16 +10,16 @@ export function CreateLessonComponent() {
     const [lessonName, setLessonName] = useState('');
     const [content, setContent] = useState('');
     const [quizName, setQuizName] = useState('')
-    const [questions, setQuestions] = useState([''])
-    const [answers, setAnswers] = useState([''])
-    const [rightAnswers, setRightAnswers] = useState([''])
-    const [courseId, setCourseId] = useState(0)
+    const [questions, setQuestions] = useState(['',''])
+    const [answers, setAnswers] = useState(['',''])
+    const [rightAnswers, setRightAnswers] = useState(['',''])
+    const [courseId, setCourseId] = useState(1)
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post(`${baseUrl}/adminPanel/createUser`, {
+        await axios.post(`${baseUrl}/adminPanel/createLesson`, {
                 name: lessonName,
                 content: content,
                 courseId: courseId,
@@ -102,7 +102,8 @@ return (
                         />
                         <label className="pl-[18px]">Курс ID</label>
                         <input
-                            type="text"
+                            type="number"
+                            step="any"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
                             name="courseId"
                             placeholder="ID курса"
