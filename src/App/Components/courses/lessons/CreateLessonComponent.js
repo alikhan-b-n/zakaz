@@ -11,7 +11,8 @@ export function CreateLessonComponent() {
     const [content, setContent] = useState('');
     const [quizName, setQuizName] = useState('')
     const [questions, setQuestions] = useState([{ question: "", correctAnswer: "", answers: [""] }]);
-    const [courseId, setCourseId] = useState(1)
+    const [submitArrayQuestions, setSubmitArrayQuestions] = useState([])
+    const [courseId, setCourseId] = useState(1);
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
@@ -49,7 +50,18 @@ export function CreateLessonComponent() {
         setQuestions(questions.concat({ question: "", correctAnswer: "", answers: [""] }))
     }
 
+    const getSubmitArrayQuestions = () =>{
+        let result = []
+        for (let i = 0; i < questions.length; i++) {
+            result.push(questions[i].question)
+        }
+        setSubmitArrayQuestions(result)
+        return result
+    }
+
+
     console.log(questions)
+    console.log(submitArrayQuestions)
 
 return (
         <form onSubmit={(e) => e.preventDefault()}>
@@ -124,6 +136,7 @@ return (
                                             const newQuestions = [...questions];
                                             newQuestions[index].question = e.target.value;
                                             setQuestions(newQuestions);
+
                                         }}
                                     />
                                     <label className="pl-[18px]">Correct answer</label>
@@ -179,7 +192,7 @@ return (
                                 courseId: courseId,
                                 quiz:{
                                     name: quizName,
-                                    questions: questions,
+                                    questions: getSubmitArrayQuestions(),
                                 }
                             }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Добавить урок
