@@ -10,9 +10,7 @@ export function CreateLessonComponent() {
     const [lessonName, setLessonName] = useState('');
     const [content, setContent] = useState('');
     const [quizName, setQuizName] = useState('')
-    const [questions, setQuestions] = useState(['',''])
-    const [answers, setAnswers] = useState(['',''])
-    const [rightAnswers, setRightAnswers] = useState(['',''])
+    const [questions, setQuestions] = useState([{ question: "", correctAnswer: "", answers: [""] }]);
     const [courseId, setCourseId] = useState(1)
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
@@ -26,8 +24,6 @@ export function CreateLessonComponent() {
                 quiz:{
                     name: quizName,
                     questions: questions,
-                    answers:answers,
-                    rightAnswers:rightAnswers
                 }
             }, {
                 headers: {
@@ -53,6 +49,7 @@ export function CreateLessonComponent() {
         setQuestions(questions.concat(''))
     }
 
+    console.log(questions)
 
 return (
         <form onSubmit={(e) => e.preventDefault()}>
@@ -117,25 +114,62 @@ return (
                         {
                             questions.map((question, index) => (
                                 <div key={index}>
-                                    <label className="pl-[18px]">Question:</label>
+                                    <label className="pl-[18px]">Question: {index+1}</label>
                                     <input
                                         type="text"
                                         className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
-                                        value={question}
+                                        value={question.question}
                                         placeholder="Вопрос"
                                         onChange={e => {
                                             const newQuestions = [...questions];
-                                            newQuestions[index] = e.target.value;
+                                            newQuestions[index].question = e.target.value;
                                             setQuestions(newQuestions);
                                         }}
                                     />
+                                    <label className="pl-[18px]">Correct answer</label>
+                                    <input
+                                        type="text"
+                                        className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                                        value={question.correctAnswer}
+                                        placeholder="Правильный ответ"
+                                        onChange={e => {
+                                            const newQuestions = [...questions];
+                                            newQuestions[index].correctAnswer = e.target.value;
+                                            setQuestions(newQuestions);
+                                        }}
+                                    />
+                                    <label className="pl-[18px]">Incorrect answer</label>
+                                    <input
+                                        type="text"
+                                        className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                                        value={question.answers[0]}
+                                        placeholder="Ответ"
+                                        onChange={e => {
+                                            const newQuestions = [...questions];
+                                            newQuestions[index].answers[0] = e.target.value;
+                                            setQuestions(newQuestions);
+                                        }}
+                                    />
+                                    <label className="pl-[18px]">Incorrect answer</label>
+                                    <input
+                                        type="text"
+                                        className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                                        value={question.answers[1]}
+                                        placeholder="Ответ"
+                                        onChange={e => {
+                                            const newQuestions = [...questions];
+                                            newQuestions[index].answers[1] = e.target.value;
+                                            setQuestions(newQuestions);
+                                        }}
+                                    />
+
                                 </div>
                             ))
                         }
 
                         <div className="flex justify-center mb-2">
                             <button className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
-                    justify-self-center text-white " onClick={(e)=>AddQuestion()}>Добавить вопрос</button>
+                    justify-self-center text-white " onClick={()=>AddQuestion()}>Добавить вопрос</button>
                         </div>
 
                         <div className="flex justify-center">
@@ -146,8 +180,6 @@ return (
                                 quiz:{
                                     name: quizName,
                                     questions: questions,
-                                    answers:answers,
-                                    rightAnswers:rightAnswers
                                 }
                             }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Добавить урок
