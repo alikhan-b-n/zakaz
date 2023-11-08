@@ -22,7 +22,7 @@ export function App() {
                 <Route path="/usersAdd" element={<UsersToAddPage/>}/>
                 <Route path="/users" element={<UsersPage/>}/>
                 <Route path="/courseCreate" element={<CoursesToCreatePage/>}/>
-                <Route path="/lessonCreate" element={<LessonsToCreate/>}/>
+                <Route path=":id/lessonCreate" element={<LessonsToCreate/>}/>
             </Routes>
             <ReactQueryDevtools initialIsOpen={false} position={"bottom-right"}/>
         </QueryClientProvider>
