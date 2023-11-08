@@ -1,4 +1,4 @@
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useMutation} from "react-query";
 import axios from "axios";
@@ -54,9 +54,9 @@ export function AddUserComponent() {
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>
-            <div className="bg-grey-lighter min-h-screen flex flex-auto">
+            <div className="bg-grey-lighter flex flex-auto">
                 <div
-                    className="container 3xl:max-w-lg xl:max-w-md md:max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                    className="container  3xl:w-[800px] xl:w-[600px] md:w-[400px] xsm:w-[300px] mx-auto flex-1 flex flex-col items-center justify-center px-2">
                     <div className="bg-white px-6 py-8 rounded-2xl shadow-md text-black w-full">
                         <div className="flex justify-between">
                             <button className="flex-initial text-xl font-bold pb-3 pl-2.5"
