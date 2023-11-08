@@ -46,7 +46,7 @@ export function CreateLessonComponent() {
     }
 
     const AddQuestion=()=>{
-        setQuestions(questions.concat(''))
+        setQuestions(questions.concat({ question: "", correctAnswer: "", answers: [""] }))
     }
 
     console.log(questions)
