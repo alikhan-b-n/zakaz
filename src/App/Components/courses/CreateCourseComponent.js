@@ -46,7 +46,7 @@ export function CreateCourseComponent() {
         <form onSubmit={(e) => e.preventDefault()}>
             <div className="bg-grey-lighter min-h-screen flex flex-auto">
                 <div
-                    className="container 3xl:w-[1000px] 2xl:w-[800px] xl:w-[600px] lg:w-[400px] md:w-[300px] mx-auto flex-1 flex flex-col items-center justify-center px-2">
+                    className="container 3xl:w-[1000px] 2xl:w-[800px] xl:w-[600px] lg:w-[400px] sm:w-[300px] mx-auto flex-1 flex flex-col items-center justify-center px-2">
                     <div className="bg-white px-6 py-8 rounded-2xl shadow-md text-black w-full">
                         <div className="flex justify-between">
                             <button className="flex-initial text-xl font-bold pb-3 pl-2.5"

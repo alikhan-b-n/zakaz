@@ -4,6 +4,7 @@ import {useQuery} from "react-query";
 import {CourseComponent} from "./CourseComponent";
 import {NoCourses} from "./NoCourses";
 import {baseUrl} from "../../api/axios";
+import {Link} from "react-router-dom";
 
 function CoursesComponent() {
     const [pageNumber, setPageNumber] = useState(1);
@@ -50,6 +51,11 @@ function CoursesComponent() {
                     {">"}
                 </button>
             </div>
+
+            <Link to="/courseCreate">
+                <button className="w-48 py-2 ml-[45px] rounded-xl bg-orange-500 hover:bg-green-dark
+                    justify-self-center text-white">Добавить Курс</button>
+            </Link>
         </div>
     );
 }
