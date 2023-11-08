@@ -116,7 +116,7 @@ return (
                         {
                             questions.map((question, index) => (
                                 <div key={index}>
-                                    <label>Question:</label>
+                                    <label className="pl-[18px]">Question:</label>
                                     <input
                                         type="text"
                                         className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
