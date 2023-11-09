@@ -1,15 +1,17 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useAuthHeader} from "react-auth-kit";
 import {useMutation} from "react-query";
 import axios from "axios";
 import {baseUrl} from "../../api/axios";
+import {useDropzone} from "react-dropzone";
 
 export function CreateCourseComponent() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0)
+    const [file, setFile] = useState();
     const [teacherId, setTeacherId] = useState(0)
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
@@ -79,7 +81,7 @@ export function CreateCourseComponent() {
                             placeholder="Имя"/>
 
                         <label className="pl-[18px]">Изображение курса</label>
-                        <div {...getRootProps()}>
+                        <div className="mb-[5%] flex flex-col justify-center items-center" {...getRootProps()}>
                             <input
                                 {...getInputProps()}
                             />

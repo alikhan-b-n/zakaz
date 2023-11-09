@@ -1,10 +1,11 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useAuthHeader} from "react-auth-kit";
 import {useMutation} from "react-query";
 import axios from "axios";
 import {baseUrl} from "../../../api/axios";
+import {useDropzone} from "react-dropzone";
 
 export function CreateLessonComponent() {
     const {courseId} = useParams()
@@ -20,7 +21,8 @@ export function CreateLessonComponent() {
     const [file, setFile] = useState();
     const [url, setUrl] = useState('')
 
-    const onDrop = useCallback((acceptedFiles) => {
+    let onDrop: function
+    onDrop = useCallback((acceptedFiles) => {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(acceptedFiles[0])
         setFile(acceptedFiles[0])
@@ -36,7 +38,7 @@ export function CreateLessonComponent() {
         await axios.post(`${baseUrl}/adminPanel/createLesson`, {
                 name: lessonName,
                 content: content,
-                courseId: courseId,
+                courseId: Id,
                 quiz:{
                     name: quizName,
                     questions: questions.map(q=>q.question),
@@ -52,7 +54,7 @@ export function CreateLessonComponent() {
             }
         ), {
         onSuccess: (successData) => {
-            axios.post(`http://localhost:4000/adminPanel/uploadVideo`, {
+            axios.post(`${baseUrl}/adminPanel/uploadVideo`, {
                 "name": fileName,
                 "courseElementId": successData.data.Id,
                 "url": url,
@@ -116,7 +118,7 @@ return (
                         <label className="pl-[18px]">
                             Видео урока
                         </label>
-                        <div {...getRootProps()}>
+                        <div className="mb-[5%] flex flex-col justify-center items-center" {...getRootProps()}>
                             <input
                                 {...getInputProps()}
                             />
