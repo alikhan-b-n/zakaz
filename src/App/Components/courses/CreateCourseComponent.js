@@ -1,10 +1,11 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useAuthHeader} from "react-auth-kit";
 import {useMutation} from "react-query";
 import axios from "axios";
 import {baseUrl} from "../../api/axios";
+import {useDropzone} from "react-dropzone";
 
 export function CreateCourseComponent() {
     const [name, setName] = useState('');
@@ -14,6 +15,8 @@ export function CreateCourseComponent() {
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
+    const [file, setFile] = useState();
+
 
     const onDrop = useCallback((acceptedFiles) => {
         const fileReader = new FileReader();

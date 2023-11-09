@@ -1,10 +1,11 @@
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {useAuthHeader} from "react-auth-kit";
 import {useMutation} from "react-query";
 import axios from "axios";
 import {baseUrl} from "../../../api/axios";
+import {useDropzone} from "react-dropzone";
 
 export function CreateLessonComponent() {
     const {courseId} = useParams()
@@ -36,7 +37,7 @@ export function CreateLessonComponent() {
         await axios.post(`${baseUrl}/adminPanel/createLesson`, {
                 name: lessonName,
                 content: content,
-                courseId: courseId,
+                courseId: parseInt(courseId),
                 quiz:{
                     name: quizName,
                     questions: questions.map(q=>q.question),
@@ -52,7 +53,8 @@ export function CreateLessonComponent() {
             }
         ), {
         onSuccess: (successData) => {
-            axios.post(`http://localhost:4000/adminPanel/uploadVideo`, {
+            console.log(successData.data.Id)
+            axios.post(`${baseUrl}/adminPanel/uploadVideo`, {
                 "name": fileName,
                 "courseElementId": successData.data.Id,
                 "url": url,
