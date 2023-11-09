@@ -35,7 +35,6 @@ export const SignInPage = () => {
                 tokenType: "Bearer",
                 authState: {email: successData.data.email, firstname: successData.data.name, lastname: successData.data.surname, id: successData.data.id, avatar: successData.data.avatar, password: password},
             })
-            console.log(successData)
             navigate('/')
         }
     })

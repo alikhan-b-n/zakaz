@@ -56,6 +56,11 @@ function CoursesComponent() {
                 <button className="w-48 py-2 ml-[45px] rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white">Добавить Курс</button>
             </Link>
+
+            <Link to="/createDailyQuiz">
+                <button className="w-48 py-2 ml-[45px] rounded-xl bg-orange-500 hover:bg-green-dark
+                    justify-self-center text-white">Добавить недельный квиз</button>
+            </Link>
         </div>
     );
 }

@@ -42,7 +42,6 @@ export function DailyQuizComponent() {
     const AddQuestion=()=>{
         setQuestions(questions.concat({ question: "", correctAnswer: "", answers: [""] }))
     }
-    console.log(questions)
     return (
         <form onSubmit={(e) => e.preventDefault()}>
             <div className="bg-grey-lighter flex flex-auto">
