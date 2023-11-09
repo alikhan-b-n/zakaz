@@ -15,13 +15,25 @@ export function CreateCourseComponent() {
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
 
+    const onDrop = useCallback((acceptedFiles) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(acceptedFiles[0])
+        setFile(acceptedFiles[0])
+
+
+    }, []);
+
+    const {getRootProps, getInputProps, isDragActive} = useDropzone({
+        onDrop
+    })
+
     const {mutate, isLoading, isError, error} = useMutation(async () =>
         await axios.post(`${baseUrl}/adminPanel/createCourse`, {
                 description: description,
                 name: name,
                 price: price,
                 teacherId: teacherId,
-                image: null
+                image: file
             }, {
                 headers: {
                     'Content-Type': 'multipart/form-data; boundary=<calculated when request is sent>',
@@ -30,7 +42,7 @@ export function CreateCourseComponent() {
             }
         ), {
         onSuccess: () => {
-            navigate('/users')
+            navigate('/')
         }
     })
 
@@ -65,6 +77,14 @@ export function CreateCourseComponent() {
                             value={name}
                             required
                             placeholder="Имя"/>
+
+                        <label className="pl-[18px]">Изображение курса</label>
+                        <div {...getRootProps()}>
+                            <input
+                                {...getInputProps()}
+                            />
+                            {!isDragActive && (<p>Выберите файлы</p>)}
+                        </div>
 
                         <label className="pl-[18px]">Id учителя</label>
                         <input

@@ -16,12 +16,27 @@ export function CreateLessonComponent() {
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
+    const [fileName, setFileName] = useState('')
+    const [file, setFile] = useState();
+    const [url, setUrl] = useState('')
+
+    const onDrop = useCallback((acceptedFiles) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(acceptedFiles[0])
+        setFile(acceptedFiles[0])
+        setFileName(acceptedFiles[0].name)
+
+    }, []);
+
+    const {getRootProps, getInputProps, isDragActive} = useDropzone({
+        onDrop
+    })
 
     const {mutate, isLoading, isError, error} = useMutation(async () =>
         await axios.post(`${baseUrl}/adminPanel/createLesson`, {
                 name: lessonName,
                 content: content,
-                Id: Id,
+                courseId: courseId,
                 quiz:{
                     name: quizName,
                     questions: questions.map(q=>q.question),
@@ -31,12 +46,23 @@ export function CreateLessonComponent() {
             }, {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `${authHeader()}`
+                    'Authorization': `${authHeader()}`,
+
                 }
             }
         ), {
-        onSuccess: () => {
-            navigate('/')
+        onSuccess: (successData) => {
+            axios.post(`http://localhost:4000/adminPanel/uploadVideo`, {
+                "name": fileName,
+                "courseElementId": successData.data.Id,
+                "url": url,
+                "file": file
+            },{
+                headers:{
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': `${authHeader()}`,
+                }
+            }).then(r => r.data.name).then(navigate('/'))
         }
     })
 
@@ -86,6 +112,26 @@ return (
                             value={content}
                             required
                         />
+
+                        <label className="pl-[18px]">
+                            Видео урока
+                        </label>
+                        <div {...getRootProps()}>
+                            <input
+                                {...getInputProps()}
+                            />
+                            {!isDragActive && (<p>Выберрите файлы</p>)}
+                        </div>
+                        <label className="pl-[18px]">Ссылка на ютуб-видео (Альтернатива)</label>
+                        <input
+                            type="text"
+                            onChange={(e) => {
+                                setUrl(e.target.value)
+                            }}
+                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                            placeholder="Ссылка урока"
+                        />
+
                         <label className="pl-[18px]">Название Теста</label>
                         <input
                             type="text"
