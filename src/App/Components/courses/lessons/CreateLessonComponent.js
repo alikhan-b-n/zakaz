@@ -39,6 +39,7 @@ export function CreateLessonComponent() {
                 name: lessonName,
                 content: content,
                 courseId: Id,
+
                 quiz:{
                     name: quizName,
                     questions: questions.map(q=>q.question),
@@ -54,6 +55,7 @@ export function CreateLessonComponent() {
             }
         ), {
         onSuccess: (successData) => {
+        admin_panel
             axios.post(`${baseUrl}/adminPanel/uploadVideo`, {
                 "name": fileName,
                 "courseElementId": successData.data.Id,

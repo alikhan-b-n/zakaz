@@ -16,6 +16,8 @@ export function CreateCourseComponent() {
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
+    const [file, setFile] = useState();
+
 
     const onDrop = useCallback((acceptedFiles) => {
         const fileReader = new FileReader();
