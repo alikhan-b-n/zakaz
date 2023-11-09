@@ -15,11 +15,12 @@ export function AddUserComponent() {
     const [surname, setSurname] = useState('');
     const [patronym, setPatronym] = useState('');
     const [roleId, setRoleId] = useState(1)
+    const [description, setDescription] = useState('')
     const navigate = useNavigate();
     const {register, handleSubmit, formState: {errors}} = useForm()
     const authHeader = useAuthHeader()
     const options = [
-        1, 2, 3
+        'Ученик', 'Учитель', 'Админ'
     ];
     const defaultOption = options[0];
 
@@ -31,7 +32,7 @@ export function AddUserComponent() {
                 name: name,
                 patronymic: patronym,
                 roleId: roleId,
-                description: ""
+                description: description
             }, {
                 headers: {
                     'Content-Type': "application/json",
@@ -51,6 +52,19 @@ export function AddUserComponent() {
     if (isError) {
         return <p>{error.response.data.message}</p>
     }
+
+    function setRole(role){
+        if(role === "Ученик")
+            return 1
+        else if (role === "Учитель")
+            return 2
+        else if (role === "Админ")
+            return 3
+        else
+            return 0
+    }
+
+    console.log(roleId)
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>
@@ -82,7 +96,7 @@ export function AddUserComponent() {
                         />
                         {errors.email && <span className="text-rose-700	mb-[20px] block">Invalid email</span>}
 
-                        <Dropdown className="my-3" placeholderClassName="p-[8px]" options={options} onChange={e=>setRoleId(e.value)} value={defaultOption} placeholder="Select an option" />
+                        <Dropdown className="my-3" placeholderClassName="p-[8px]" options={options} onChange={e=>{setRoleId(setRole(e.value))}} value={defaultOption} placeholder="Select an option" />
 
                         <label className="pl-[18px]">Имя</label>
                         <input
@@ -122,6 +136,18 @@ export function AddUserComponent() {
                             required
                         />
 
+                        <label className="pl-[18px]">Описание</label>
+                        <textarea
+                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
+                            name="description"
+                            placeholder="Описание"
+                            onChange={(e) => {
+                                setDescription(e.target.value)
+                            }}
+                            value={description}
+                            required
+                        />
+
                         <label className="pl-[18px]">Пароль</label>
                         <div>
                             <div>
@@ -146,14 +172,15 @@ export function AddUserComponent() {
                             </div>
                         </div>
                         <div className="flex justify-center">
-                            <button onClick={handleSubmit(() => mutate({
+                            <button onClick={() => mutate({
                                 email: email,
                                 password: password,
                                 name: name,
                                 surname: surname,
                                 patronymic: patronym,
-                                roleId: roleId
-                            }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
+                                roleId: roleId,
+                                description: description
+                            })} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Зарегестрировать
                             </button>
                         </div>
