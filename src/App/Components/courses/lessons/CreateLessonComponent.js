@@ -7,12 +7,12 @@ import axios from "axios";
 import {baseUrl} from "../../../api/axios";
 
 export function CreateLessonComponent() {
-    const {id} = useParams()
+    const {courseId} = useParams()
     const [lessonName, setLessonName] = useState('');
     const [content, setContent] = useState('');
     const [quizName, setQuizName] = useState('')
     const [questions, setQuestions] = useState([{ question: "", correctAnswer: "", answers: [""] }]);
-    const [courseId, setCourseId] = useState(parseInt(id))
+    const [Id] = useState(parseInt(courseId))
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
     const authHeader = useAuthHeader()
@@ -21,7 +21,7 @@ export function CreateLessonComponent() {
         await axios.post(`${baseUrl}/adminPanel/createLesson`, {
                 name: lessonName,
                 content: content,
-                courseId: courseId,
+                Id: Id,
                 quiz:{
                     name: quizName,
                     questions: questions.map(q=>q.question),
@@ -98,20 +98,6 @@ return (
                             value={quizName}
                             required
                         />
-                        <label className="pl-[18px]">Курс ID</label>
-                        <input
-                            type="number"
-                            step="any"
-                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
-                            name="courseId"
-                            placeholder="ID курса"
-                            onChange={(e) => {
-                                setCourseId(e.target.value)
-                            }}
-                            value={courseId}
-                            required
-                        />
-
                         {
                             questions.map((question, index) => (
                                 <div key={index}>
@@ -190,7 +176,7 @@ return (
                             <button onClick={handleSubmit(() => mutate({
                                 name: lessonName,
                                 content: content,
-                                courseId: courseId,
+                                Id: Id,
                                 quiz:{
                                     name: quizName,
                                     questions: questions.map(q=>q.question),

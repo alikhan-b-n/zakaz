@@ -11,6 +11,14 @@ export const CourseComponent = (prop) => {
         navigate(`${prop.course.Id}/lessonCreate`)
     }
 
+    const handleClickStreamAdd = () => {
+        navigate(`${prop.course.Id}/Stream/Add`)
+    }
+
+    const handleClickStreamDelete = () => {
+        navigate(`${prop.course.Id}/Stream/Delete`)
+    }
+
     return (
         <div className="grid 3xl:grid-cols-5 lg:grid-cols-1 flex 3xl:w-[1420] mx-auto bg-white mb-[40px] rounded font-medium">
             <div className="col-span-1 3xl:border-r-4 border-r-[#E2E9EF] lg:border-r-0 lg:border-b-4 p-[10px] flex lg:flex-row
@@ -27,6 +35,19 @@ export const CourseComponent = (prop) => {
                 <div className="flex justify-center w-full">
                     <button onClick={handleClick} className="mt-[15px] bg-orange-500 text-white rounded-xl p-[10px]" >Добавить урок</button>
                 </div>
+
+                {
+                    prop.course.isStreaming
+                        ?
+                        <div className="flex justify-center w-full">
+                            <button onClick={handleClickStreamDelete} className="mt-[15px] bg-orange-500 text-white rounded-xl p-[10px]" >Удалить стрим</button>
+                        </div>
+                        :
+                    <div className="flex justify-center w-full">
+                        <button onClick={handleClickStreamAdd} className="mt-[15px] bg-orange-500 text-white rounded-xl p-[10px]" >Добавить стрим</button>
+                    </div>
+                }
+
             </div>
         </div>
     );
