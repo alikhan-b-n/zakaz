@@ -4,6 +4,7 @@ import {baseUrl} from "../../api/axios";
 
 export const CourseComponent = (prop) => {
     const navigate = useNavigate()
+    let url = `${baseUrl + '/static/' + prop.course.image }`
     const divStyle = {
         'backgroundImage': `url(${baseUrl + '/static/' + prop.course.image })`
     }
@@ -18,6 +19,8 @@ export const CourseComponent = (prop) => {
     const handleClickStreamDelete = () => {
         navigate(`${prop.course.Id}/Stream/Delete`)
     }
+
+    console.log(prop.course.name + url)
 
     return (
         <div className="grid 3xl:grid-cols-5 lg:grid-cols-1 flex 3xl:w-[1420] mx-auto bg-white mb-[40px] rounded font-medium">

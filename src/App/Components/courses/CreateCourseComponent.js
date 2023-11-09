@@ -11,6 +11,7 @@ export function CreateCourseComponent() {
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState(0)
+    const [file, setFile] = useState();
     const [teacherId, setTeacherId] = useState(0)
     const navigate = useNavigate();
     const {handleSubmit} = useForm()
@@ -82,7 +83,7 @@ export function CreateCourseComponent() {
                             placeholder="Имя"/>
 
                         <label className="pl-[18px]">Изображение курса</label>
-                        <div {...getRootProps()}>
+                        <div className="mb-[5%] flex flex-col justify-center items-center" {...getRootProps()}>
                             <input
                                 {...getInputProps()}
                             />

@@ -21,7 +21,8 @@ export function CreateLessonComponent() {
     const [file, setFile] = useState();
     const [url, setUrl] = useState('')
 
-    const onDrop = useCallback((acceptedFiles) => {
+    let onDrop: function
+    onDrop = useCallback((acceptedFiles) => {
         const fileReader = new FileReader();
         fileReader.readAsDataURL(acceptedFiles[0])
         setFile(acceptedFiles[0])
@@ -37,7 +38,8 @@ export function CreateLessonComponent() {
         await axios.post(`${baseUrl}/adminPanel/createLesson`, {
                 name: lessonName,
                 content: content,
-                courseId: parseInt(courseId),
+                courseId: Id,
+
                 quiz:{
                     name: quizName,
                     questions: questions.map(q=>q.question),
@@ -53,7 +55,7 @@ export function CreateLessonComponent() {
             }
         ), {
         onSuccess: (successData) => {
-            console.log(successData.data.Id)
+        admin_panel
             axios.post(`${baseUrl}/adminPanel/uploadVideo`, {
                 "name": fileName,
                 "courseElementId": successData.data.Id,
@@ -118,7 +120,7 @@ return (
                         <label className="pl-[18px]">
                             Видео урока
                         </label>
-                        <div {...getRootProps()}>
+                        <div className="mb-[5%] flex flex-col justify-center items-center" {...getRootProps()}>
                             <input
                                 {...getInputProps()}
                             />
