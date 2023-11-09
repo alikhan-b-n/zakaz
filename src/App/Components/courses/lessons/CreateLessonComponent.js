@@ -55,7 +55,6 @@ export function CreateLessonComponent() {
             }
         ), {
         onSuccess: (successData) => {
-        admin_panel
             axios.post(`${baseUrl}/adminPanel/uploadVideo`, {
                 "name": fileName,
                 "courseElementId": successData.data.Id,
