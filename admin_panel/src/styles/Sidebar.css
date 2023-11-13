@@ -1,0 +1,60 @@
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: transparent;
+}
+nav ul {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+nav ul a {
+    position: relative;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition:all .4s ease-out;
+}
+
+nav ul a:after {
+    position: absolute;
+    background: white;
+    color: #666;
+    top:0;
+    padding-left: 20px;
+    opacity:.5;
+    transform: perspective(500px) rotateY(90deg);
+    transform-origin: 0 100%;
+    transition:all .4s ease-out;
+}
+
+
+
+nav ul a:nth-child(1):after {
+    content: "Курсы";
+    line-height: 100px;
+}
+nav ul a:nth-child(2):after {
+    content: "Юзеры";
+    line-height: 100px;
+}
+
+
+nav ul a:hover {
+    transform: translateX(-72px);
+}
+
+nav ul a:hover:after {
+    opacity: 1;
+    transform: perspective(400px) rotateY(0deg) scale(1) ;
+}
+
+
+nav ul a > div {
+    display: inline-block;
+    padding: 25px 0;
+    background: transparent;
+}
+
+nav ul a div { position: relative; }
