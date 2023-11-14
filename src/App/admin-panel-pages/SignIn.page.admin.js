@@ -1,53 +1,52 @@
 import React, {useState} from 'react';
+import {useNavigate} from "react-router-dom";
+import {useForm} from 'react-hook-form';
 import {useMutation} from "react-query";
-import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-import {useForm} from "react-hook-form";
+import {useSignIn} from 'react-auth-kit'
 import {baseUrl} from "../api/axios";
 
 
-export const SignUpPage = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
-    const [surname, setSurname] = useState('');
+export const SignInPageAdmin = () => {
+    const signIn = useSignIn()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [showPwd, setShowPwd] = useState(false)
     const navigate = useNavigate();
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const [patronym, setPatronym] = useState('');
-
-    const [showPwd, setShowPwd] = useState(false)
-
-    const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post(`${baseUrl}/users/signup`, {
-                username: "dsa",
-                email: email,
-                password: password,
-                surname: surname,
-                name: name,
-                patronymic: "das",
-            }, {
-                headers: {
-                    'Content-Type': 'application/json; charset=UTF-8'
-                }
-            }
-        ), {
-        onSuccess: () => {
-            navigate('/signin')
-        }
-    })
-
     const showPassport = () => {
         setShowPwd(!showPwd)
     }
+
+    const {mutate, isLoading, isError, error} = useMutation(async () =>
+        await axios.post(`${baseUrl}/adminLogin/`,
+            {
+                email: email,
+                password: password
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }), {
+        onSuccess: (successData) => {
+            signIn({
+                token: successData.data.token,
+                expiresIn: 3600,
+                tokenType: "Bearer",
+                authState: {email: successData.data.email, firstname: successData.data.name, lastname: successData.data.surname, id: successData.data.id, avatar: successData.data.avatar, password: password},
+            })
+            navigate('/admin')
+        }
+    })
 
     if (isLoading) {
         return <p>Loading...</p>
     }
 
+
     if (isError) {
         return <p>{error.response.data.message}</p>
     }
-
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>
@@ -58,9 +57,9 @@ export const SignUpPage = () => {
                         <div className="flex justify-between">
                             <button className="flex-initial text-xl font-bold pb-3 pl-2.5"
                                     onClick={() => navigate(-1)}>{`<`}</button>
-                            <h1 className="flex-1 mb-5 text-2xl text-center mr-5">Регистрация</h1>
+                            <h1 className="flex-1 mb-5 text-2xl text-center mr-5 pr-3">Вход</h1>
                         </div>
-                        <label className="pl-[18px]">Email</label>
+                        <label className="pl-[18px] 3xl:text-[18px] md:text-[15px]">Email</label>
                         <input
                             type="text"
                             className="focus:outline-none focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block bg-slate-100 border bg-slate-100 mt-2 shadow-custom border-grey-light w-full p-3 rounded mb-4 shadow-custom"
@@ -79,48 +78,11 @@ export const SignUpPage = () => {
                         />
                         {errors.email && <span className="text-rose-700	mb-[20px] block">Invalid email</span>}
 
-
-                        <label className="pl-[18px]">Имя</label>
-                        <input
-                            type="text"
-                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
-                            name="name"
-                            onChange={(e) => {
-                                setName(e.target.value)
-                            }}
-                            value={name}
-                            required
-                            placeholder="Имя"/>
-                        <label className="pl-[18px]">Фамилие</label>
-                        <input
-                            type="text"
-                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
-                            name="surname"
-                            placeholder="Фамилие"
-                            onChange={(e) => {
-                                setSurname(e.target.value)
-                            }}
-                            value={surname}
-                            required
-                        />
-
-                        <input
-                            type="text"
-                            className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
-                            name="patronym"
-                            placeholder="Отчество"
-                            onChange={(e) => {
-                                setPatronym(e.target.value)
-                            }}
-                            value={surname}
-                            required
-                        />
-
-                        <label className="pl-[18px]">Пароль</label>
                         <div>
-                            <div>
+                            <label className="pl-[18px]">Пароль</label>
+                            <div className="mt-2">
                                 <div
-                                    className="mt-2 outline-none block border bg-slate-100 w-full p-3 rounded mb-4 shadow-custom border-grey-light justify-between">
+                                    className="outline-none block border bg-slate-100 w-full p-3 rounded mb-4 shadow-custom border-grey-light justify-between">
                                     <input type={showPwd ? "text" : "password"}
                                            className="bg-slate-100 3xl:w-[96%] xl:w-[95%] md:w-[90%] focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100"
                                            id="password"
@@ -158,32 +120,22 @@ export const SignUpPage = () => {
                                 </div>
                                 {errors.password &&
                                     <span className="text-rose-700 mb-[5px] block">Invalid password</span>}
-
                             </div>
                         </div>
+                        {/*<div className="text-center text-sm text-grey-dark mt-4 mb-3">*/}
+                        {/*    <a className="no-underline border-grey-dark text-gray-500" href="#">*/}
+                        {/*        Забыли пароль?*/}
+                        {/*    </a>*/}
+                        {/*</div>*/}
                         <div className="flex justify-center">
-                            <button onClick={handleSubmit(() => mutate({
-                                email: email,
-                                password: password,
-                                name: name,
-                                surname: surname,
-                            }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
-                    justify-self-center text-white ">Зарегестрироваться
+                            <button type="submit"
+                                    onClick={handleSubmit(() => mutate({email: email, password: password}))} className="w-32 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
+                    justify-self-center text-white ">Войти
                             </button>
                         </div>
-
-                        <div className="text-center text-sm text-grey-dark mt-4">
-                            <Link to="/signin" className="text-orange-500 no-underline border-grey-dark text-gray-500"
-                                  href="#">
-                                Уже зарегестрированы?
-                            </Link>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </form>
-    );
-
-};
-
+    )
+}
