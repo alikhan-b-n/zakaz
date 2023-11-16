@@ -12,11 +12,13 @@ export function HeaderComponentAdmin() {
     return (
         <div
             className="bg-white 3xl:px-[30px] flex 3xl:justify-between xsm:p-0">
-            <img
-                src={process.env.PUBLIC_URL + `../../../Assets/logo.jpg`}
-                alt="logo"
-                className="3xl:w-[150px] sm:w-[100px] xsm:w-[60px] xxsm:hidden"
-            />
+            <Link to="/admin/">
+                <img
+                    src={process.env.PUBLIC_URL + `../../../Assets/logo.jpg`}
+                    alt="logo"
+                    className="3xl:w-[150px] sm:w-[100px] xsm:w-[60px] xxsm:hidden"
+                />
+            </Link>
             <div
                 className="flex justify-around 3xl:w-[30%] sm:w-[50%] xsm:w-[80%] xxsm:w-[100%] xxsm:pb-3 items-center md:ml-[20px] xsm:ml-0">
                 <Link to="/admin/">

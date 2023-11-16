@@ -85,6 +85,7 @@ export const SignUpPage = () => {
                             type="text"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
                             name="name"
+                            autoComplete="off"
                             onChange={(e) => {
                                 setName(e.target.value)
                             }}
@@ -96,6 +97,7 @@ export const SignUpPage = () => {
                             type="text"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
                             name="surname"
+                            autoComplete="off"
                             placeholder="Фамилия"
                             onChange={(e) => {
                                 setSurname(e.target.value)
@@ -108,6 +110,7 @@ export const SignUpPage = () => {
                             type="text"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
                             name="patronym"
+                            autoComplete="off"
                             placeholder="Отчество"
                             onChange={(e) => {
                                 setPatronym(e.target.value)
