@@ -13,7 +13,7 @@ export const CourseComponent = (prop) => {
         'backgroundImage': `url(${baseUrl + '/static/' + prop.course.image })`
     }
     const authHeader = useAuthHeader();
-    const url = `${baseUrl}/auth/attendCourse/${prop.course.id}`
+    const url = `${baseUrl}/auth/attendCourse/${prop.course.Id}`
     const {mutate, isLoading, isError, error} = useMutation(async () =>
         await axios.post(url, {
             }, {

@@ -91,19 +91,19 @@ export const SignUpPage = () => {
                             value={name}
                             required
                             placeholder="Имя"/>
-                        <label className="pl-[18px]">Фамилие</label>
+                        <label className="pl-[18px]">Фамилия</label>
                         <input
                             type="text"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
                             name="surname"
-                            placeholder="Фамилие"
+                            placeholder="Фамилия"
                             onChange={(e) => {
                                 setSurname(e.target.value)
                             }}
                             value={surname}
                             required
                         />
-
+                        <label className="pl-[18px]">Отчество</label>
                         <input
                             type="text"
                             className="focus:outline-none autofill:appearance-none placeholder:bg-slate-100 autofill:bg-slate-100 hover:bg-slate-100 placeholder-shown:bg-slate-100 block border bg-slate-100 mt-2 shadow-inner border-grey-light w-full p-3 rounded mb-4"
@@ -112,7 +112,7 @@ export const SignUpPage = () => {
                             onChange={(e) => {
                                 setPatronym(e.target.value)
                             }}
-                            value={surname}
+                            value={patronym}
                             required
                         />
 
@@ -167,6 +167,7 @@ export const SignUpPage = () => {
                                 password: password,
                                 name: name,
                                 surname: surname,
+                                patronym: patronym
                             }))} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white ">Зарегестрироваться
                             </button>

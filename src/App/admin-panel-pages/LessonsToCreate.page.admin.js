@@ -1,11 +1,11 @@
-import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponentAdmin} from "../AdminPanelComponents/SidebarComponent.Admin";
 import {FooterComponent} from "../Components/FooterComponent";
 import {CreateLessonComponent} from "../AdminPanelComponents/courses/lessons/CreateLessonComponent";
+import {HeaderComponentAdmin} from "../AdminPanelComponents/HeaderComponentAdmin";
 export function LessonsToCreate() {
     return(
         <div>
-            <HeaderComponent/>
+            <HeaderComponentAdmin/>
             <div className="flex font-normal mb-[10%]">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
                     <SidebarComponentAdmin page="courses"/>

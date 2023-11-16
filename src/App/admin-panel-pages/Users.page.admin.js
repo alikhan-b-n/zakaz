@@ -1,13 +1,13 @@
-import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponentAdmin} from "../AdminPanelComponents/SidebarComponent.Admin";
 import {FooterComponent} from "../Components/FooterComponent";
 import {UsersComponent} from "../AdminPanelComponents/Users/UsersComponent";
 import {Link} from "react-router-dom";
+import {HeaderComponentAdmin} from "../AdminPanelComponents/HeaderComponentAdmin";
 
 export function UsersPageAdmin() {
     return(
         <div>
-            <HeaderComponent/>
+            <HeaderComponentAdmin/>
             <div className="flex font-normal mb-[10%]">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
                     <SidebarComponentAdmin page="users"/>
@@ -17,7 +17,7 @@ export function UsersPageAdmin() {
                     m-auto">Пользователи</h2>
                     <div className="mt-5">
                         <UsersComponent/>
-                        <Link to="admin/usersAdd" className="3xl:py-5 3xl:px-10 3xl:text-2xl xl:py-4 xl:px-8 xl:text-xl
+                        <Link to="/admin/users/usersAdd" className="3xl:py-5 3xl:px-10 3xl:text-2xl xl:py-4 xl:px-8 xl:text-xl
                         md:py-3 md:px-6 md:text-lg xsm:py-2 xsm:px-4 xsm:text-base
                         rounded-xl bg-orange-500 hover:bg-green-dark
                     justify-self-center text-white text-2xl mx-[45px]">Add</Link>

@@ -17,7 +17,7 @@ export function QuizComponents(prop) {
     const {elementId, courseId} = useParams()
     const [answers, setAnswers] = useState([])
     const [result, setResult] = useState()
-    const [attempts, setAttempts] = useState()
+    const [attempts, setAttempts] = useState(1)
     const [id, setId] = useState(1)
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const quizUrlGet = prop.urlGet != null ? `${baseUrl}/${prop.urlGet}` : `${baseUrl}/auth/quizAttempt/${courseId}/${elementId}`

@@ -45,7 +45,7 @@ export function CreateCourseComponent() {
             }
         ), {
         onSuccess: () => {
-            navigate('/')
+            navigate('/admin/')
         }
     })
 

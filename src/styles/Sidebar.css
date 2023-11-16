@@ -6,61 +6,65 @@ nav {
     background: transparent;
 }
 
-nav ul {
+nav #ul {
     text-align: center;
     display: flex;
     flex-direction: column;
 }
 
-nav ul a {
+nav #ul a {
     position: relative;
     cursor: pointer;
     background: white;
     transition:all .4s ease-out;
 }
 
-nav ul a:after {
+nav #ul a:after {
     position: absolute;
     background: white;
     color: #666;
     top:0;
-    left: 70px;
+    left: 75px;
     opacity:.5;
+    padding: 5px;
     transform: perspective(500px) rotateY(90deg);
     transform-origin: 0 100%;
     transition:all .4s ease-out;
 }
 
-nav ul a:nth-child(1):after {
+nav #ul a:nth-child(1):after {
     content: "Главная";
-    line-height: 88px;
+    line-height: 90px;
+    font-size: 18px;
     width: 100px;
 }
-nav ul a:nth-child(2):after {
+nav #ul a:nth-child(2):after {
     content: "Курсы";
     line-height: 88px;
+    font-size: 18px;
     width: 100px;
 }
-nav ul a:nth-child(3):after {
+nav #ul a:nth-child(3):after {
     content: "Учителя";
-    line-height: 85px;
+    line-height: 77px;
+    font-size: 18px;
     width: 100px;
 }
 
 
-nav ul a:hover {
-    transform: translateX(-70px);
+nav #ul a:hover {
+    transform: translateX(-75px);
 }
 
-nav ul a:hover:after {
+nav #ul a:hover:after {
     opacity: 1;
     transform: perspective(500px) rotateY(0deg) scale(1) ;
 }
 
-nav ul a > div {
+nav #ul a > div {
     display: inline-block;
     padding: 25px 0;
     background: transparent;
 }
 
-nav ul a div { position: relative; }
+nav #ul a div { position: relative; }

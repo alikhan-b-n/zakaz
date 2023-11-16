@@ -1,12 +1,12 @@
-import {HeaderComponent} from "../Components/HeaderComponent";
 import {FooterComponent} from "../Components/FooterComponent";
 import {AddUserComponent} from "../AdminPanelComponents/Users/AddUserComponent";
 import {SidebarComponentAdmin} from "../AdminPanelComponents/SidebarComponent.Admin";
+import {HeaderComponentAdmin} from "../AdminPanelComponents/HeaderComponentAdmin";
 
 export function UsersToAddPageAdmin() {
     return(
         <div>
-            <HeaderComponent/>
+            <HeaderComponentAdmin/>
             <div className="flex font-normal mb-[10%]">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
                     <SidebarComponentAdmin page="users"/>

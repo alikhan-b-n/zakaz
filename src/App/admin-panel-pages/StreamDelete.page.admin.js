@@ -1,15 +1,15 @@
-import {HeaderComponent} from "../Components/HeaderComponent";
-import {SidebarComponent} from "../Components/SidebarComponent";
 import {FooterComponent} from "../Components/FooterComponent";
 import {DeleteStreamComponent} from "../AdminPanelComponents/Extentions/courses/Steam/DeleteStreamComponent";
+import {HeaderComponentAdmin} from "../AdminPanelComponents/HeaderComponentAdmin";
+import {SidebarComponentAdmin} from "../AdminPanelComponents/SidebarComponent.Admin";
 
 export function StreamDeletePageAdmin(){
     return(
         <div>
-            <HeaderComponent/>
+            <HeaderComponentAdmin/>
             <div className="flex font-normal mb-[10%]">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
-                    <SidebarComponent page="courses"/>
+                    <SidebarComponentAdmin page="courses"/>
                 </div>
                 <div className="m-auto 3xl:font-bold xl:font-semibold md:font-medium">
                     <h2 className="inline-block mt-[55px] 3xl:text-[60px] 2xl:text-[55px] xl:text-[50px] lg:text-[45px] md:text-[40px] sm:text-[35px] xsm:text-[30px]

@@ -16,7 +16,7 @@ export function MyTeacher(props){
     if (isError) {
         return <p>{error.response.data.message}</p>
     }
-    const avatarUrl = `http://193.70.125.178:4000/user/${props.id}/${data.data.avatar}`
+    const avatarUrl = `${baseUrl}/user/${props.id}/${data.data.avatar}`
     const divStyle = {
         'backgroundImage': `url(${avatarUrl})`
     }

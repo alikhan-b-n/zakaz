@@ -13,7 +13,6 @@ import "./styles/index.css"
 import {CoursePage} from "./App/Pages/Course.page";
 import {ElementPage} from "./App/Pages/Element.page";
 import {StreamPage} from "./App/Pages/Stream.page";
-import {QuizPage} from "./App/Pages/Quiz.page";
 import {SignInPageAdmin} from "./App/admin-panel-pages/SignIn.page.admin";
 import CoursesPageAdmin from "./App/admin-panel-pages/Courses.page.admin";
 import {UsersToAddPageAdmin} from "./App/admin-panel-pages/UsersToAdd.page.admin";
@@ -39,14 +38,13 @@ export function App() {
                     <Route path="/profile" element={<MyProfilePage/>}/>
                     <Route path="/course/:id" element={<CoursePage/>}/>
                     <Route path="/course/:courseId/element/:elementId" element={<ElementPage/>}/>
-                    <Route path="/course/:courseId/element/:elementId/weeklyQuiz" element={<QuizPage/>}/>
                     <Route path="/course/:courseId/stream" element={<StreamPage/>}/>
                 </Route>
 
                 <Route>
                     <Route path="/admin/signin" element={<SignInPageAdmin/>}/>
                     <Route path="/admin/" element={<CoursesPageAdmin/>}/>
-                    <Route path="/admin/usersAdd" element={<UsersToAddPageAdmin/>}/>
+                    <Route path="/admin/users/usersAdd" element={<UsersToAddPageAdmin/>}/>
                     <Route path="/admin/users" element={<UsersPageAdmin/>}/>
                     <Route path="/admin/courseCreate" element={<CoursesToCreatePageAdmin/>}/>
                     <Route path="/admin/:courseId/lessonCreate" element={<LessonsToCreate/>}/>

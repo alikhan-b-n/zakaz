@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useCallback} from 'react';
 import {useDropzone} from 'react-dropzone';
 import {useMutation} from "react-query";
-import {useAuthHeader} from "react-auth-kit";
+import {useAuthHeader, useAuthUser} from "react-auth-kit";
 import {useSignIn} from 'react-auth-kit'
 import axios from "axios";
 import {baseUrl} from "../../api/axios";
@@ -18,6 +18,7 @@ export const MyProfileComponent = (props) => {
     const signIn = useSignIn()
     const formData = new FormData();
     const authHeader = useAuthHeader();
+    const auth = useAuthUser()
     const avatarUrl = `${baseUrl}/user/${props.user.id}/${props.user.avatar}`
 
 
@@ -50,19 +51,8 @@ export const MyProfileComponent = (props) => {
                 }
             }
         ), {
-        onSuccess: (successData) => {
-            signIn({
-                token: successData.data.token,
-                expiresIn: 3600,
-                tokenType: "Bearer",
-                authState: {
-                    email: successData.data.email,
-                    firstname: successData.data.name,
-                    lastname: successData.data.surname,
-                    avatar: successData.data.avatar,
-                    id: successData.data.id
-                }
-            })
+        onSuccess: () => {
+            window.location.reload(false);
         }
     })
 
@@ -73,6 +63,8 @@ export const MyProfileComponent = (props) => {
     if (isError) {
         return <p>{error.response.data.message}</p>
     }
+
+    console.log(auth())
 
     return (
         <form action="form-data">

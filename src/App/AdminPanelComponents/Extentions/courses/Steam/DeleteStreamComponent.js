@@ -10,17 +10,16 @@ export function DeleteStreamComponent(){
     const navigate = useNavigate();
     const url =`${baseUrl}/adminPanel/adminDeleteStream`
     const {mutate, isLoading, isError, error} = useMutation(async () =>
-        await axios.post(url, {
+        await axios.delete(url, {
+            headers: {
+                'Authorization': `${authHeader()}`
+            },
+            data: {
                 courseId: parseInt(courseId)
-            }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `${authHeader()}`
-                }
             }
-        ), {
+        }), {
         onSuccess: () => {
-            navigate('/')
+            navigate('/admin')
         }
     })
 
@@ -34,6 +33,7 @@ export function DeleteStreamComponent(){
 
     return(
         <div>
+            <p>{authHeader()}</p>
             <form onSubmit={(e) => e.preventDefault()}>
                 <div className="bg-grey-lighter flex flex-auto">
                     <div
@@ -42,14 +42,14 @@ export function DeleteStreamComponent(){
                             <div className="flex justify-between">
                                 <button className="flex-initial text-xl font-bold pb-3 pl-2.5"
                                         onClick={() => navigate(-1)}>{`<`}</button>
-                                <h1 className="flex-1 mb-5 text-2xl text-center ml-3">Добавление стрима</h1>
+                                <h1 className="flex-1 mb-5 text-2xl text-center ml-3">Удаление стрима</h1>
                             </div>
                             <div className="flex justify-center">
                                 <button onClick={() => mutate({
-                                        courseId: courseId
+                                        courseId: parseInt(courseId)
                                     }
                                 )} type="submit" className="w-48 py-2 rounded-xl bg-orange-500 hover:bg-green-dark
-                    justify-self-center text-white ">Добавить стрим
+                    justify-self-center text-white ">Удалить
                                 </button>
                             </div>
                         </div>

@@ -4,7 +4,7 @@ import {useNavigate} from "react-router-dom";
 export function ElementComponent(props){
     const navigate = useNavigate()
     const handleClick = () => {
-        navigate(`/course/${props.courseId}/element/${props.element.id}`)
+        navigate(`/course/${props.courseId}/element/${props.element.Id}`)
     }
 
     return(

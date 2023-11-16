@@ -27,7 +27,7 @@ export function DailyQuizComponent() {
             }
         ), {
         onSuccess: () => {
-            navigate('/')
+            navigate('/admin')
         }
     })
 

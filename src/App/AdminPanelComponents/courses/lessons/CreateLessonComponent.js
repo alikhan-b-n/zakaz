@@ -65,7 +65,7 @@ export function CreateLessonComponent() {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `${authHeader()}`,
                 }
-            }).then(r => r.data.name).then(navigate('/'))
+            }).then(r => r.data.name).then(navigate('/admin/'))
         }
     })
 

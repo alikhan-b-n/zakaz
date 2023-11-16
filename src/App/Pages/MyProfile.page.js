@@ -9,6 +9,7 @@ import YourCoursesComponent from "../Components/courses/YourCoursesComponent";
 
 export default function (){
     const auth = useAuthUser()
+    console.log(auth().id)
     return(
         <div>
             <HeaderComponent/>

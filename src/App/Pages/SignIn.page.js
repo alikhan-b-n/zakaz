@@ -33,10 +33,11 @@ export const SignInPage = () => {
                 token: successData.data.token,
                 expiresIn: 3600,
                 tokenType: "Bearer",
-                authState: {email: successData.data.email, firstname: successData.data.name, lastname: successData.data.surname, id: successData.data.id, avatar: successData.data.avatar, password: password},
+                authState: { id: successData.data.id, email: successData.data.email, firstname: successData.data.name, lastname: successData.data.surname, avatar: successData.data.avatar, password: password},
             })
-            console.log(successData)
             navigate('/')
+            console.log(successData.data.id)
+            console.log(successData.data);
         }
     })
 
@@ -44,10 +45,10 @@ export const SignInPage = () => {
         return <p>Loading...</p>
     }
 
-
     if (isError) {
         return <p>{error.response.data.message}</p>
     }
+
 
     return (
         <form onSubmit={(e) => e.preventDefault()}>

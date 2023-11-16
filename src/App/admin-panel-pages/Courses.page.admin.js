@@ -1,12 +1,12 @@
 import React from 'react';
-import {HeaderComponent} from "../Components/HeaderComponent";
 import {SidebarComponentAdmin} from "../AdminPanelComponents/SidebarComponent.Admin";
 import CoursesComponent from "../AdminPanelComponents/courses/CoursesComponent";
 import {FooterComponent} from "../Components/FooterComponent";
+import {HeaderComponentAdmin} from "../AdminPanelComponents/HeaderComponentAdmin";
 function CoursesPageAdmin() {
     return (
         <div>
-            <HeaderComponent/>
+            <HeaderComponentAdmin/>
             <div className="lg:ml-0 flex mb-[10%]">
                 <div className="3xl:w-[150px] 2xl:w-[120px] xl:w-[100px] lg:w-0 h-70%">
                     <SidebarComponentAdmin page="courses"/>

@@ -29,13 +29,15 @@ export const CoursePage = () => {
         return <p>Loading...</p>
     }
 
-    if (isError) {
+    if (isError || data.data === null) {
         return <p>{error.response.data.message}</p>
     }
 
     const divStyle = {
-        'backgroundImage': `url(${'http://193.70.125.178:4000/static/' + data.data.course.image })`
+        'backgroundImage': `url(${'http://78.40.109.253:4000/static/' + data.data.course.image })`
     }
+
+    console.log(data.data.course)
 
     return (
         <div>
@@ -50,7 +52,7 @@ export const CoursePage = () => {
                     m-auto">Курс</h2>
                    <div className="flex flex-col justify-center">
                        <div className="">
-                           <MyTeacher id={data.data.course.teacherId}/>
+                           <MyTeacher id={data.data.course.TeacherId}/>
                            <div className="w-full h-1 bg-orange-200 rounded-lg mb-[10px]"></div>
                            <div className="grid 3xl:grid-cols-5 lg:grid-cols-1 flex 3xl:w-[1300px] 2xl:w-[1000px] xl:w-[900px]
                            lg:w-[600px] md:w-[450px] sm:w-[300px] mx-auto bg-white mb-[40px] rounded font-medium">

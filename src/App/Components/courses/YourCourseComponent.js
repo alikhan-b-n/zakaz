@@ -9,7 +9,7 @@ export const YourCourseComponent = (prop) => {
     }
 
     const handleClick = () => {
-        navigate(`/course/${prop.course.id}`)
+        navigate(`/course/${prop.course.Id}`)
     }
     return (
         <div className="grid 3xl:grid-cols-5 lg:grid-cols-1 flex 3xl:w-[1420] mx-auto bg-white mb-[40px] rounded font-medium">
